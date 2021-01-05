@@ -1,0 +1,18 @@
+server:
+  port: 9995
+
+spring:
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3306/vueCurriculumDesign?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+#showSql
+logging:
+  level:
+    com:
+      cdt:
+        curriculumdesign:
+          base:
+            mapper: debug
+#  config: classpath:log4j2-spring.xml

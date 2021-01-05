@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+
+    <context id="entmobile" defaultModelType="flat" targetRuntime="MyBatis3">
+
+        <plugin type="org.mybatis.generator.plugins.MobyyPlugin"/>
+        <plugin type="org.mybatis.generator.plugins.MapperAnnotationPlugin"/>
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+
+        <commentGenerator type="org.mybatis.generator.comments.MobyyCommentGenerator"/>
+
+        <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+        <!-- jdbc connection -->
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/vueCurriculumDesign?useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=UTC"
+                        userId="root" password="root"/>
+
+        <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+        <!-- java type resolver -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+        <!-- gem entity -->
+        <!--data -->
+        <javaModelGenerator targetPackage="com.cdt.curriculumdesign.base.model"
+                            targetProject="./src/main/java">
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="false" />
+        </javaModelGenerator>
+
+        <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+        <!-- gem annotated mapper -->
+        <!-- data -->
+        <javaClientGenerator type="ANNOTATEDMAPPER"
+                             targetPackage="com.cdt.curriculumdesign.base.mapper"
+                             targetProject="./src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!--<table tableName="risk_project">
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <table tableName="risk_group_relation">
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <table tableName="risk_group">
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>-->
+
+        <table tableName="user">
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+    </context>
+</generatorConfiguration>

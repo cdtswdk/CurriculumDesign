@@ -1,60 +1,75 @@
 package com.cdt.curriculumdesign.base.mapper;
 
-import com.cdt.curriculumdesign.base.model.User;
-import com.cdt.curriculumdesign.base.model.UserExample.Criteria;
-import com.cdt.curriculumdesign.base.model.UserExample.Criterion;
-import com.cdt.curriculumdesign.base.model.UserExample;
+import com.cdt.curriculumdesign.base.model.TbStucourse;
+import com.cdt.curriculumdesign.base.model.TbStucourseExample.Criteria;
+import com.cdt.curriculumdesign.base.model.TbStucourseExample.Criterion;
+import com.cdt.curriculumdesign.base.model.TbStucourseExample;
 import java.util.List;
 import java.util.Map;
 import javax.annotation.Generated;
 import org.apache.ibatis.jdbc.SQL;
 
-@Generated("user")
-public class UserSqlProvider {
-    public String countByExample(UserExample example) {
+@Generated("tb_stucourse")
+public class TbStucourseSqlProvider {
+    public String countByExample(TbStucourseExample example) {
         SQL sql = new SQL();
-        sql.SELECT("count(*)").FROM("user");
+        sql.SELECT("count(*)").FROM("tb_stucourse");
         applyWhere(sql, example, false);
         return sql.toString();
     }
 
-    public String deleteByExample(UserExample example) {
+    public String deleteByExample(TbStucourseExample example) {
         SQL sql = new SQL();
-        sql.DELETE_FROM("user");
+        sql.DELETE_FROM("tb_stucourse");
         applyWhere(sql, example, false);
         return sql.toString();
     }
 
-    public String insertSelective(User record) {
+    public String insertSelective(TbStucourse record) {
         SQL sql = new SQL();
-        sql.INSERT_INTO("user");
+        sql.INSERT_INTO("tb_stucourse");
         
-        if (record.getUsername() != null) {
-            sql.VALUES("userName", "#{username,jdbcType=VARCHAR}");
+        if (record.getId() != null) {
+            sql.VALUES("id", "#{id,jdbcType=INTEGER}");
         }
         
-        if (record.getPassword() != null) {
-            sql.VALUES("passWord", "#{password,jdbcType=VARCHAR}");
+        if (record.getStudentnum() != null) {
+            sql.VALUES("StudentNum", "#{studentnum,jdbcType=VARCHAR}");
         }
         
-        if (record.getRealname() != null) {
-            sql.VALUES("realName", "#{realname,jdbcType=VARCHAR}");
+        if (record.getTeachernum() != null) {
+            sql.VALUES("TeacherNum", "#{teachernum,jdbcType=VARCHAR}");
+        }
+        
+        if (record.getGrade() != null) {
+            sql.VALUES("Grade", "#{grade,jdbcType=SMALLINT}");
+        }
+        
+        if (record.getGradepoint() != null) {
+            sql.VALUES("GradePoint", "#{gradepoint,jdbcType=REAL}");
+        }
+        
+        if (record.getCoursestatus() != null) {
+            sql.VALUES("CourseStatus", "#{coursestatus,jdbcType=INTEGER}");
         }
         
         return sql.toString();
     }
 
-    public String selectByExample(UserExample example) {
+    public String selectByExample(TbStucourseExample example) {
         SQL sql = new SQL();
         if (example != null && example.isDistinct()) {
             sql.SELECT_DISTINCT("id");
         } else {
             sql.SELECT("id");
         }
-        sql.SELECT("userName");
-        sql.SELECT("passWord");
-        sql.SELECT("realName");
-        sql.FROM("user");
+        sql.SELECT("StudentNum");
+        sql.SELECT("CourseNum");
+        sql.SELECT("TeacherNum");
+        sql.SELECT("Grade");
+        sql.SELECT("GradePoint");
+        sql.SELECT("CourseStatus");
+        sql.FROM("tb_stucourse");
         applyWhere(sql, example, false);
         
         if (example != null && example.getOrderByClause() != null) {
@@ -75,26 +90,38 @@ public class UserSqlProvider {
     }
 
     public String updateByExampleSelective(Map<String, Object> parameter) {
-        User record = (User) parameter.get("record");
-        UserExample example = (UserExample) parameter.get("example");
+        TbStucourse record = (TbStucourse) parameter.get("record");
+        TbStucourseExample example = (TbStucourseExample) parameter.get("example");
         
         SQL sql = new SQL();
-        sql.UPDATE("user");
+        sql.UPDATE("tb_stucourse");
         
         if (record.getId() != null) {
             sql.SET("id = #{record.id,jdbcType=INTEGER}");
         }
         
-        if (record.getUsername() != null) {
-            sql.SET("userName = #{record.username,jdbcType=VARCHAR}");
+        if (record.getStudentnum() != null) {
+            sql.SET("StudentNum = #{record.studentnum,jdbcType=VARCHAR}");
         }
         
-        if (record.getPassword() != null) {
-            sql.SET("passWord = #{record.password,jdbcType=VARCHAR}");
+        if (record.getCoursenum() != null) {
+            sql.SET("CourseNum = #{record.coursenum,jdbcType=VARCHAR}");
         }
         
-        if (record.getRealname() != null) {
-            sql.SET("realName = #{record.realname,jdbcType=VARCHAR}");
+        if (record.getTeachernum() != null) {
+            sql.SET("TeacherNum = #{record.teachernum,jdbcType=VARCHAR}");
+        }
+        
+        if (record.getGrade() != null) {
+            sql.SET("Grade = #{record.grade,jdbcType=SMALLINT}");
+        }
+        
+        if (record.getGradepoint() != null) {
+            sql.SET("GradePoint = #{record.gradepoint,jdbcType=REAL}");
+        }
+        
+        if (record.getCoursestatus() != null) {
+            sql.SET("CourseStatus = #{record.coursestatus,jdbcType=INTEGER}");
         }
         
         applyWhere(sql, example, true);
@@ -103,32 +130,47 @@ public class UserSqlProvider {
 
     public String updateByExample(Map<String, Object> parameter) {
         SQL sql = new SQL();
-        sql.UPDATE("user");
+        sql.UPDATE("tb_stucourse");
         
         sql.SET("id = #{record.id,jdbcType=INTEGER}");
-        sql.SET("userName = #{record.username,jdbcType=VARCHAR}");
-        sql.SET("passWord = #{record.password,jdbcType=VARCHAR}");
-        sql.SET("realName = #{record.realname,jdbcType=VARCHAR}");
+        sql.SET("StudentNum = #{record.studentnum,jdbcType=VARCHAR}");
+        sql.SET("CourseNum = #{record.coursenum,jdbcType=VARCHAR}");
+        sql.SET("TeacherNum = #{record.teachernum,jdbcType=VARCHAR}");
+        sql.SET("Grade = #{record.grade,jdbcType=SMALLINT}");
+        sql.SET("GradePoint = #{record.gradepoint,jdbcType=REAL}");
+        sql.SET("CourseStatus = #{record.coursestatus,jdbcType=INTEGER}");
         
-        UserExample example = (UserExample) parameter.get("example");
+        TbStucourseExample example = (TbStucourseExample) parameter.get("example");
         applyWhere(sql, example, true);
         return sql.toString();
     }
 
-    public String updateByPrimaryKeySelective(User record) {
+    public String updateByPrimaryKeySelective(TbStucourse record) {
         SQL sql = new SQL();
-        sql.UPDATE("user");
+        sql.UPDATE("tb_stucourse");
         
-        if (record.getUsername() != null) {
-            sql.SET("userName = #{username,jdbcType=VARCHAR}");
+        if (record.getStudentnum() != null) {
+            sql.SET("StudentNum = #{studentnum,jdbcType=VARCHAR}");
         }
         
-        if (record.getPassword() != null) {
-            sql.SET("passWord = #{password,jdbcType=VARCHAR}");
+        if (record.getCoursenum() != null) {
+            sql.SET("CourseNum = #{coursenum,jdbcType=VARCHAR}");
         }
         
-        if (record.getRealname() != null) {
-            sql.SET("realName = #{realname,jdbcType=VARCHAR}");
+        if (record.getTeachernum() != null) {
+            sql.SET("TeacherNum = #{teachernum,jdbcType=VARCHAR}");
+        }
+        
+        if (record.getGrade() != null) {
+            sql.SET("Grade = #{grade,jdbcType=SMALLINT}");
+        }
+        
+        if (record.getGradepoint() != null) {
+            sql.SET("GradePoint = #{gradepoint,jdbcType=REAL}");
+        }
+        
+        if (record.getCoursestatus() != null) {
+            sql.SET("CourseStatus = #{coursestatus,jdbcType=INTEGER}");
         }
         
         sql.WHERE("id = #{id,jdbcType=INTEGER}");
@@ -136,7 +178,7 @@ public class UserSqlProvider {
         return sql.toString();
     }
 
-    protected void applyWhere(SQL sql, UserExample example, boolean includeExamplePhrase) {
+    protected void applyWhere(SQL sql, TbStucourseExample example, boolean includeExamplePhrase) {
         if (example == null) {
             return;
         }

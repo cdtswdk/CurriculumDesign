@@ -52,8 +52,14 @@
             <generatedKey column="id" sqlStatement="JDBC"/>
         </table>-->
 
-        <table tableName="tb_manager">
-            <generatedKey column="StudentNum" sqlStatement="JDBC"/>
+        <!--<table tableName="loginuser">
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>-->
+        <table tableName="tb_course">
+            <generatedKey column="CourseNum" sqlStatement="JDBC"/>
+        </table>
+        <table tableName="tb_stucourse">
+            <generatedKey column="CourseNum" sqlStatement="JDBC"/>
         </table>
     </context>
 </generatorConfiguration>

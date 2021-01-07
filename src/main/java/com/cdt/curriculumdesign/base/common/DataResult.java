@@ -43,6 +43,11 @@ public class DataResult<T> implements Serializable {
         result.setCode(RespCode.TIMEOUT.getCode()).setMessage(message);
         return result;
     }
+    public static <T> com.cdt.curriculumdesign.base.common.DataResult<T> notfound(String message) {
+        com.cdt.curriculumdesign.base.common.DataResult<T> result = new com.cdt.curriculumdesign.base.common.DataResult<>();
+        result.setCode(RespCode.NOTFOUND.getCode()).setMessage(message);
+        return result;
+    }
 
 
     public static <T> com.cdt.curriculumdesign.base.common.DataResult<T> serverError(String message) {

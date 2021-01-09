@@ -3,7 +3,7 @@ package com.cdt.curriculumdesign.base.model;
 import java.io.Serializable;
 
 public class Login implements Serializable {
-    private String username;
+    private Long username;
     private String password;
     private Integer userType;
     private static final long serialVersionUID = 1L;
@@ -11,11 +11,11 @@ public class Login implements Serializable {
     public Login() {
     }
 
-    public String getUsername() {
+    public Long getUsername() {
         return username;
     }
 
-    public void setUsername(String username) {
+    public void setUsername(Long username) {
         this.username = username;
     }
 

@@ -37,8 +37,8 @@ public interface LoginuserMapper {
     @Insert({
         "insert into loginuser (username, password, ",
         "userType)",
-        "values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, ",
-        "#{usertype,jdbcType=INTEGER})"
+        "values (#{username,jdbcType=BIGINT}, #{password,jdbcType=VARCHAR}, ",
+        "#{usertype,jdbcType=CHAR})"
     })
     @Options(useGeneratedKeys=true,keyProperty="id")
     int insert(Loginuser record);
@@ -50,9 +50,9 @@ public interface LoginuserMapper {
     @SelectProvider(type=LoginuserSqlProvider.class, method="selectByExample")
     @Results({
         @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
-        @Result(column="username", property="username", jdbcType=JdbcType.VARCHAR),
+        @Result(column="username", property="username", jdbcType=JdbcType.BIGINT),
         @Result(column="password", property="password", jdbcType=JdbcType.VARCHAR),
-        @Result(column="userType", property="usertype", jdbcType=JdbcType.INTEGER)
+        @Result(column="userType", property="usertype", jdbcType=JdbcType.CHAR)
     })
     List<Loginuser> selectByExample(LoginuserExample example);
 
@@ -64,9 +64,9 @@ public interface LoginuserMapper {
     })
     @Results({
         @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
-        @Result(column="username", property="username", jdbcType=JdbcType.VARCHAR),
+        @Result(column="username", property="username", jdbcType=JdbcType.BIGINT),
         @Result(column="password", property="password", jdbcType=JdbcType.VARCHAR),
-        @Result(column="userType", property="usertype", jdbcType=JdbcType.INTEGER)
+        @Result(column="userType", property="usertype", jdbcType=JdbcType.CHAR)
     })
     Loginuser selectByPrimaryKey(Integer id);
 
@@ -81,9 +81,9 @@ public interface LoginuserMapper {
 
     @Update({
         "update loginuser",
-        "set username = #{username,jdbcType=VARCHAR},",
+        "set username = #{username,jdbcType=BIGINT},",
           "password = #{password,jdbcType=VARCHAR},",
-          "userType = #{usertype,jdbcType=INTEGER}",
+          "userType = #{usertype,jdbcType=CHAR}",
         "where id = #{id,jdbcType=INTEGER}"
     })
     int updateByPrimaryKey(Loginuser record);

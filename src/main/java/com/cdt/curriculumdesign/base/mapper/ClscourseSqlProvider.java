@@ -1,125 +1,105 @@
 package com.cdt.curriculumdesign.base.mapper;
 
-import com.cdt.curriculumdesign.base.model.TbCourse;
-import com.cdt.curriculumdesign.base.model.TbCourseExample.Criteria;
-import com.cdt.curriculumdesign.base.model.TbCourseExample.Criterion;
-import com.cdt.curriculumdesign.base.model.TbCourseExample;
+import com.cdt.curriculumdesign.base.model.Clscourse;
+import com.cdt.curriculumdesign.base.model.ClscourseExample.Criteria;
+import com.cdt.curriculumdesign.base.model.ClscourseExample.Criterion;
+import com.cdt.curriculumdesign.base.model.ClscourseExample;
 import java.util.List;
 import java.util.Map;
 import javax.annotation.Generated;
 import org.apache.ibatis.jdbc.SQL;
 
-@Generated("tb_course")
-public class TbCourseSqlProvider {
-    public String countByExample(TbCourseExample example) {
+@Generated("clscourse")
+public class ClscourseSqlProvider {
+    public String countByExample(ClscourseExample example) {
         SQL sql = new SQL();
-        sql.SELECT("count(*)").FROM("tb_course");
+        sql.SELECT("count(*)").FROM("clscourse");
         applyWhere(sql, example, false);
         return sql.toString();
     }
 
-    public String deleteByExample(TbCourseExample example) {
+    public String deleteByExample(ClscourseExample example) {
         SQL sql = new SQL();
-        sql.DELETE_FROM("tb_course");
+        sql.DELETE_FROM("clscourse");
         applyWhere(sql, example, false);
         return sql.toString();
     }
 
-    public String insertSelective(TbCourse record) {
+    public String insertSelective(Clscourse record) {
         SQL sql = new SQL();
-        sql.INSERT_INTO("tb_course");
+        sql.INSERT_INTO("clscourse");
+        
+        if (record.getCourseid() != null) {
+            sql.VALUES("CourseId", "#{courseid,jdbcType=BIGINT}");
+        }
+        
+        if (record.getClassid() != null) {
+            sql.VALUES("ClassId", "#{classid,jdbcType=BIGINT}");
+        }
+        
+        if (record.getTeacherid() != null) {
+            sql.VALUES("TeacherId", "#{teacherid,jdbcType=BIGINT}");
+        }
         
         if (record.getCoursename() != null) {
             sql.VALUES("CourseName", "#{coursename,jdbcType=VARCHAR}");
         }
         
-        if (record.getTeachernum() != null) {
-            sql.VALUES("TeacherNum", "#{teachernum,jdbcType=VARCHAR}");
-        }
-        
-        if (record.getCoursecredit() != null) {
-            sql.VALUES("CourseCredit", "#{coursecredit,jdbcType=REAL}");
-        }
-        
-        if (record.getCourseclass() != null) {
-            sql.VALUES("CourseClass", "#{courseclass,jdbcType=SMALLINT}");
-        }
-        
         if (record.getCoursestarttime() != null) {
-            sql.VALUES("CourseStartTime", "#{coursestarttime,jdbcType=INTEGER}");
+            sql.VALUES("CourseStartTime", "#{coursestarttime,jdbcType=DATE}");
         }
         
         if (record.getCourseendtime() != null) {
-            sql.VALUES("CourseEndTime", "#{courseendtime,jdbcType=INTEGER}");
+            sql.VALUES("CourseEndTime", "#{courseendtime,jdbcType=DATE}");
         }
         
-        if (record.getCoursedate() != null) {
-            sql.VALUES("CourseDate", "#{coursedate,jdbcType=INTEGER}");
+        if (record.getCoursestartweek() != null) {
+            sql.VALUES("CourseStartWeek", "#{coursestartweek,jdbcType=INTEGER}");
+        }
+        
+        if (record.getCourseendweek() != null) {
+            sql.VALUES("CourseEndWeek", "#{courseendweek,jdbcType=INTEGER}");
+        }
+        
+        if (record.getCourseweek() != null) {
+            sql.VALUES("CourseWeek", "#{courseweek,jdbcType=CHAR}");
+        }
+        
+        if (record.getCoursedaynum() != null) {
+            sql.VALUES("CourseDayNum", "#{coursedaynum,jdbcType=CHAR}");
+        }
+        
+        if (record.getCoursestatus() != null) {
+            sql.VALUES("CourseStatus", "#{coursestatus,jdbcType=CHAR}");
         }
         
         if (record.getCoursetype() != null) {
-            sql.VALUES("CourseType", "#{coursetype,jdbcType=INTEGER}");
-        }
-        
-        if (record.getCoursedesc() != null) {
-            sql.VALUES("CourseDesc", "#{coursedesc,jdbcType=LONGVARCHAR}");
+            sql.VALUES("CourseType", "#{coursetype,jdbcType=CHAR}");
         }
         
         return sql.toString();
     }
 
-    public String selectByExampleWithBLOBs(TbCourseExample example) {
+    public String selectByExample(ClscourseExample example) {
         SQL sql = new SQL();
         if (example != null && example.isDistinct()) {
-            sql.SELECT_DISTINCT("CourseNum");
+            sql.SELECT_DISTINCT("ClsCourseId");
         } else {
-            sql.SELECT("CourseNum");
+            sql.SELECT("ClsCourseId");
         }
+        sql.SELECT("CourseId");
+        sql.SELECT("ClassId");
+        sql.SELECT("TeacherId");
         sql.SELECT("CourseName");
-        sql.SELECT("TeacherNum");
-        sql.SELECT("CourseCredit");
-        sql.SELECT("CourseClass");
         sql.SELECT("CourseStartTime");
         sql.SELECT("CourseEndTime");
-        sql.SELECT("CourseDate");
+        sql.SELECT("CourseStartWeek");
+        sql.SELECT("CourseEndWeek");
+        sql.SELECT("CourseWeek");
+        sql.SELECT("CourseDayNum");
+        sql.SELECT("CourseStatus");
         sql.SELECT("CourseType");
-        sql.SELECT("CourseDesc");
-        sql.FROM("tb_course");
-        applyWhere(sql, example, false);
-        
-        if (example != null && example.getOrderByClause() != null) {
-            sql.ORDER_BY(example.getOrderByClause());
-        }
-        
-        if (example != null && example.getLimit() != null) {
-            sql.LIMIT(example.getLimit());
-        }
-        if (example != null && example.getOffset() != null) {
-            sql.OFFSET(example.getOffset());
-        }
-        if (example != null && example.getPageNum() != null && example.getPageSize() != null) {
-            sql.LIMIT(example.getPageSize());
-            sql.OFFSET((example.getPageNum() - 1) * example.getPageSize());
-        }
-        return sql.toString();
-    }
-
-    public String selectByExample(TbCourseExample example) {
-        SQL sql = new SQL();
-        if (example != null && example.isDistinct()) {
-            sql.SELECT_DISTINCT("CourseNum");
-        } else {
-            sql.SELECT("CourseNum");
-        }
-        sql.SELECT("CourseName");
-        sql.SELECT("TeacherNum");
-        sql.SELECT("CourseCredit");
-        sql.SELECT("CourseClass");
-        sql.SELECT("CourseStartTime");
-        sql.SELECT("CourseEndTime");
-        sql.SELECT("CourseDate");
-        sql.SELECT("CourseType");
-        sql.FROM("tb_course");
+        sql.FROM("clscourse");
         applyWhere(sql, example, false);
         
         if (example != null && example.getOrderByClause() != null) {
@@ -140,141 +120,149 @@ public class TbCourseSqlProvider {
     }
 
     public String updateByExampleSelective(Map<String, Object> parameter) {
-        TbCourse record = (TbCourse) parameter.get("record");
-        TbCourseExample example = (TbCourseExample) parameter.get("example");
+        Clscourse record = (Clscourse) parameter.get("record");
+        ClscourseExample example = (ClscourseExample) parameter.get("example");
         
         SQL sql = new SQL();
-        sql.UPDATE("tb_course");
+        sql.UPDATE("clscourse");
         
-        if (record.getCoursenum() != null) {
-            sql.SET("CourseNum = #{record.coursenum,jdbcType=VARCHAR}");
+        if (record.getClscourseid() != null) {
+            sql.SET("ClsCourseId = #{record.clscourseid,jdbcType=BIGINT}");
+        }
+        
+        if (record.getCourseid() != null) {
+            sql.SET("CourseId = #{record.courseid,jdbcType=BIGINT}");
+        }
+        
+        if (record.getClassid() != null) {
+            sql.SET("ClassId = #{record.classid,jdbcType=BIGINT}");
+        }
+        
+        if (record.getTeacherid() != null) {
+            sql.SET("TeacherId = #{record.teacherid,jdbcType=BIGINT}");
         }
         
         if (record.getCoursename() != null) {
             sql.SET("CourseName = #{record.coursename,jdbcType=VARCHAR}");
         }
         
-        if (record.getTeachernum() != null) {
-            sql.SET("TeacherNum = #{record.teachernum,jdbcType=VARCHAR}");
-        }
-        
-        if (record.getCoursecredit() != null) {
-            sql.SET("CourseCredit = #{record.coursecredit,jdbcType=REAL}");
-        }
-        
-        if (record.getCourseclass() != null) {
-            sql.SET("CourseClass = #{record.courseclass,jdbcType=SMALLINT}");
-        }
-        
         if (record.getCoursestarttime() != null) {
-            sql.SET("CourseStartTime = #{record.coursestarttime,jdbcType=INTEGER}");
+            sql.SET("CourseStartTime = #{record.coursestarttime,jdbcType=DATE}");
         }
         
         if (record.getCourseendtime() != null) {
-            sql.SET("CourseEndTime = #{record.courseendtime,jdbcType=INTEGER}");
+            sql.SET("CourseEndTime = #{record.courseendtime,jdbcType=DATE}");
         }
         
-        if (record.getCoursedate() != null) {
-            sql.SET("CourseDate = #{record.coursedate,jdbcType=INTEGER}");
+        if (record.getCoursestartweek() != null) {
+            sql.SET("CourseStartWeek = #{record.coursestartweek,jdbcType=INTEGER}");
+        }
+        
+        if (record.getCourseendweek() != null) {
+            sql.SET("CourseEndWeek = #{record.courseendweek,jdbcType=INTEGER}");
+        }
+        
+        if (record.getCourseweek() != null) {
+            sql.SET("CourseWeek = #{record.courseweek,jdbcType=CHAR}");
+        }
+        
+        if (record.getCoursedaynum() != null) {
+            sql.SET("CourseDayNum = #{record.coursedaynum,jdbcType=CHAR}");
+        }
+        
+        if (record.getCoursestatus() != null) {
+            sql.SET("CourseStatus = #{record.coursestatus,jdbcType=CHAR}");
         }
         
         if (record.getCoursetype() != null) {
-            sql.SET("CourseType = #{record.coursetype,jdbcType=INTEGER}");
+            sql.SET("CourseType = #{record.coursetype,jdbcType=CHAR}");
         }
         
-        if (record.getCoursedesc() != null) {
-            sql.SET("CourseDesc = #{record.coursedesc,jdbcType=LONGVARCHAR}");
-        }
-        
-        applyWhere(sql, example, true);
-        return sql.toString();
-    }
-
-    public String updateByExampleWithBLOBs(Map<String, Object> parameter) {
-        SQL sql = new SQL();
-        sql.UPDATE("tb_course");
-        
-        sql.SET("CourseNum = #{record.coursenum,jdbcType=VARCHAR}");
-        sql.SET("CourseName = #{record.coursename,jdbcType=VARCHAR}");
-        sql.SET("TeacherNum = #{record.teachernum,jdbcType=VARCHAR}");
-        sql.SET("CourseCredit = #{record.coursecredit,jdbcType=REAL}");
-        sql.SET("CourseClass = #{record.courseclass,jdbcType=SMALLINT}");
-        sql.SET("CourseStartTime = #{record.coursestarttime,jdbcType=INTEGER}");
-        sql.SET("CourseEndTime = #{record.courseendtime,jdbcType=INTEGER}");
-        sql.SET("CourseDate = #{record.coursedate,jdbcType=INTEGER}");
-        sql.SET("CourseType = #{record.coursetype,jdbcType=INTEGER}");
-        sql.SET("CourseDesc = #{record.coursedesc,jdbcType=LONGVARCHAR}");
-        
-        TbCourseExample example = (TbCourseExample) parameter.get("example");
         applyWhere(sql, example, true);
         return sql.toString();
     }
 
     public String updateByExample(Map<String, Object> parameter) {
         SQL sql = new SQL();
-        sql.UPDATE("tb_course");
+        sql.UPDATE("clscourse");
         
-        sql.SET("CourseNum = #{record.coursenum,jdbcType=VARCHAR}");
+        sql.SET("ClsCourseId = #{record.clscourseid,jdbcType=BIGINT}");
+        sql.SET("CourseId = #{record.courseid,jdbcType=BIGINT}");
+        sql.SET("ClassId = #{record.classid,jdbcType=BIGINT}");
+        sql.SET("TeacherId = #{record.teacherid,jdbcType=BIGINT}");
         sql.SET("CourseName = #{record.coursename,jdbcType=VARCHAR}");
-        sql.SET("TeacherNum = #{record.teachernum,jdbcType=VARCHAR}");
-        sql.SET("CourseCredit = #{record.coursecredit,jdbcType=REAL}");
-        sql.SET("CourseClass = #{record.courseclass,jdbcType=SMALLINT}");
-        sql.SET("CourseStartTime = #{record.coursestarttime,jdbcType=INTEGER}");
-        sql.SET("CourseEndTime = #{record.courseendtime,jdbcType=INTEGER}");
-        sql.SET("CourseDate = #{record.coursedate,jdbcType=INTEGER}");
-        sql.SET("CourseType = #{record.coursetype,jdbcType=INTEGER}");
+        sql.SET("CourseStartTime = #{record.coursestarttime,jdbcType=DATE}");
+        sql.SET("CourseEndTime = #{record.courseendtime,jdbcType=DATE}");
+        sql.SET("CourseStartWeek = #{record.coursestartweek,jdbcType=INTEGER}");
+        sql.SET("CourseEndWeek = #{record.courseendweek,jdbcType=INTEGER}");
+        sql.SET("CourseWeek = #{record.courseweek,jdbcType=CHAR}");
+        sql.SET("CourseDayNum = #{record.coursedaynum,jdbcType=CHAR}");
+        sql.SET("CourseStatus = #{record.coursestatus,jdbcType=CHAR}");
+        sql.SET("CourseType = #{record.coursetype,jdbcType=CHAR}");
         
-        TbCourseExample example = (TbCourseExample) parameter.get("example");
+        ClscourseExample example = (ClscourseExample) parameter.get("example");
         applyWhere(sql, example, true);
         return sql.toString();
     }
 
-    public String updateByPrimaryKeySelective(TbCourse record) {
+    public String updateByPrimaryKeySelective(Clscourse record) {
         SQL sql = new SQL();
-        sql.UPDATE("tb_course");
+        sql.UPDATE("clscourse");
+        
+        if (record.getCourseid() != null) {
+            sql.SET("CourseId = #{courseid,jdbcType=BIGINT}");
+        }
+        
+        if (record.getClassid() != null) {
+            sql.SET("ClassId = #{classid,jdbcType=BIGINT}");
+        }
+        
+        if (record.getTeacherid() != null) {
+            sql.SET("TeacherId = #{teacherid,jdbcType=BIGINT}");
+        }
         
         if (record.getCoursename() != null) {
             sql.SET("CourseName = #{coursename,jdbcType=VARCHAR}");
         }
         
-        if (record.getTeachernum() != null) {
-            sql.SET("TeacherNum = #{teachernum,jdbcType=VARCHAR}");
-        }
-        
-        if (record.getCoursecredit() != null) {
-            sql.SET("CourseCredit = #{coursecredit,jdbcType=REAL}");
-        }
-        
-        if (record.getCourseclass() != null) {
-            sql.SET("CourseClass = #{courseclass,jdbcType=SMALLINT}");
-        }
-        
         if (record.getCoursestarttime() != null) {
-            sql.SET("CourseStartTime = #{coursestarttime,jdbcType=INTEGER}");
+            sql.SET("CourseStartTime = #{coursestarttime,jdbcType=DATE}");
         }
         
         if (record.getCourseendtime() != null) {
-            sql.SET("CourseEndTime = #{courseendtime,jdbcType=INTEGER}");
+            sql.SET("CourseEndTime = #{courseendtime,jdbcType=DATE}");
         }
         
-        if (record.getCoursedate() != null) {
-            sql.SET("CourseDate = #{coursedate,jdbcType=INTEGER}");
+        if (record.getCoursestartweek() != null) {
+            sql.SET("CourseStartWeek = #{coursestartweek,jdbcType=INTEGER}");
+        }
+        
+        if (record.getCourseendweek() != null) {
+            sql.SET("CourseEndWeek = #{courseendweek,jdbcType=INTEGER}");
+        }
+        
+        if (record.getCourseweek() != null) {
+            sql.SET("CourseWeek = #{courseweek,jdbcType=CHAR}");
+        }
+        
+        if (record.getCoursedaynum() != null) {
+            sql.SET("CourseDayNum = #{coursedaynum,jdbcType=CHAR}");
+        }
+        
+        if (record.getCoursestatus() != null) {
+            sql.SET("CourseStatus = #{coursestatus,jdbcType=CHAR}");
         }
         
         if (record.getCoursetype() != null) {
-            sql.SET("CourseType = #{coursetype,jdbcType=INTEGER}");
+            sql.SET("CourseType = #{coursetype,jdbcType=CHAR}");
         }
         
-        if (record.getCoursedesc() != null) {
-            sql.SET("CourseDesc = #{coursedesc,jdbcType=LONGVARCHAR}");
-        }
-        
-        sql.WHERE("CourseNum = #{coursenum,jdbcType=VARCHAR}");
+        sql.WHERE("ClsCourseId = #{clscourseid,jdbcType=BIGINT}");
         
         return sql.toString();
     }
 
-    protected void applyWhere(SQL sql, TbCourseExample example, boolean includeExamplePhrase) {
+    protected void applyWhere(SQL sql, ClscourseExample example, boolean includeExamplePhrase) {
         if (example == null) {
             return;
         }

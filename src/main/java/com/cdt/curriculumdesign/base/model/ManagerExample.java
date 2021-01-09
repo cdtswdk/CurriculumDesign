@@ -2,11 +2,12 @@ package com.cdt.curriculumdesign.base.model;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import javax.annotation.Generated;
 
-@Generated("tb_manager")
-public class TbManagerExample {
+@Generated("manager")
+public class ManagerExample {
     protected String orderByClause;
 
     protected boolean distinct;
@@ -21,11 +22,11 @@ public class TbManagerExample {
 
     private Integer offset;
 
-    public TbManagerExample() {
+    public ManagerExample() {
         oredCriteria = new ArrayList<>();
     }
 
-    public TbManagerExample setOrderByClause(String orderByClause) {
+    public ManagerExample setOrderByClause(String orderByClause) {
         this.orderByClause = orderByClause;
         return this;
     }
@@ -76,11 +77,11 @@ public class TbManagerExample {
         distinct = false;
     }
 
-    public static TbManagerExample instance() {
-        return new TbManagerExample();
+    public static ManagerExample instance() {
+        return new ManagerExample();
     }
 
-    public TbManagerExample paging(Integer pageNum, Integer pageSize) {
+    public ManagerExample paging(Integer pageNum, Integer pageSize) {
         this.pageNum = pageNum;this.pageSize = pageSize;
         return this;
     }
@@ -93,12 +94,12 @@ public class TbManagerExample {
         return pageSize;
     }
 
-    public TbManagerExample setLimit(Integer limit) {
+    public ManagerExample setLimit(Integer limit) {
         this.limit = limit;
         return this;
     }
 
-    public TbManagerExample setOffset(Integer offset) {
+    public ManagerExample setOffset(Integer offset) {
         this.offset = offset;
         return this;
     }
@@ -152,73 +153,209 @@ public class TbManagerExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        public Criteria andManagernumIsNull() {
-            addCriterion("ManagerNum is null");
+        protected void addCriterionForJDBCDate(String condition, Date value, String property) {
+            if (value == null) {
+                throw new RuntimeException("Value for " + property + " cannot be null");
+            }
+            addCriterion(condition, new java.sql.Date(value.getTime()), property);
+        }
+
+        protected void addCriterionForJDBCDate(String condition, List<Date> values, String property) {
+            if (values == null || values.size() == 0) {
+                throw new RuntimeException("Value list for " + property + " cannot be null or empty");
+            }
+            List<java.sql.Date> dateList = new ArrayList<>();
+            Iterator<Date> iter = values.iterator();
+            while (iter.hasNext()) {
+                dateList.add(new java.sql.Date(iter.next().getTime()));
+            }
+            addCriterion(condition, dateList, property);
+        }
+
+        protected void addCriterionForJDBCDate(String condition, Date value1, Date value2, String property) {
+            if (value1 == null || value2 == null) {
+                throw new RuntimeException("Between values for " + property + " cannot be null");
+            }
+            addCriterion(condition, new java.sql.Date(value1.getTime()), new java.sql.Date(value2.getTime()), property);
+        }
+
+        public Criteria andManageridIsNull() {
+            addCriterion("ManagerId is null");
             return (Criteria) this;
         }
 
-        public Criteria andManagernumIsNotNull() {
-            addCriterion("ManagerNum is not null");
+        public Criteria andManageridIsNotNull() {
+            addCriterion("ManagerId is not null");
             return (Criteria) this;
         }
 
-        public Criteria andManagernumEqualTo(String value) {
-            addCriterion("ManagerNum =", value, "managernum");
+        public Criteria andManageridEqualTo(Long value) {
+            addCriterion("ManagerId =", value, "managerid");
             return (Criteria) this;
         }
 
-        public Criteria andManagernumNotEqualTo(String value) {
-            addCriterion("ManagerNum <>", value, "managernum");
+        public Criteria andManageridNotEqualTo(Long value) {
+            addCriterion("ManagerId <>", value, "managerid");
             return (Criteria) this;
         }
 
-        public Criteria andManagernumGreaterThan(String value) {
-            addCriterion("ManagerNum >", value, "managernum");
+        public Criteria andManageridGreaterThan(Long value) {
+            addCriterion("ManagerId >", value, "managerid");
             return (Criteria) this;
         }
 
-        public Criteria andManagernumGreaterThanOrEqualTo(String value) {
-            addCriterion("ManagerNum >=", value, "managernum");
+        public Criteria andManageridGreaterThanOrEqualTo(Long value) {
+            addCriterion("ManagerId >=", value, "managerid");
             return (Criteria) this;
         }
 
-        public Criteria andManagernumLessThan(String value) {
-            addCriterion("ManagerNum <", value, "managernum");
+        public Criteria andManageridLessThan(Long value) {
+            addCriterion("ManagerId <", value, "managerid");
             return (Criteria) this;
         }
 
-        public Criteria andManagernumLessThanOrEqualTo(String value) {
-            addCriterion("ManagerNum <=", value, "managernum");
+        public Criteria andManageridLessThanOrEqualTo(Long value) {
+            addCriterion("ManagerId <=", value, "managerid");
             return (Criteria) this;
         }
 
-        public Criteria andManagernumLike(String value) {
-            addCriterion("ManagerNum like", value, "managernum");
+        public Criteria andManageridIn(List<Long> values) {
+            addCriterion("ManagerId in", values, "managerid");
             return (Criteria) this;
         }
 
-        public Criteria andManagernumNotLike(String value) {
-            addCriterion("ManagerNum not like", value, "managernum");
+        public Criteria andManageridNotIn(List<Long> values) {
+            addCriterion("ManagerId not in", values, "managerid");
             return (Criteria) this;
         }
 
-        public Criteria andManagernumIn(List<String> values) {
-            addCriterion("ManagerNum in", values, "managernum");
+        public Criteria andManageridBetween(Long value1, Long value2) {
+            addCriterion("ManagerId between", value1, value2, "managerid");
             return (Criteria) this;
         }
 
-        public Criteria andManagernumNotIn(List<String> values) {
-            addCriterion("ManagerNum not in", values, "managernum");
+        public Criteria andManageridNotBetween(Long value1, Long value2) {
+            addCriterion("ManagerId not between", value1, value2, "managerid");
             return (Criteria) this;
         }
 
-        public Criteria andManagernumBetween(String value1, String value2) {
-            addCriterion("ManagerNum between", value1, value2, "managernum");
+        public Criteria andManagerdeptidIsNull() {
+            addCriterion("ManagerDeptId is null");
             return (Criteria) this;
         }
 
-        public Criteria andManagernumNotBetween(String value1, String value2) {
-            addCriterion("ManagerNum not between", value1, value2, "managernum");
+        public Criteria andManagerdeptidIsNotNull() {
+            addCriterion("ManagerDeptId is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andManagerdeptidEqualTo(Long value) {
+            addCriterion("ManagerDeptId =", value, "managerdeptid");
+            return (Criteria) this;
+        }
+
+        public Criteria andManagerdeptidNotEqualTo(Long value) {
+            addCriterion("ManagerDeptId <>", value, "managerdeptid");
+            return (Criteria) this;
+        }
+
+        public Criteria andManagerdeptidGreaterThan(Long value) {
+            addCriterion("ManagerDeptId >", value, "managerdeptid");
+            return (Criteria) this;
+        }
+
+        public Criteria andManagerdeptidGreaterThanOrEqualTo(Long value) {
+            addCriterion("ManagerDeptId >=", value, "managerdeptid");
+            return (Criteria) this;
+        }
+
+        public Criteria andManagerdeptidLessThan(Long value) {
+            addCriterion("ManagerDeptId <", value, "managerdeptid");
+            return (Criteria) this;
+        }
+
+        public Criteria andManagerdeptidLessThanOrEqualTo(Long value) {
+            addCriterion("ManagerDeptId <=", value, "managerdeptid");
+            return (Criteria) this;
+        }
+
+        public Criteria andManagerdeptidIn(List<Long> values) {
+            addCriterion("ManagerDeptId in", values, "managerdeptid");
+            return (Criteria) this;
+        }
+
+        public Criteria andManagerdeptidNotIn(List<Long> values) {
+            addCriterion("ManagerDeptId not in", values, "managerdeptid");
+            return (Criteria) this;
+        }
+
+        public Criteria andManagerdeptidBetween(Long value1, Long value2) {
+            addCriterion("ManagerDeptId between", value1, value2, "managerdeptid");
+            return (Criteria) this;
+        }
+
+        public Criteria andManagerdeptidNotBetween(Long value1, Long value2) {
+            addCriterion("ManagerDeptId not between", value1, value2, "managerdeptid");
+            return (Criteria) this;
+        }
+
+        public Criteria andManagermajoridIsNull() {
+            addCriterion("ManagerMajorId is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andManagermajoridIsNotNull() {
+            addCriterion("ManagerMajorId is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andManagermajoridEqualTo(Long value) {
+            addCriterion("ManagerMajorId =", value, "managermajorid");
+            return (Criteria) this;
+        }
+
+        public Criteria andManagermajoridNotEqualTo(Long value) {
+            addCriterion("ManagerMajorId <>", value, "managermajorid");
+            return (Criteria) this;
+        }
+
+        public Criteria andManagermajoridGreaterThan(Long value) {
+            addCriterion("ManagerMajorId >", value, "managermajorid");
+            return (Criteria) this;
+        }
+
+        public Criteria andManagermajoridGreaterThanOrEqualTo(Long value) {
+            addCriterion("ManagerMajorId >=", value, "managermajorid");
+            return (Criteria) this;
+        }
+
+        public Criteria andManagermajoridLessThan(Long value) {
+            addCriterion("ManagerMajorId <", value, "managermajorid");
+            return (Criteria) this;
+        }
+
+        public Criteria andManagermajoridLessThanOrEqualTo(Long value) {
+            addCriterion("ManagerMajorId <=", value, "managermajorid");
+            return (Criteria) this;
+        }
+
+        public Criteria andManagermajoridIn(List<Long> values) {
+            addCriterion("ManagerMajorId in", values, "managermajorid");
+            return (Criteria) this;
+        }
+
+        public Criteria andManagermajoridNotIn(List<Long> values) {
+            addCriterion("ManagerMajorId not in", values, "managermajorid");
+            return (Criteria) this;
+        }
+
+        public Criteria andManagermajoridBetween(Long value1, Long value2) {
+            addCriterion("ManagerMajorId between", value1, value2, "managermajorid");
+            return (Criteria) this;
+        }
+
+        public Criteria andManagermajoridNotBetween(Long value1, Long value2) {
+            addCriterion("ManagerMajorId not between", value1, value2, "managermajorid");
             return (Criteria) this;
         }
 
@@ -362,135 +499,145 @@ public class TbManagerExample {
             return (Criteria) this;
         }
 
-        public Criteria andManagerbirthdateIsNull() {
-            addCriterion("ManagerBirthdate is null");
+        public Criteria andManagerbirthdyIsNull() {
+            addCriterion("ManagerBirthdy is null");
             return (Criteria) this;
         }
 
-        public Criteria andManagerbirthdateIsNotNull() {
-            addCriterion("ManagerBirthdate is not null");
+        public Criteria andManagerbirthdyIsNotNull() {
+            addCriterion("ManagerBirthdy is not null");
             return (Criteria) this;
         }
 
-        public Criteria andManagerbirthdateEqualTo(Date value) {
-            addCriterion("ManagerBirthdate =", value, "managerbirthdate");
+        public Criteria andManagerbirthdyEqualTo(Date value) {
+            addCriterionForJDBCDate("ManagerBirthdy =", value, "managerbirthdy");
             return (Criteria) this;
         }
 
-        public Criteria andManagerbirthdateNotEqualTo(Date value) {
-            addCriterion("ManagerBirthdate <>", value, "managerbirthdate");
+        public Criteria andManagerbirthdyNotEqualTo(Date value) {
+            addCriterionForJDBCDate("ManagerBirthdy <>", value, "managerbirthdy");
             return (Criteria) this;
         }
 
-        public Criteria andManagerbirthdateGreaterThan(Date value) {
-            addCriterion("ManagerBirthdate >", value, "managerbirthdate");
+        public Criteria andManagerbirthdyGreaterThan(Date value) {
+            addCriterionForJDBCDate("ManagerBirthdy >", value, "managerbirthdy");
             return (Criteria) this;
         }
 
-        public Criteria andManagerbirthdateGreaterThanOrEqualTo(Date value) {
-            addCriterion("ManagerBirthdate >=", value, "managerbirthdate");
+        public Criteria andManagerbirthdyGreaterThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("ManagerBirthdy >=", value, "managerbirthdy");
             return (Criteria) this;
         }
 
-        public Criteria andManagerbirthdateLessThan(Date value) {
-            addCriterion("ManagerBirthdate <", value, "managerbirthdate");
+        public Criteria andManagerbirthdyLessThan(Date value) {
+            addCriterionForJDBCDate("ManagerBirthdy <", value, "managerbirthdy");
             return (Criteria) this;
         }
 
-        public Criteria andManagerbirthdateLessThanOrEqualTo(Date value) {
-            addCriterion("ManagerBirthdate <=", value, "managerbirthdate");
+        public Criteria andManagerbirthdyLessThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("ManagerBirthdy <=", value, "managerbirthdy");
             return (Criteria) this;
         }
 
-        public Criteria andManagerbirthdateIn(List<Date> values) {
-            addCriterion("ManagerBirthdate in", values, "managerbirthdate");
+        public Criteria andManagerbirthdyIn(List<Date> values) {
+            addCriterionForJDBCDate("ManagerBirthdy in", values, "managerbirthdy");
             return (Criteria) this;
         }
 
-        public Criteria andManagerbirthdateNotIn(List<Date> values) {
-            addCriterion("ManagerBirthdate not in", values, "managerbirthdate");
+        public Criteria andManagerbirthdyNotIn(List<Date> values) {
+            addCriterionForJDBCDate("ManagerBirthdy not in", values, "managerbirthdy");
             return (Criteria) this;
         }
 
-        public Criteria andManagerbirthdateBetween(Date value1, Date value2) {
-            addCriterion("ManagerBirthdate between", value1, value2, "managerbirthdate");
+        public Criteria andManagerbirthdyBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("ManagerBirthdy between", value1, value2, "managerbirthdy");
             return (Criteria) this;
         }
 
-        public Criteria andManagerbirthdateNotBetween(Date value1, Date value2) {
-            addCriterion("ManagerBirthdate not between", value1, value2, "managerbirthdate");
+        public Criteria andManagerbirthdyNotBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("ManagerBirthdy not between", value1, value2, "managerbirthdy");
             return (Criteria) this;
         }
 
-        public Criteria andManagerrightsIsNull() {
-            addCriterion("ManagerRights is null");
+        public Criteria andManagerpasswordIsNull() {
+            addCriterion("ManagerPassword is null");
             return (Criteria) this;
         }
 
-        public Criteria andManagerrightsIsNotNull() {
-            addCriterion("ManagerRights is not null");
+        public Criteria andManagerpasswordIsNotNull() {
+            addCriterion("ManagerPassword is not null");
             return (Criteria) this;
         }
 
-        public Criteria andManagerrightsEqualTo(Integer value) {
-            addCriterion("ManagerRights =", value, "managerrights");
+        public Criteria andManagerpasswordEqualTo(String value) {
+            addCriterion("ManagerPassword =", value, "managerpassword");
             return (Criteria) this;
         }
 
-        public Criteria andManagerrightsNotEqualTo(Integer value) {
-            addCriterion("ManagerRights <>", value, "managerrights");
+        public Criteria andManagerpasswordNotEqualTo(String value) {
+            addCriterion("ManagerPassword <>", value, "managerpassword");
             return (Criteria) this;
         }
 
-        public Criteria andManagerrightsGreaterThan(Integer value) {
-            addCriterion("ManagerRights >", value, "managerrights");
+        public Criteria andManagerpasswordGreaterThan(String value) {
+            addCriterion("ManagerPassword >", value, "managerpassword");
             return (Criteria) this;
         }
 
-        public Criteria andManagerrightsGreaterThanOrEqualTo(Integer value) {
-            addCriterion("ManagerRights >=", value, "managerrights");
+        public Criteria andManagerpasswordGreaterThanOrEqualTo(String value) {
+            addCriterion("ManagerPassword >=", value, "managerpassword");
             return (Criteria) this;
         }
 
-        public Criteria andManagerrightsLessThan(Integer value) {
-            addCriterion("ManagerRights <", value, "managerrights");
+        public Criteria andManagerpasswordLessThan(String value) {
+            addCriterion("ManagerPassword <", value, "managerpassword");
             return (Criteria) this;
         }
 
-        public Criteria andManagerrightsLessThanOrEqualTo(Integer value) {
-            addCriterion("ManagerRights <=", value, "managerrights");
+        public Criteria andManagerpasswordLessThanOrEqualTo(String value) {
+            addCriterion("ManagerPassword <=", value, "managerpassword");
             return (Criteria) this;
         }
 
-        public Criteria andManagerrightsIn(List<Integer> values) {
-            addCriterion("ManagerRights in", values, "managerrights");
+        public Criteria andManagerpasswordLike(String value) {
+            addCriterion("ManagerPassword like", value, "managerpassword");
             return (Criteria) this;
         }
 
-        public Criteria andManagerrightsNotIn(List<Integer> values) {
-            addCriterion("ManagerRights not in", values, "managerrights");
+        public Criteria andManagerpasswordNotLike(String value) {
+            addCriterion("ManagerPassword not like", value, "managerpassword");
             return (Criteria) this;
         }
 
-        public Criteria andManagerrightsBetween(Integer value1, Integer value2) {
-            addCriterion("ManagerRights between", value1, value2, "managerrights");
+        public Criteria andManagerpasswordIn(List<String> values) {
+            addCriterion("ManagerPassword in", values, "managerpassword");
             return (Criteria) this;
         }
 
-        public Criteria andManagerrightsNotBetween(Integer value1, Integer value2) {
-            addCriterion("ManagerRights not between", value1, value2, "managerrights");
+        public Criteria andManagerpasswordNotIn(List<String> values) {
+            addCriterion("ManagerPassword not in", values, "managerpassword");
+            return (Criteria) this;
+        }
+
+        public Criteria andManagerpasswordBetween(String value1, String value2) {
+            addCriterion("ManagerPassword between", value1, value2, "managerpassword");
+            return (Criteria) this;
+        }
+
+        public Criteria andManagerpasswordNotBetween(String value1, String value2) {
+            addCriterion("ManagerPassword not between", value1, value2, "managerpassword");
             return (Criteria) this;
         }
     }
 
     public static class Criteria extends GeneratedCriteria {
-        private TbManagerExample example;
+        private ManagerExample example;
 
         protected Criteria() {
             super();
         }
 
-        public TbManagerExample example() {
+        public ManagerExample example() {
             return this.example;
         }
     }

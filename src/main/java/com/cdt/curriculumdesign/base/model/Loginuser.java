@@ -3,37 +3,46 @@ package com.cdt.curriculumdesign.base.model;
 import java.io.Serializable;
 import javax.annotation.Generated;
 
-@Generated("user")
-public class User implements Serializable {
+@Generated("loginuser")
+public class Loginuser implements Serializable {
     private Integer id;
 
-    private String username;
+    private Long username;
 
     private String password;
 
-    private String realname;
+    private String usertype;
 
     private static final long serialVersionUID = 1L;
 
-    public User(String username, String password) {
+    public Loginuser() {
+    }
+
+    public Loginuser(Long username, String password) {
         this.username = username;
         this.password = password;
+    }
+
+    public Loginuser(Long username, String password, String usertype) {
+        this.username = username;
+        this.password = password;
+        this.usertype = usertype;
     }
 
     public Integer getId() {
         return id;
     }
 
-    public User setId(Integer id) {
+    public Loginuser setId(Integer id) {
         this.id = id;
         return this;
     }
 
-    public String getUsername() {
+    public Long getUsername() {
         return username;
     }
 
-    public User setUsername(String username) {
+    public Loginuser setUsername(Long username) {
         this.username = username;
         return this;
     }
@@ -42,17 +51,17 @@ public class User implements Serializable {
         return password;
     }
 
-    public User setPassword(String password) {
+    public Loginuser setPassword(String password) {
         this.password = password;
         return this;
     }
 
-    public String getRealname() {
-        return realname;
+    public String getUsertype() {
+        return usertype;
     }
 
-    public User setRealname(String realname) {
-        this.realname = realname;
+    public Loginuser setUsertype(String usertype) {
+        this.usertype = usertype;
         return this;
     }
 
@@ -65,7 +74,7 @@ public class User implements Serializable {
         sb.append(", id=").append(id);
         sb.append(", username=").append(username);
         sb.append(", password=").append(password);
-        sb.append(", realname=").append(realname);
+        sb.append(", usertype=").append(usertype);
         sb.append("]");
         return sb.toString();
     }

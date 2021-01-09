@@ -1,8 +1,10 @@
 package com.cdt.curriculumdesign.base.service;
 
 import com.cdt.curriculumdesign.base.common.DataResult;
+import com.cdt.curriculumdesign.base.common.DatatableInfo;
 import com.cdt.curriculumdesign.base.mapper.*;
 import com.cdt.curriculumdesign.base.model.*;
+import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,20 +19,72 @@ import java.util.List;
 @Service
 public class StudentService {
     @Autowired
-    private TbStudentMapper studentMapper;
+    private StudentMapper studentMapper;
     @Autowired
-    private TbTeacherMapper teacherMapper;
+    private TeacherMapper teacherMapper;
     @Autowired
-    private TbManagerMapper managerMapper;
+    private ManagerMapper managerMapper;
     @Autowired
-    private TbStucourseMapper stucourseMapper;
+    private StucourseMapper stucourseMapper;
 
+    @Autowired
+    private ClscourseMapper clscourseMapper;
 
-    public DataResult<List<TbStucourse>> getStuCourseById(String studentNum) {
-        TbStucourseExample example = new TbStucourseExample();
-        TbStucourseExample.Criteria criteria = example.createCriteria();
-        criteria.andStudentnumEqualTo(studentNum);
-        List<TbStucourse> tbStucourses = this.stucourseMapper.selectByExample(example);
-        return DataResult.success(tbStucourses,"success");
+    public DataResult<List<Stucourse>> getStuCourseById(Long studentId) {
+        StucourseExample example = new StucourseExample();
+        StucourseExample.Criteria criteria = example.createCriteria();
+        criteria.andStudentidEqualTo(studentId);
+        List<Stucourse> Stucourses = this.stucourseMapper.selectByExample(example);
+        return DataResult.success(Stucourses,"success");
+    }
+
+    public DatatableInfo<Stucourse> listStuCourseByStuId(DatatableInfo<Stucourse> datatableInfo, Long stuId) {
+        StucourseExample example = new StucourseExample();
+        StucourseExample.Criteria criteria = example.createCriteria();
+        if(stuId!=null){
+            criteria.andStudentidEqualTo(stuId);
+        }
+        example.setOffset(datatableInfo.getOffset());
+        example.setLimit(datatableInfo.getPageSize());
+        datatableInfo.setData(this.stucourseMapper.selectByExample(example));
+        datatableInfo.setRecordsTotal((int) this.stucourseMapper.countByExample(example));
+        return datatableInfo;
+    }
+
+    public DatatableInfo<Clscourse> listStuClassByStuId(DatatableInfo<Clscourse> datatableInfo, Long stuId) {
+        StudentExample studentExample = new StudentExample();
+        StudentExample.Criteria studentExampleCriteria = studentExample.createCriteria();
+        studentExampleCriteria.andStudentidEqualTo(stuId);
+        List<Student> Students = this.studentMapper.selectByExample(studentExample);
+        if(CollectionUtils.isNotEmpty(Students)){
+            Student tbStudent = Students.get(0);
+            Long classId = tbStudent.getClassid();
+            ClscourseExample clscourseExample = new ClscourseExample();
+            ClscourseExample.Criteria criteria = clscourseExample.createCriteria();
+            clscourseExample.setOffset(datatableInfo.getOffset());
+            clscourseExample.setLimit(datatableInfo.getPageSize());
+            criteria.andClassidEqualTo(classId);
+            List<Clscourse> clscourses = this.clscourseMapper.selectByExample(clscourseExample);
+
+            datatableInfo.setData(clscourses);
+            datatableInfo.setRecordsTotal((int) this.clscourseMapper.countByExample(clscourseExample));
+            return datatableInfo;
+        }
+        return null;
+    }
+
+    public DatatableInfo<Stucourse> listStuGradeByStuId(DatatableInfo<Stucourse> datatableInfo, Long stuId) {
+        StucourseExample example = new StucourseExample();
+        StucourseExample.Criteria criteria = example.createCriteria();
+        if(stuId!=null){
+            criteria.andStudentidEqualTo(stuId);
+        }
+        //已结课
+        criteria.andCoursestatusEqualTo("1");
+        example.setOffset(datatableInfo.getOffset());
+        example.setLimit(datatableInfo.getPageSize());
+        datatableInfo.setData(this.stucourseMapper.selectByExample(example));
+        datatableInfo.setRecordsTotal((int) this.stucourseMapper.countByExample(example));
+        return datatableInfo;
     }
 }

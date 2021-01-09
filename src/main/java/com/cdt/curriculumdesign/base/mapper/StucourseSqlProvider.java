@@ -1,75 +1,105 @@
 package com.cdt.curriculumdesign.base.mapper;
 
-import com.cdt.curriculumdesign.base.model.TbStucourse;
-import com.cdt.curriculumdesign.base.model.TbStucourseExample.Criteria;
-import com.cdt.curriculumdesign.base.model.TbStucourseExample.Criterion;
-import com.cdt.curriculumdesign.base.model.TbStucourseExample;
+import com.cdt.curriculumdesign.base.model.Stucourse;
+import com.cdt.curriculumdesign.base.model.StucourseExample.Criteria;
+import com.cdt.curriculumdesign.base.model.StucourseExample.Criterion;
+import com.cdt.curriculumdesign.base.model.StucourseExample;
 import java.util.List;
 import java.util.Map;
 import javax.annotation.Generated;
 import org.apache.ibatis.jdbc.SQL;
 
-@Generated("tb_stucourse")
-public class TbStucourseSqlProvider {
-    public String countByExample(TbStucourseExample example) {
+@Generated("stucourse")
+public class StucourseSqlProvider {
+    public String countByExample(StucourseExample example) {
         SQL sql = new SQL();
-        sql.SELECT("count(*)").FROM("tb_stucourse");
+        sql.SELECT("count(*)").FROM("stucourse");
         applyWhere(sql, example, false);
         return sql.toString();
     }
 
-    public String deleteByExample(TbStucourseExample example) {
+    public String deleteByExample(StucourseExample example) {
         SQL sql = new SQL();
-        sql.DELETE_FROM("tb_stucourse");
+        sql.DELETE_FROM("stucourse");
         applyWhere(sql, example, false);
         return sql.toString();
     }
 
-    public String insertSelective(TbStucourse record) {
+    public String insertSelective(Stucourse record) {
         SQL sql = new SQL();
-        sql.INSERT_INTO("tb_stucourse");
+        sql.INSERT_INTO("stucourse");
         
-        if (record.getId() != null) {
-            sql.VALUES("id", "#{id,jdbcType=INTEGER}");
+        if (record.getStudentid() != null) {
+            sql.VALUES("StudentId", "#{studentid,jdbcType=BIGINT}");
         }
         
-        if (record.getStudentnum() != null) {
-            sql.VALUES("StudentNum", "#{studentnum,jdbcType=VARCHAR}");
+        if (record.getCourseid() != null) {
+            sql.VALUES("CourseId", "#{courseid,jdbcType=BIGINT}");
         }
         
-        if (record.getTeachernum() != null) {
-            sql.VALUES("TeacherNum", "#{teachernum,jdbcType=VARCHAR}");
+        if (record.getTeacherid() != null) {
+            sql.VALUES("TeacherId", "#{teacherid,jdbcType=BIGINT}");
+        }
+        
+        if (record.getCoursename() != null) {
+            sql.VALUES("CourseName", "#{coursename,jdbcType=VARCHAR}");
         }
         
         if (record.getGrade() != null) {
-            sql.VALUES("Grade", "#{grade,jdbcType=SMALLINT}");
+            sql.VALUES("Grade", "#{grade,jdbcType=INTEGER}");
         }
         
         if (record.getGradepoint() != null) {
             sql.VALUES("GradePoint", "#{gradepoint,jdbcType=REAL}");
         }
         
+        if (record.getCoursestarttime() != null) {
+            sql.VALUES("CourseStartTime", "#{coursestarttime,jdbcType=DATE}");
+        }
+        
+        if (record.getCourseendtime() != null) {
+            sql.VALUES("CourseEndTime", "#{courseendtime,jdbcType=DATE}");
+        }
+        
+        if (record.getCoursestartweek() != null) {
+            sql.VALUES("CourseStartWeek", "#{coursestartweek,jdbcType=INTEGER}");
+        }
+        
+        if (record.getCourseendweek() != null) {
+            sql.VALUES("CourseEndWeek", "#{courseendweek,jdbcType=INTEGER}");
+        }
+        
         if (record.getCoursestatus() != null) {
-            sql.VALUES("CourseStatus", "#{coursestatus,jdbcType=INTEGER}");
+            sql.VALUES("CourseStatus", "#{coursestatus,jdbcType=CHAR}");
+        }
+        
+        if (record.getCoursetype() != null) {
+            sql.VALUES("CourseType", "#{coursetype,jdbcType=CHAR}");
         }
         
         return sql.toString();
     }
 
-    public String selectByExample(TbStucourseExample example) {
+    public String selectByExample(StucourseExample example) {
         SQL sql = new SQL();
         if (example != null && example.isDistinct()) {
-            sql.SELECT_DISTINCT("id");
+            sql.SELECT_DISTINCT("stucourseId");
         } else {
-            sql.SELECT("id");
+            sql.SELECT("stucourseId");
         }
-        sql.SELECT("StudentNum");
-        sql.SELECT("CourseNum");
-        sql.SELECT("TeacherNum");
+        sql.SELECT("StudentId");
+        sql.SELECT("CourseId");
+        sql.SELECT("TeacherId");
+        sql.SELECT("CourseName");
         sql.SELECT("Grade");
         sql.SELECT("GradePoint");
+        sql.SELECT("CourseStartTime");
+        sql.SELECT("CourseEndTime");
+        sql.SELECT("CourseStartWeek");
+        sql.SELECT("CourseEndWeek");
         sql.SELECT("CourseStatus");
-        sql.FROM("tb_stucourse");
+        sql.SELECT("CourseType");
+        sql.FROM("stucourse");
         applyWhere(sql, example, false);
         
         if (example != null && example.getOrderByClause() != null) {
@@ -90,38 +120,62 @@ public class TbStucourseSqlProvider {
     }
 
     public String updateByExampleSelective(Map<String, Object> parameter) {
-        TbStucourse record = (TbStucourse) parameter.get("record");
-        TbStucourseExample example = (TbStucourseExample) parameter.get("example");
+        Stucourse record = (Stucourse) parameter.get("record");
+        StucourseExample example = (StucourseExample) parameter.get("example");
         
         SQL sql = new SQL();
-        sql.UPDATE("tb_stucourse");
+        sql.UPDATE("stucourse");
         
-        if (record.getId() != null) {
-            sql.SET("id = #{record.id,jdbcType=INTEGER}");
+        if (record.getStucourseid() != null) {
+            sql.SET("stucourseId = #{record.stucourseid,jdbcType=BIGINT}");
         }
         
-        if (record.getStudentnum() != null) {
-            sql.SET("StudentNum = #{record.studentnum,jdbcType=VARCHAR}");
+        if (record.getStudentid() != null) {
+            sql.SET("StudentId = #{record.studentid,jdbcType=BIGINT}");
         }
         
-        if (record.getCoursenum() != null) {
-            sql.SET("CourseNum = #{record.coursenum,jdbcType=VARCHAR}");
+        if (record.getCourseid() != null) {
+            sql.SET("CourseId = #{record.courseid,jdbcType=BIGINT}");
         }
         
-        if (record.getTeachernum() != null) {
-            sql.SET("TeacherNum = #{record.teachernum,jdbcType=VARCHAR}");
+        if (record.getTeacherid() != null) {
+            sql.SET("TeacherId = #{record.teacherid,jdbcType=BIGINT}");
+        }
+        
+        if (record.getCoursename() != null) {
+            sql.SET("CourseName = #{record.coursename,jdbcType=VARCHAR}");
         }
         
         if (record.getGrade() != null) {
-            sql.SET("Grade = #{record.grade,jdbcType=SMALLINT}");
+            sql.SET("Grade = #{record.grade,jdbcType=INTEGER}");
         }
         
         if (record.getGradepoint() != null) {
             sql.SET("GradePoint = #{record.gradepoint,jdbcType=REAL}");
         }
         
+        if (record.getCoursestarttime() != null) {
+            sql.SET("CourseStartTime = #{record.coursestarttime,jdbcType=DATE}");
+        }
+        
+        if (record.getCourseendtime() != null) {
+            sql.SET("CourseEndTime = #{record.courseendtime,jdbcType=DATE}");
+        }
+        
+        if (record.getCoursestartweek() != null) {
+            sql.SET("CourseStartWeek = #{record.coursestartweek,jdbcType=INTEGER}");
+        }
+        
+        if (record.getCourseendweek() != null) {
+            sql.SET("CourseEndWeek = #{record.courseendweek,jdbcType=INTEGER}");
+        }
+        
         if (record.getCoursestatus() != null) {
-            sql.SET("CourseStatus = #{record.coursestatus,jdbcType=INTEGER}");
+            sql.SET("CourseStatus = #{record.coursestatus,jdbcType=CHAR}");
+        }
+        
+        if (record.getCoursetype() != null) {
+            sql.SET("CourseType = #{record.coursetype,jdbcType=CHAR}");
         }
         
         applyWhere(sql, example, true);
@@ -130,55 +184,85 @@ public class TbStucourseSqlProvider {
 
     public String updateByExample(Map<String, Object> parameter) {
         SQL sql = new SQL();
-        sql.UPDATE("tb_stucourse");
+        sql.UPDATE("stucourse");
         
-        sql.SET("id = #{record.id,jdbcType=INTEGER}");
-        sql.SET("StudentNum = #{record.studentnum,jdbcType=VARCHAR}");
-        sql.SET("CourseNum = #{record.coursenum,jdbcType=VARCHAR}");
-        sql.SET("TeacherNum = #{record.teachernum,jdbcType=VARCHAR}");
-        sql.SET("Grade = #{record.grade,jdbcType=SMALLINT}");
+        sql.SET("stucourseId = #{record.stucourseid,jdbcType=BIGINT}");
+        sql.SET("StudentId = #{record.studentid,jdbcType=BIGINT}");
+        sql.SET("CourseId = #{record.courseid,jdbcType=BIGINT}");
+        sql.SET("TeacherId = #{record.teacherid,jdbcType=BIGINT}");
+        sql.SET("CourseName = #{record.coursename,jdbcType=VARCHAR}");
+        sql.SET("Grade = #{record.grade,jdbcType=INTEGER}");
         sql.SET("GradePoint = #{record.gradepoint,jdbcType=REAL}");
-        sql.SET("CourseStatus = #{record.coursestatus,jdbcType=INTEGER}");
+        sql.SET("CourseStartTime = #{record.coursestarttime,jdbcType=DATE}");
+        sql.SET("CourseEndTime = #{record.courseendtime,jdbcType=DATE}");
+        sql.SET("CourseStartWeek = #{record.coursestartweek,jdbcType=INTEGER}");
+        sql.SET("CourseEndWeek = #{record.courseendweek,jdbcType=INTEGER}");
+        sql.SET("CourseStatus = #{record.coursestatus,jdbcType=CHAR}");
+        sql.SET("CourseType = #{record.coursetype,jdbcType=CHAR}");
         
-        TbStucourseExample example = (TbStucourseExample) parameter.get("example");
+        StucourseExample example = (StucourseExample) parameter.get("example");
         applyWhere(sql, example, true);
         return sql.toString();
     }
 
-    public String updateByPrimaryKeySelective(TbStucourse record) {
+    public String updateByPrimaryKeySelective(Stucourse record) {
         SQL sql = new SQL();
-        sql.UPDATE("tb_stucourse");
+        sql.UPDATE("stucourse");
         
-        if (record.getStudentnum() != null) {
-            sql.SET("StudentNum = #{studentnum,jdbcType=VARCHAR}");
+        if (record.getStudentid() != null) {
+            sql.SET("StudentId = #{studentid,jdbcType=BIGINT}");
         }
         
-        if (record.getCoursenum() != null) {
-            sql.SET("CourseNum = #{coursenum,jdbcType=VARCHAR}");
+        if (record.getCourseid() != null) {
+            sql.SET("CourseId = #{courseid,jdbcType=BIGINT}");
         }
         
-        if (record.getTeachernum() != null) {
-            sql.SET("TeacherNum = #{teachernum,jdbcType=VARCHAR}");
+        if (record.getTeacherid() != null) {
+            sql.SET("TeacherId = #{teacherid,jdbcType=BIGINT}");
+        }
+        
+        if (record.getCoursename() != null) {
+            sql.SET("CourseName = #{coursename,jdbcType=VARCHAR}");
         }
         
         if (record.getGrade() != null) {
-            sql.SET("Grade = #{grade,jdbcType=SMALLINT}");
+            sql.SET("Grade = #{grade,jdbcType=INTEGER}");
         }
         
         if (record.getGradepoint() != null) {
             sql.SET("GradePoint = #{gradepoint,jdbcType=REAL}");
         }
         
-        if (record.getCoursestatus() != null) {
-            sql.SET("CourseStatus = #{coursestatus,jdbcType=INTEGER}");
+        if (record.getCoursestarttime() != null) {
+            sql.SET("CourseStartTime = #{coursestarttime,jdbcType=DATE}");
         }
         
-        sql.WHERE("id = #{id,jdbcType=INTEGER}");
+        if (record.getCourseendtime() != null) {
+            sql.SET("CourseEndTime = #{courseendtime,jdbcType=DATE}");
+        }
+        
+        if (record.getCoursestartweek() != null) {
+            sql.SET("CourseStartWeek = #{coursestartweek,jdbcType=INTEGER}");
+        }
+        
+        if (record.getCourseendweek() != null) {
+            sql.SET("CourseEndWeek = #{courseendweek,jdbcType=INTEGER}");
+        }
+        
+        if (record.getCoursestatus() != null) {
+            sql.SET("CourseStatus = #{coursestatus,jdbcType=CHAR}");
+        }
+        
+        if (record.getCoursetype() != null) {
+            sql.SET("CourseType = #{coursetype,jdbcType=CHAR}");
+        }
+        
+        sql.WHERE("stucourseId = #{stucourseid,jdbcType=BIGINT}");
         
         return sql.toString();
     }
 
-    protected void applyWhere(SQL sql, TbStucourseExample example, boolean includeExamplePhrase) {
+    protected void applyWhere(SQL sql, StucourseExample example, boolean includeExamplePhrase) {
         if (example == null) {
             return;
         }

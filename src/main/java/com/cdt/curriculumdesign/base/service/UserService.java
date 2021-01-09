@@ -1,10 +1,7 @@
 package com.cdt.curriculumdesign.base.service;
 
 import com.cdt.curriculumdesign.base.common.DataResult;
-import com.cdt.curriculumdesign.base.mapper.LoginuserMapper;
-import com.cdt.curriculumdesign.base.mapper.TbManagerMapper;
-import com.cdt.curriculumdesign.base.mapper.TbStudentMapper;
-import com.cdt.curriculumdesign.base.mapper.TbTeacherMapper;
+import com.cdt.curriculumdesign.base.mapper.*;
 import com.cdt.curriculumdesign.base.model.*;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +19,11 @@ public class UserService {
     @Autowired
     private LoginuserMapper userMapper;
     @Autowired
-    private TbStudentMapper studentMapper;
+    private StudentMapper studentMapper;
     @Autowired
-    private TbTeacherMapper teacherMapper;
+    private TeacherMapper teacherMapper;
     @Autowired
-    private TbManagerMapper managerMapper;
+    private ManagerMapper managerMapper;
 
     public Loginuser getUserById(int id) {
         return userMapper.selectByPrimaryKey(id);
@@ -44,59 +41,60 @@ public class UserService {
     }
 
 
-    public TbStudent checkStuLogin(TbStudent student) {
-        if(student!=null){
-            if(StringUtils.isNotEmpty(student.getStudentnum())){
-                TbStudent tbStudent = this.studentMapper.selectByPrimaryKey(student.getStudentnum());
-                if(tbStudent!=null){
-                    if(tbStudent.getStudentpassword().equals(student.getStudentpassword())){
-                        return tbStudent;
-                    }else {
+    public Student checkStuLogin(Student student) {
+        if (student != null) {
+            if (student.getStudentid() != null) {
+                Student student1 = this.studentMapper.selectByPrimaryKey(student.getStudentid());
+                if (student1 != null) {
+                    if (student1.getStudentpassword().equals(student.getStudentpassword())) {
+                        return student1;
+                    } else {
                         return null;
                     }
-                }else {
+                } else {
                     return null;
                 }
-            }else {
+            } else {
                 return null;
             }
         }
         return null;
     }
 
-    public TbTeacher checkTeaLogin(TbTeacher teacher) {
-        if(teacher!=null){
-            if(StringUtils.isNotEmpty(teacher.getDeptnum())){
-                TbTeacher tbTeacher = this.teacherMapper.selectByPrimaryKey(teacher.getTeachernum());
-                if(tbTeacher!=null){
-                    if(tbTeacher.getTeacherpassword().equals(teacher.getTeacherpassword())){
-                        return tbTeacher;
-                    }else {
+    public Teacher checkTeaLogin(Teacher teacher) {
+        if (teacher != null) {
+            if (teacher.getTeacherid() != null) {
+                Teacher teacher1 = this.teacherMapper.selectByPrimaryKey(teacher.getTeacherid());
+                if (teacher1 != null) {
+                    if (teacher1.getTeacherpassword().equals(teacher.getTeacherpassword())) {
+                        return teacher1;
+                    } else {
                         return null;
                     }
-                }else {
+                } else {
                     return null;
                 }
-            }else {
+            } else {
                 return null;
             }
         }
         return null;
     }
-    public TbManager checkManLogin(TbManager manager) {
-        if(manager!=null){
-            if(StringUtils.isNotEmpty(manager.getManagernum())){
-                TbManager tbManager = this.managerMapper.selectByPrimaryKey(manager.getManagernum());
-                if(tbManager!=null){
-                    if(tbManager.getManagerpassword().equals(manager.getManagerpassword())){
-                        return tbManager;
-                    }else {
+
+    public Manager checkManLogin(Manager manager) {
+        if (manager != null) {
+            if (manager.getManagerid() != null) {
+                Manager manager1 = this.managerMapper.selectByPrimaryKey(manager.getManagerid());
+                if (manager1 != null) {
+                    if (manager1.getManagerpassword().equals(manager.getManagerpassword())) {
+                        return manager1;
+                    } else {
                         return null;
                     }
-                }else {
+                } else {
                     return null;
                 }
-            }else {
+            } else {
                 return null;
             }
         }

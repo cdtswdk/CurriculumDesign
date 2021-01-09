@@ -41,30 +41,30 @@ public class UserController {
             if (login.getUserType() != null) {
                 Integer userType = login.getUserType();
                 if (userType == 1) {
-                    TbStudent tbStudent = new TbStudent();
-                    tbStudent.setStudentnum(login.getUsername());
-                    tbStudent.setStudentpassword(login.getPassword());
-                    TbStudent tbStudent1 = this.userService.checkStuLogin(tbStudent);
-                    Loginuser user = new Loginuser(tbStudent1.getStudentnum(), tbStudent1.getStudentpassword(),userType);
-                    return DataResult.success(user,"success");
+                    Student student = new Student();
+                    student.setStudentid(login.getUsername());
+                    student.setStudentpassword(login.getPassword());
+                    Student student1 = this.userService.checkStuLogin(student);
+                    Loginuser user = new Loginuser(student1.getStudentid(), student1.getStudentpassword(), userType.toString());
+                    return DataResult.success(user, "success");
                 } else if (userType == 2) {
-                    TbTeacher tbTeacher = new TbTeacher();
-                    tbTeacher.setTeachernum(login.getUsername());
-                    tbTeacher.setTeacherpassword(login.getPassword());
-                    TbTeacher tbTeacher1 = this.userService.checkTeaLogin(tbTeacher);
-                    Loginuser user = new Loginuser(tbTeacher1.getTeachernum(), tbTeacher1.getTeacherpassword(),userType);
-                    return DataResult.success(user,"success");
+                    Teacher teacher = new Teacher();
+                    teacher.setTeacherid(login.getUsername());
+                    teacher.setTeacherpassword(login.getPassword());
+                    Teacher teacher1 = this.userService.checkTeaLogin(teacher);
+                    Loginuser user = new Loginuser(teacher1.getTeacherid(), teacher1.getTeacherpassword(), userType.toString());
+                    return DataResult.success(user, "success");
                 } else if (userType == 3) {
-                    TbManager tbManager = new TbManager();
-                    tbManager.setManagernum(login.getUsername());
-                    tbManager.setManagerpassword(login.getPassword());
-                    TbManager tbManager1 = this.userService.checkManLogin(tbManager);
-                    Loginuser user = new Loginuser(tbManager1.getManagernum(), tbManager1.getManagerpassword(),userType);
-                    return DataResult.success(user,"success");
+                    Manager manager = new Manager();
+                    manager.setManagerid(login.getUsername());
+                    manager.setManagerpassword(login.getPassword());
+                    Manager manager1 = this.userService.checkManLogin(manager);
+                    Loginuser user = new Loginuser(manager1.getManagerid(), manager1.getManagerpassword(), userType.toString());
+                    return DataResult.success(user, "success");
                 } else {
                     return DataResult.notfound("fail:userType无法匹配");
                 }
-            }else {
+            } else {
                 return DataResult.notfound("fail:userType为空");
             }
         }

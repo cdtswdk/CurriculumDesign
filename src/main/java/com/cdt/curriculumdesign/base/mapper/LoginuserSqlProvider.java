@@ -30,7 +30,7 @@ public class LoginuserSqlProvider {
         sql.INSERT_INTO("loginuser");
         
         if (record.getUsername() != null) {
-            sql.VALUES("username", "#{username,jdbcType=VARCHAR}");
+            sql.VALUES("username", "#{username,jdbcType=BIGINT}");
         }
         
         if (record.getPassword() != null) {
@@ -38,7 +38,7 @@ public class LoginuserSqlProvider {
         }
         
         if (record.getUsertype() != null) {
-            sql.VALUES("userType", "#{usertype,jdbcType=INTEGER}");
+            sql.VALUES("userType", "#{usertype,jdbcType=CHAR}");
         }
         
         return sql.toString();
@@ -86,7 +86,7 @@ public class LoginuserSqlProvider {
         }
         
         if (record.getUsername() != null) {
-            sql.SET("username = #{record.username,jdbcType=VARCHAR}");
+            sql.SET("username = #{record.username,jdbcType=BIGINT}");
         }
         
         if (record.getPassword() != null) {
@@ -94,7 +94,7 @@ public class LoginuserSqlProvider {
         }
         
         if (record.getUsertype() != null) {
-            sql.SET("userType = #{record.usertype,jdbcType=INTEGER}");
+            sql.SET("userType = #{record.usertype,jdbcType=CHAR}");
         }
         
         applyWhere(sql, example, true);
@@ -106,9 +106,9 @@ public class LoginuserSqlProvider {
         sql.UPDATE("loginuser");
         
         sql.SET("id = #{record.id,jdbcType=INTEGER}");
-        sql.SET("username = #{record.username,jdbcType=VARCHAR}");
+        sql.SET("username = #{record.username,jdbcType=BIGINT}");
         sql.SET("password = #{record.password,jdbcType=VARCHAR}");
-        sql.SET("userType = #{record.usertype,jdbcType=INTEGER}");
+        sql.SET("userType = #{record.usertype,jdbcType=CHAR}");
         
         LoginuserExample example = (LoginuserExample) parameter.get("example");
         applyWhere(sql, example, true);
@@ -120,7 +120,7 @@ public class LoginuserSqlProvider {
         sql.UPDATE("loginuser");
         
         if (record.getUsername() != null) {
-            sql.SET("username = #{username,jdbcType=VARCHAR}");
+            sql.SET("username = #{username,jdbcType=BIGINT}");
         }
         
         if (record.getPassword() != null) {
@@ -128,7 +128,7 @@ public class LoginuserSqlProvider {
         }
         
         if (record.getUsertype() != null) {
-            sql.SET("userType = #{usertype,jdbcType=INTEGER}");
+            sql.SET("userType = #{usertype,jdbcType=CHAR}");
         }
         
         sql.WHERE("id = #{id,jdbcType=INTEGER}");

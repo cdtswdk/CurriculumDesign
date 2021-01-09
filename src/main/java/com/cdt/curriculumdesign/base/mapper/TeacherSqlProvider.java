@@ -1,44 +1,40 @@
 package com.cdt.curriculumdesign.base.mapper;
 
-import com.cdt.curriculumdesign.base.model.TbTeacher;
-import com.cdt.curriculumdesign.base.model.TbTeacherExample.Criteria;
-import com.cdt.curriculumdesign.base.model.TbTeacherExample.Criterion;
-import com.cdt.curriculumdesign.base.model.TbTeacherExample;
+import com.cdt.curriculumdesign.base.model.Teacher;
+import com.cdt.curriculumdesign.base.model.TeacherExample.Criteria;
+import com.cdt.curriculumdesign.base.model.TeacherExample.Criterion;
+import com.cdt.curriculumdesign.base.model.TeacherExample;
 import java.util.List;
 import java.util.Map;
 import javax.annotation.Generated;
 import org.apache.ibatis.jdbc.SQL;
 
-@Generated("tb_teacher")
-public class TbTeacherSqlProvider {
-    public String countByExample(TbTeacherExample example) {
+@Generated("teacher")
+public class TeacherSqlProvider {
+    public String countByExample(TeacherExample example) {
         SQL sql = new SQL();
-        sql.SELECT("count(*)").FROM("tb_teacher");
+        sql.SELECT("count(*)").FROM("teacher");
         applyWhere(sql, example, false);
         return sql.toString();
     }
 
-    public String deleteByExample(TbTeacherExample example) {
+    public String deleteByExample(TeacherExample example) {
         SQL sql = new SQL();
-        sql.DELETE_FROM("tb_teacher");
+        sql.DELETE_FROM("teacher");
         applyWhere(sql, example, false);
         return sql.toString();
     }
 
-    public String insertSelective(TbTeacher record) {
+    public String insertSelective(Teacher record) {
         SQL sql = new SQL();
-        sql.INSERT_INTO("tb_teacher");
+        sql.INSERT_INTO("teacher");
         
-        if (record.getTeachernum() != null) {
-            sql.VALUES("TeacherNum", "#{teachernum,jdbcType=VARCHAR}");
+        if (record.getDeptid() != null) {
+            sql.VALUES("DeptId", "#{deptid,jdbcType=BIGINT}");
         }
         
-        if (record.getDeptnum() != null) {
-            sql.VALUES("DeptNum", "#{deptnum,jdbcType=VARCHAR}");
-        }
-        
-        if (record.getMajornum() != null) {
-            sql.VALUES("MajorNum", "#{majornum,jdbcType=VARCHAR}");
+        if (record.getMajorid() != null) {
+            sql.VALUES("MajorId", "#{majorid,jdbcType=BIGINT}");
         }
         
         if (record.getTeachername() != null) {
@@ -46,34 +42,39 @@ public class TbTeacherSqlProvider {
         }
         
         if (record.getTeachersex() != null) {
-            sql.VALUES("TeacherSex", "#{teachersex,jdbcType=VARCHAR}");
+            sql.VALUES("TeacherSex", "#{teachersex,jdbcType=CHAR}");
         }
         
         if (record.getTeacherbirthday() != null) {
-            sql.VALUES("TeacherBirthday", "#{teacherbirthday,jdbcType=TIMESTAMP}");
+            sql.VALUES("TeacherBirthday", "#{teacherbirthday,jdbcType=DATE}");
         }
         
-        if (record.getTeachertitle() != null) {
-            sql.VALUES("TeacherTitle", "#{teachertitle,jdbcType=VARCHAR}");
+        if (record.getTeacherpassword() != null) {
+            sql.VALUES("TeacherPassword", "#{teacherpassword,jdbcType=VARCHAR}");
+        }
+        
+        if (record.getTeacherdesc() != null) {
+            sql.VALUES("TeacherDesc", "#{teacherdesc,jdbcType=VARCHAR}");
         }
         
         return sql.toString();
     }
 
-    public String selectByExample(TbTeacherExample example) {
+    public String selectByExample(TeacherExample example) {
         SQL sql = new SQL();
         if (example != null && example.isDistinct()) {
-            sql.SELECT_DISTINCT("TeacherNum");
+            sql.SELECT_DISTINCT("TeacherId");
         } else {
-            sql.SELECT("TeacherNum");
+            sql.SELECT("TeacherId");
         }
-        sql.SELECT("DeptNum");
-        sql.SELECT("MajorNum");
+        sql.SELECT("DeptId");
+        sql.SELECT("MajorId");
         sql.SELECT("TeacherName");
         sql.SELECT("TeacherSex");
         sql.SELECT("TeacherBirthday");
-        sql.SELECT("TeacherTitle");
-        sql.FROM("tb_teacher");
+        sql.SELECT("TeacherPassword");
+        sql.SELECT("TeacherDesc");
+        sql.FROM("teacher");
         applyWhere(sql, example, false);
         
         if (example != null && example.getOrderByClause() != null) {
@@ -94,22 +95,22 @@ public class TbTeacherSqlProvider {
     }
 
     public String updateByExampleSelective(Map<String, Object> parameter) {
-        TbTeacher record = (TbTeacher) parameter.get("record");
-        TbTeacherExample example = (TbTeacherExample) parameter.get("example");
+        Teacher record = (Teacher) parameter.get("record");
+        TeacherExample example = (TeacherExample) parameter.get("example");
         
         SQL sql = new SQL();
-        sql.UPDATE("tb_teacher");
+        sql.UPDATE("teacher");
         
-        if (record.getTeachernum() != null) {
-            sql.SET("TeacherNum = #{record.teachernum,jdbcType=VARCHAR}");
+        if (record.getTeacherid() != null) {
+            sql.SET("TeacherId = #{record.teacherid,jdbcType=BIGINT}");
         }
         
-        if (record.getDeptnum() != null) {
-            sql.SET("DeptNum = #{record.deptnum,jdbcType=VARCHAR}");
+        if (record.getDeptid() != null) {
+            sql.SET("DeptId = #{record.deptid,jdbcType=BIGINT}");
         }
         
-        if (record.getMajornum() != null) {
-            sql.SET("MajorNum = #{record.majornum,jdbcType=VARCHAR}");
+        if (record.getMajorid() != null) {
+            sql.SET("MajorId = #{record.majorid,jdbcType=BIGINT}");
         }
         
         if (record.getTeachername() != null) {
@@ -117,15 +118,19 @@ public class TbTeacherSqlProvider {
         }
         
         if (record.getTeachersex() != null) {
-            sql.SET("TeacherSex = #{record.teachersex,jdbcType=VARCHAR}");
+            sql.SET("TeacherSex = #{record.teachersex,jdbcType=CHAR}");
         }
         
         if (record.getTeacherbirthday() != null) {
-            sql.SET("TeacherBirthday = #{record.teacherbirthday,jdbcType=TIMESTAMP}");
+            sql.SET("TeacherBirthday = #{record.teacherbirthday,jdbcType=DATE}");
         }
         
-        if (record.getTeachertitle() != null) {
-            sql.SET("TeacherTitle = #{record.teachertitle,jdbcType=VARCHAR}");
+        if (record.getTeacherpassword() != null) {
+            sql.SET("TeacherPassword = #{record.teacherpassword,jdbcType=VARCHAR}");
+        }
+        
+        if (record.getTeacherdesc() != null) {
+            sql.SET("TeacherDesc = #{record.teacherdesc,jdbcType=VARCHAR}");
         }
         
         applyWhere(sql, example, true);
@@ -134,31 +139,32 @@ public class TbTeacherSqlProvider {
 
     public String updateByExample(Map<String, Object> parameter) {
         SQL sql = new SQL();
-        sql.UPDATE("tb_teacher");
+        sql.UPDATE("teacher");
         
-        sql.SET("TeacherNum = #{record.teachernum,jdbcType=VARCHAR}");
-        sql.SET("DeptNum = #{record.deptnum,jdbcType=VARCHAR}");
-        sql.SET("MajorNum = #{record.majornum,jdbcType=VARCHAR}");
+        sql.SET("TeacherId = #{record.teacherid,jdbcType=BIGINT}");
+        sql.SET("DeptId = #{record.deptid,jdbcType=BIGINT}");
+        sql.SET("MajorId = #{record.majorid,jdbcType=BIGINT}");
         sql.SET("TeacherName = #{record.teachername,jdbcType=VARCHAR}");
-        sql.SET("TeacherSex = #{record.teachersex,jdbcType=VARCHAR}");
-        sql.SET("TeacherBirthday = #{record.teacherbirthday,jdbcType=TIMESTAMP}");
-        sql.SET("TeacherTitle = #{record.teachertitle,jdbcType=VARCHAR}");
+        sql.SET("TeacherSex = #{record.teachersex,jdbcType=CHAR}");
+        sql.SET("TeacherBirthday = #{record.teacherbirthday,jdbcType=DATE}");
+        sql.SET("TeacherPassword = #{record.teacherpassword,jdbcType=VARCHAR}");
+        sql.SET("TeacherDesc = #{record.teacherdesc,jdbcType=VARCHAR}");
         
-        TbTeacherExample example = (TbTeacherExample) parameter.get("example");
+        TeacherExample example = (TeacherExample) parameter.get("example");
         applyWhere(sql, example, true);
         return sql.toString();
     }
 
-    public String updateByPrimaryKeySelective(TbTeacher record) {
+    public String updateByPrimaryKeySelective(Teacher record) {
         SQL sql = new SQL();
-        sql.UPDATE("tb_teacher");
+        sql.UPDATE("teacher");
         
-        if (record.getDeptnum() != null) {
-            sql.SET("DeptNum = #{deptnum,jdbcType=VARCHAR}");
+        if (record.getDeptid() != null) {
+            sql.SET("DeptId = #{deptid,jdbcType=BIGINT}");
         }
         
-        if (record.getMajornum() != null) {
-            sql.SET("MajorNum = #{majornum,jdbcType=VARCHAR}");
+        if (record.getMajorid() != null) {
+            sql.SET("MajorId = #{majorid,jdbcType=BIGINT}");
         }
         
         if (record.getTeachername() != null) {
@@ -166,23 +172,27 @@ public class TbTeacherSqlProvider {
         }
         
         if (record.getTeachersex() != null) {
-            sql.SET("TeacherSex = #{teachersex,jdbcType=VARCHAR}");
+            sql.SET("TeacherSex = #{teachersex,jdbcType=CHAR}");
         }
         
         if (record.getTeacherbirthday() != null) {
-            sql.SET("TeacherBirthday = #{teacherbirthday,jdbcType=TIMESTAMP}");
+            sql.SET("TeacherBirthday = #{teacherbirthday,jdbcType=DATE}");
         }
         
-        if (record.getTeachertitle() != null) {
-            sql.SET("TeacherTitle = #{teachertitle,jdbcType=VARCHAR}");
+        if (record.getTeacherpassword() != null) {
+            sql.SET("TeacherPassword = #{teacherpassword,jdbcType=VARCHAR}");
         }
         
-        sql.WHERE("TeacherNum = #{teachernum,jdbcType=VARCHAR}");
+        if (record.getTeacherdesc() != null) {
+            sql.SET("TeacherDesc = #{teacherdesc,jdbcType=VARCHAR}");
+        }
+        
+        sql.WHERE("TeacherId = #{teacherid,jdbcType=BIGINT}");
         
         return sql.toString();
     }
 
-    protected void applyWhere(SQL sql, TbTeacherExample example, boolean includeExamplePhrase) {
+    protected void applyWhere(SQL sql, TeacherExample example, boolean includeExamplePhrase) {
         if (example == null) {
             return;
         }

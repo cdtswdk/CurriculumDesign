@@ -4,15 +4,15 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.annotation.Generated;
 
-@Generated("tb_student")
-public class TbStudent implements Serializable {
-    private String studentnum;
+@Generated("student")
+public class Student implements Serializable {
+    private Long studentid;
 
-    private String deptnum;
+    private Long deptid;
 
-    private String majornum;
+    private Long majorid;
 
-    private String classnum;
+    private Long classid;
 
     private String studentname;
 
@@ -24,39 +24,39 @@ public class TbStudent implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public String getStudentnum() {
-        return studentnum;
+    public Long getStudentid() {
+        return studentid;
     }
 
-    public TbStudent setStudentnum(String studentnum) {
-        this.studentnum = studentnum;
+    public Student setStudentid(Long studentid) {
+        this.studentid = studentid;
         return this;
     }
 
-    public String getDeptnum() {
-        return deptnum;
+    public Long getDeptid() {
+        return deptid;
     }
 
-    public TbStudent setDeptnum(String deptnum) {
-        this.deptnum = deptnum;
+    public Student setDeptid(Long deptid) {
+        this.deptid = deptid;
         return this;
     }
 
-    public String getMajornum() {
-        return majornum;
+    public Long getMajorid() {
+        return majorid;
     }
 
-    public TbStudent setMajornum(String majornum) {
-        this.majornum = majornum;
+    public Student setMajorid(Long majorid) {
+        this.majorid = majorid;
         return this;
     }
 
-    public String getClassnum() {
-        return classnum;
+    public Long getClassid() {
+        return classid;
     }
 
-    public TbStudent setClassnum(String classnum) {
-        this.classnum = classnum;
+    public Student setClassid(Long classid) {
+        this.classid = classid;
         return this;
     }
 
@@ -64,7 +64,7 @@ public class TbStudent implements Serializable {
         return studentname;
     }
 
-    public TbStudent setStudentname(String studentname) {
+    public Student setStudentname(String studentname) {
         this.studentname = studentname;
         return this;
     }
@@ -73,7 +73,7 @@ public class TbStudent implements Serializable {
         return studentsex;
     }
 
-    public TbStudent setStudentsex(String studentsex) {
+    public Student setStudentsex(String studentsex) {
         this.studentsex = studentsex;
         return this;
     }
@@ -82,7 +82,7 @@ public class TbStudent implements Serializable {
         return studentbirthday;
     }
 
-    public TbStudent setStudentbirthday(Date studentbirthday) {
+    public Student setStudentbirthday(Date studentbirthday) {
         this.studentbirthday = studentbirthday;
         return this;
     }
@@ -91,7 +91,7 @@ public class TbStudent implements Serializable {
         return studentpassword;
     }
 
-    public TbStudent setStudentpassword(String studentpassword) {
+    public Student setStudentpassword(String studentpassword) {
         this.studentpassword = studentpassword;
         return this;
     }
@@ -102,10 +102,10 @@ public class TbStudent implements Serializable {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
-        sb.append(", studentnum=").append(studentnum);
-        sb.append(", deptnum=").append(deptnum);
-        sb.append(", majornum=").append(majornum);
-        sb.append(", classnum=").append(classnum);
+        sb.append(", studentid=").append(studentid);
+        sb.append(", deptid=").append(deptid);
+        sb.append(", majorid=").append(majorid);
+        sb.append(", classid=").append(classid);
         sb.append(", studentname=").append(studentname);
         sb.append(", studentsex=").append(studentsex);
         sb.append(", studentbirthday=").append(studentbirthday);

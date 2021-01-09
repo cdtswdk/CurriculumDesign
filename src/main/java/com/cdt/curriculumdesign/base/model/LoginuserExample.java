@@ -221,62 +221,52 @@ public class LoginuserExample {
             return (Criteria) this;
         }
 
-        public Criteria andUsernameEqualTo(String value) {
+        public Criteria andUsernameEqualTo(Long value) {
             addCriterion("username =", value, "username");
             return (Criteria) this;
         }
 
-        public Criteria andUsernameNotEqualTo(String value) {
+        public Criteria andUsernameNotEqualTo(Long value) {
             addCriterion("username <>", value, "username");
             return (Criteria) this;
         }
 
-        public Criteria andUsernameGreaterThan(String value) {
+        public Criteria andUsernameGreaterThan(Long value) {
             addCriterion("username >", value, "username");
             return (Criteria) this;
         }
 
-        public Criteria andUsernameGreaterThanOrEqualTo(String value) {
+        public Criteria andUsernameGreaterThanOrEqualTo(Long value) {
             addCriterion("username >=", value, "username");
             return (Criteria) this;
         }
 
-        public Criteria andUsernameLessThan(String value) {
+        public Criteria andUsernameLessThan(Long value) {
             addCriterion("username <", value, "username");
             return (Criteria) this;
         }
 
-        public Criteria andUsernameLessThanOrEqualTo(String value) {
+        public Criteria andUsernameLessThanOrEqualTo(Long value) {
             addCriterion("username <=", value, "username");
             return (Criteria) this;
         }
 
-        public Criteria andUsernameLike(String value) {
-            addCriterion("username like", value, "username");
-            return (Criteria) this;
-        }
-
-        public Criteria andUsernameNotLike(String value) {
-            addCriterion("username not like", value, "username");
-            return (Criteria) this;
-        }
-
-        public Criteria andUsernameIn(List<String> values) {
+        public Criteria andUsernameIn(List<Long> values) {
             addCriterion("username in", values, "username");
             return (Criteria) this;
         }
 
-        public Criteria andUsernameNotIn(List<String> values) {
+        public Criteria andUsernameNotIn(List<Long> values) {
             addCriterion("username not in", values, "username");
             return (Criteria) this;
         }
 
-        public Criteria andUsernameBetween(String value1, String value2) {
+        public Criteria andUsernameBetween(Long value1, Long value2) {
             addCriterion("username between", value1, value2, "username");
             return (Criteria) this;
         }
 
-        public Criteria andUsernameNotBetween(String value1, String value2) {
+        public Criteria andUsernameNotBetween(Long value1, Long value2) {
             addCriterion("username not between", value1, value2, "username");
             return (Criteria) this;
         }
@@ -361,52 +351,62 @@ public class LoginuserExample {
             return (Criteria) this;
         }
 
-        public Criteria andUsertypeEqualTo(Integer value) {
+        public Criteria andUsertypeEqualTo(String value) {
             addCriterion("userType =", value, "usertype");
             return (Criteria) this;
         }
 
-        public Criteria andUsertypeNotEqualTo(Integer value) {
+        public Criteria andUsertypeNotEqualTo(String value) {
             addCriterion("userType <>", value, "usertype");
             return (Criteria) this;
         }
 
-        public Criteria andUsertypeGreaterThan(Integer value) {
+        public Criteria andUsertypeGreaterThan(String value) {
             addCriterion("userType >", value, "usertype");
             return (Criteria) this;
         }
 
-        public Criteria andUsertypeGreaterThanOrEqualTo(Integer value) {
+        public Criteria andUsertypeGreaterThanOrEqualTo(String value) {
             addCriterion("userType >=", value, "usertype");
             return (Criteria) this;
         }
 
-        public Criteria andUsertypeLessThan(Integer value) {
+        public Criteria andUsertypeLessThan(String value) {
             addCriterion("userType <", value, "usertype");
             return (Criteria) this;
         }
 
-        public Criteria andUsertypeLessThanOrEqualTo(Integer value) {
+        public Criteria andUsertypeLessThanOrEqualTo(String value) {
             addCriterion("userType <=", value, "usertype");
             return (Criteria) this;
         }
 
-        public Criteria andUsertypeIn(List<Integer> values) {
+        public Criteria andUsertypeLike(String value) {
+            addCriterion("userType like", value, "usertype");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsertypeNotLike(String value) {
+            addCriterion("userType not like", value, "usertype");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsertypeIn(List<String> values) {
             addCriterion("userType in", values, "usertype");
             return (Criteria) this;
         }
 
-        public Criteria andUsertypeNotIn(List<Integer> values) {
+        public Criteria andUsertypeNotIn(List<String> values) {
             addCriterion("userType not in", values, "usertype");
             return (Criteria) this;
         }
 
-        public Criteria andUsertypeBetween(Integer value1, Integer value2) {
+        public Criteria andUsertypeBetween(String value1, String value2) {
             addCriterion("userType between", value1, value2, "usertype");
             return (Criteria) this;
         }
 
-        public Criteria andUsertypeNotBetween(Integer value1, Integer value2) {
+        public Criteria andUsertypeNotBetween(String value1, String value2) {
             addCriterion("userType not between", value1, value2, "usertype");
             return (Criteria) this;
         }

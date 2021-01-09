@@ -42,24 +42,26 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
-        <!--<table tableName="risk_project">
-            <generatedKey column="id" sqlStatement="JDBC"/>
-        </table>
-        <table tableName="risk_group_relation">
-            <generatedKey column="id" sqlStatement="JDBC"/>
-        </table>
-        <table tableName="risk_group">
-            <generatedKey column="id" sqlStatement="JDBC"/>
-        </table>-->
-
         <!--<table tableName="loginuser">
             <generatedKey column="id" sqlStatement="JDBC"/>
         </table>-->
-        <table tableName="tb_course">
-            <generatedKey column="CourseNum" sqlStatement="JDBC"/>
+        <!--<table tableName="student">
+            <generatedKey column="StudentId" sqlStatement="JDBC"/>
         </table>
-        <table tableName="tb_stucourse">
-            <generatedKey column="CourseNum" sqlStatement="JDBC"/>
+        <table tableName="teacher">
+            <generatedKey column="TeacherId" sqlStatement="JDBC"/>
+        </table>
+        <table tableName="manager">
+            <generatedKey column="ManagerId" sqlStatement="JDBC"/>
+        </table>-->
+        <table tableName="course">
+            <generatedKey column="CourseId" sqlStatement="JDBC"/>
+        </table>
+        <table tableName="stucourse">
+            <generatedKey column="stucourseId" sqlStatement="JDBC"/>
+        </table>
+        <table tableName="clscourse">
+            <generatedKey column="ClsCourseId" sqlStatement="JDBC"/>
         </table>
     </context>
 </generatorConfiguration>

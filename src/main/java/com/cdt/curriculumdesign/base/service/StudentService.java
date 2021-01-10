@@ -26,9 +26,11 @@ public class StudentService {
     private ManagerMapper managerMapper;
     @Autowired
     private StucourseMapper stucourseMapper;
-
     @Autowired
     private ClscourseMapper clscourseMapper;
+    @Autowired
+    private CourseMapper courseMapper;
+
 
     public DatatableInfo<Stucourse> listStuCourseByStuId(DatatableInfo<Stucourse> datatableInfo, Long stuId) {
         StucourseExample example = new StucourseExample();
@@ -78,5 +80,31 @@ public class StudentService {
         datatableInfo.setData(this.stucourseMapper.selectByExample(example));
         datatableInfo.setRecordsTotal((int) this.stucourseMapper.countByExample(example));
         return datatableInfo;
+    }
+
+    public DatatableInfo<Course> listAllCourseByStuId(DatatableInfo<Course> datatableInfo, Long stuId) {
+        CourseExample courseExample = new CourseExample();
+        CourseExample.Criteria criteria = courseExample.createCriteria();
+        courseExample.setOffset(datatableInfo.getOffset());
+        courseExample.setLimit(datatableInfo.getPageSize());
+
+        List<Course> courses = this.courseMapper.selectByExample(courseExample);
+        datatableInfo.setData(courses);
+        datatableInfo.setRecordsTotal((int) this.courseMapper.countByExample(courseExample));
+
+        return datatableInfo;
+    }
+
+
+    public DataResult<DatatableInfo<Course>> getCourseByCourseId(DatatableInfo<Course> datatableInfo, Long courseId) {
+
+        CourseExample courseExample = new CourseExample();
+        CourseExample.Criteria criteria = courseExample.createCriteria();
+        criteria.andCourseidEqualTo(courseId);
+
+        List<Course> courses = this.courseMapper.selectByExample(courseExample);
+
+        datatableInfo.setData(courses);
+        return DataResult.success(datatableInfo);
     }
 }

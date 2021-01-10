@@ -1,11 +1,9 @@
 package com.cdt.curriculumdesign.base.service;
 
-import com.cdt.curriculumdesign.base.common.DataResult;
 import com.cdt.curriculumdesign.base.common.DatatableInfo;
 import com.cdt.curriculumdesign.base.mapper.*;
 import com.cdt.curriculumdesign.base.model.*;
 import org.apache.commons.collections4.CollectionUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +15,7 @@ import java.util.List;
  * @Time: 15:23
  */
 @Service
-public class StudentService {
+public class TeacherService {
     @Autowired
     private StudentMapper studentMapper;
     @Autowired
@@ -26,20 +24,21 @@ public class StudentService {
     private ManagerMapper managerMapper;
     @Autowired
     private StucourseMapper stucourseMapper;
-
     @Autowired
     private ClscourseMapper clscourseMapper;
+    @Autowired
+    private CourseMapper courseMapper;
 
-    public DatatableInfo<Stucourse> listStuCourseByStuId(DatatableInfo<Stucourse> datatableInfo, Long stuId) {
-        StucourseExample example = new StucourseExample();
-        StucourseExample.Criteria criteria = example.createCriteria();
-        if(stuId!=null){
-            criteria.andStudentidEqualTo(stuId);
+    public DatatableInfo<Course> listTeaCourseByStuId(DatatableInfo<Course> datatableInfo, Long teaId) {
+        CourseExample example = new CourseExample();
+        CourseExample.Criteria criteria = example.createCriteria();
+        if(teaId!=null){
+            criteria.andTeacheridEqualTo(teaId);
         }
         example.setOffset(datatableInfo.getOffset());
         example.setLimit(datatableInfo.getPageSize());
-        datatableInfo.setData(this.stucourseMapper.selectByExample(example));
-        datatableInfo.setRecordsTotal((int) this.stucourseMapper.countByExample(example));
+        datatableInfo.setData(this.courseMapper.selectByExample(example));
+        datatableInfo.setRecordsTotal((int) this.courseMapper.countByExample(example));
         return datatableInfo;
     }
 

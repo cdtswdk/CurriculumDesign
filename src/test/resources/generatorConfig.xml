@@ -57,11 +57,11 @@
         <table tableName="course">
             <generatedKey column="CourseId" sqlStatement="JDBC"/>
         </table>
-        <table tableName="stucourse">
+        <!--<table tableName="stucourse">
             <generatedKey column="stucourseId" sqlStatement="JDBC"/>
         </table>
         <table tableName="clscourse">
             <generatedKey column="ClsCourseId" sqlStatement="JDBC"/>
-        </table>
+        </table>-->
     </context>
 </generatorConfiguration>

@@ -50,11 +50,11 @@ public class CourseSqlProvider {
         }
         
         if (record.getCoursestarttime() != null) {
-            sql.VALUES("CourseStartTime", "#{coursestarttime,jdbcType=DATE}");
+            sql.VALUES("CourseStartTime", "#{coursestarttime,jdbcType=VARCHAR}");
         }
         
         if (record.getCourseendtime() != null) {
-            sql.VALUES("CourseEndTime", "#{courseendtime,jdbcType=DATE}");
+            sql.VALUES("CourseEndTime", "#{courseendtime,jdbcType=VARCHAR}");
         }
         
         if (record.getCoursestartweek() != null) {
@@ -79,6 +79,10 @@ public class CourseSqlProvider {
         
         if (record.getCoursetype() != null) {
             sql.VALUES("CourseType", "#{coursetype,jdbcType=CHAR}");
+        }
+        
+        if (record.getAuditstatus() != null) {
+            sql.VALUES("AuditStatus", "#{auditstatus,jdbcType=CHAR}");
         }
         
         if (record.getCoursedesc() != null) {
@@ -108,6 +112,7 @@ public class CourseSqlProvider {
         sql.SELECT("CourseDayNum");
         sql.SELECT("CourseStatus");
         sql.SELECT("CourseType");
+        sql.SELECT("AuditStatus");
         sql.SELECT("CourseDesc");
         sql.FROM("course");
         applyWhere(sql, example, false);
@@ -149,6 +154,7 @@ public class CourseSqlProvider {
         sql.SELECT("CourseDayNum");
         sql.SELECT("CourseStatus");
         sql.SELECT("CourseType");
+        sql.SELECT("AuditStatus");
         sql.FROM("course");
         applyWhere(sql, example, false);
         
@@ -201,11 +207,11 @@ public class CourseSqlProvider {
         }
         
         if (record.getCoursestarttime() != null) {
-            sql.SET("CourseStartTime = #{record.coursestarttime,jdbcType=DATE}");
+            sql.SET("CourseStartTime = #{record.coursestarttime,jdbcType=VARCHAR}");
         }
         
         if (record.getCourseendtime() != null) {
-            sql.SET("CourseEndTime = #{record.courseendtime,jdbcType=DATE}");
+            sql.SET("CourseEndTime = #{record.courseendtime,jdbcType=VARCHAR}");
         }
         
         if (record.getCoursestartweek() != null) {
@@ -232,6 +238,10 @@ public class CourseSqlProvider {
             sql.SET("CourseType = #{record.coursetype,jdbcType=CHAR}");
         }
         
+        if (record.getAuditstatus() != null) {
+            sql.SET("AuditStatus = #{record.auditstatus,jdbcType=CHAR}");
+        }
+        
         if (record.getCoursedesc() != null) {
             sql.SET("CourseDesc = #{record.coursedesc,jdbcType=LONGVARCHAR}");
         }
@@ -250,14 +260,15 @@ public class CourseSqlProvider {
         sql.SET("CourseCredit = #{record.coursecredit,jdbcType=REAL}");
         sql.SET("CourseHours = #{record.coursehours,jdbcType=SMALLINT}");
         sql.SET("courseCreateTime = #{record.coursecreatetime,jdbcType=TIMESTAMP}");
-        sql.SET("CourseStartTime = #{record.coursestarttime,jdbcType=DATE}");
-        sql.SET("CourseEndTime = #{record.courseendtime,jdbcType=DATE}");
+        sql.SET("CourseStartTime = #{record.coursestarttime,jdbcType=VARCHAR}");
+        sql.SET("CourseEndTime = #{record.courseendtime,jdbcType=VARCHAR}");
         sql.SET("CourseStartWeek = #{record.coursestartweek,jdbcType=INTEGER}");
         sql.SET("CourseEndWeek = #{record.courseendweek,jdbcType=INTEGER}");
         sql.SET("CourseWeek = #{record.courseweek,jdbcType=CHAR}");
         sql.SET("CourseDayNum = #{record.coursedaynum,jdbcType=CHAR}");
         sql.SET("CourseStatus = #{record.coursestatus,jdbcType=CHAR}");
         sql.SET("CourseType = #{record.coursetype,jdbcType=CHAR}");
+        sql.SET("AuditStatus = #{record.auditstatus,jdbcType=CHAR}");
         sql.SET("CourseDesc = #{record.coursedesc,jdbcType=LONGVARCHAR}");
         
         CourseExample example = (CourseExample) parameter.get("example");
@@ -275,14 +286,15 @@ public class CourseSqlProvider {
         sql.SET("CourseCredit = #{record.coursecredit,jdbcType=REAL}");
         sql.SET("CourseHours = #{record.coursehours,jdbcType=SMALLINT}");
         sql.SET("courseCreateTime = #{record.coursecreatetime,jdbcType=TIMESTAMP}");
-        sql.SET("CourseStartTime = #{record.coursestarttime,jdbcType=DATE}");
-        sql.SET("CourseEndTime = #{record.courseendtime,jdbcType=DATE}");
+        sql.SET("CourseStartTime = #{record.coursestarttime,jdbcType=VARCHAR}");
+        sql.SET("CourseEndTime = #{record.courseendtime,jdbcType=VARCHAR}");
         sql.SET("CourseStartWeek = #{record.coursestartweek,jdbcType=INTEGER}");
         sql.SET("CourseEndWeek = #{record.courseendweek,jdbcType=INTEGER}");
         sql.SET("CourseWeek = #{record.courseweek,jdbcType=CHAR}");
         sql.SET("CourseDayNum = #{record.coursedaynum,jdbcType=CHAR}");
         sql.SET("CourseStatus = #{record.coursestatus,jdbcType=CHAR}");
         sql.SET("CourseType = #{record.coursetype,jdbcType=CHAR}");
+        sql.SET("AuditStatus = #{record.auditstatus,jdbcType=CHAR}");
         
         CourseExample example = (CourseExample) parameter.get("example");
         applyWhere(sql, example, true);
@@ -314,11 +326,11 @@ public class CourseSqlProvider {
         }
         
         if (record.getCoursestarttime() != null) {
-            sql.SET("CourseStartTime = #{coursestarttime,jdbcType=DATE}");
+            sql.SET("CourseStartTime = #{coursestarttime,jdbcType=VARCHAR}");
         }
         
         if (record.getCourseendtime() != null) {
-            sql.SET("CourseEndTime = #{courseendtime,jdbcType=DATE}");
+            sql.SET("CourseEndTime = #{courseendtime,jdbcType=VARCHAR}");
         }
         
         if (record.getCoursestartweek() != null) {
@@ -343,6 +355,10 @@ public class CourseSqlProvider {
         
         if (record.getCoursetype() != null) {
             sql.SET("CourseType = #{coursetype,jdbcType=CHAR}");
+        }
+        
+        if (record.getAuditstatus() != null) {
+            sql.SET("AuditStatus = #{auditstatus,jdbcType=CHAR}");
         }
         
         if (record.getCoursedesc() != null) {

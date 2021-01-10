@@ -24,12 +24,12 @@ public class Course implements Serializable {
     /**
      * 课程开始时间
      */
-    private Date coursestarttime;
+    private String coursestarttime;
 
     /**
      * 课程结束时间
      */
-    private Date courseendtime;
+    private String courseendtime;
 
     /**
      * 课程开始周数
@@ -60,6 +60,11 @@ public class Course implements Serializable {
      * 课程类型（0:选修课 1:必修课）
      */
     private String coursetype;
+
+    /**
+     * 审核状态（0:未审核 1:已审核)
+     */
+    private String auditstatus;
 
     private String coursedesc;
 
@@ -119,20 +124,20 @@ public class Course implements Serializable {
         return this;
     }
 
-    public Date getCoursestarttime() {
+    public String getCoursestarttime() {
         return coursestarttime;
     }
 
-    public Course setCoursestarttime(Date coursestarttime) {
+    public Course setCoursestarttime(String coursestarttime) {
         this.coursestarttime = coursestarttime;
         return this;
     }
 
-    public Date getCourseendtime() {
+    public String getCourseendtime() {
         return courseendtime;
     }
 
-    public Course setCourseendtime(Date courseendtime) {
+    public Course setCourseendtime(String courseendtime) {
         this.courseendtime = courseendtime;
         return this;
     }
@@ -191,6 +196,15 @@ public class Course implements Serializable {
         return this;
     }
 
+    public String getAuditstatus() {
+        return auditstatus;
+    }
+
+    public Course setAuditstatus(String auditstatus) {
+        this.auditstatus = auditstatus;
+        return this;
+    }
+
     public String getCoursedesc() {
         return coursedesc;
     }
@@ -220,6 +234,7 @@ public class Course implements Serializable {
         sb.append(", coursedaynum=").append(coursedaynum);
         sb.append(", coursestatus=").append(coursestatus);
         sb.append(", coursetype=").append(coursetype);
+        sb.append(", auditstatus=").append(auditstatus);
         sb.append(", coursedesc=").append(coursedesc);
         sb.append("]");
         return sb.toString();

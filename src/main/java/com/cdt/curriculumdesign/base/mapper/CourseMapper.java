@@ -41,14 +41,16 @@ public interface CourseMapper {
         "CourseEndTime, CourseStartWeek, ",
         "CourseEndWeek, CourseWeek, ",
         "CourseDayNum, CourseStatus, ",
-        "CourseType, CourseDesc)",
+        "CourseType, AuditStatus, ",
+        "CourseDesc)",
         "values (#{teacherid,jdbcType=BIGINT}, #{coursename,jdbcType=VARCHAR}, ",
         "#{coursecredit,jdbcType=REAL}, #{coursehours,jdbcType=SMALLINT}, ",
-        "#{coursecreatetime,jdbcType=TIMESTAMP}, #{coursestarttime,jdbcType=DATE}, ",
-        "#{courseendtime,jdbcType=DATE}, #{coursestartweek,jdbcType=INTEGER}, ",
+        "#{coursecreatetime,jdbcType=TIMESTAMP}, #{coursestarttime,jdbcType=VARCHAR}, ",
+        "#{courseendtime,jdbcType=VARCHAR}, #{coursestartweek,jdbcType=INTEGER}, ",
         "#{courseendweek,jdbcType=INTEGER}, #{courseweek,jdbcType=CHAR}, ",
         "#{coursedaynum,jdbcType=CHAR}, #{coursestatus,jdbcType=CHAR}, ",
-        "#{coursetype,jdbcType=CHAR}, #{coursedesc,jdbcType=LONGVARCHAR})"
+        "#{coursetype,jdbcType=CHAR}, #{auditstatus,jdbcType=CHAR}, ",
+        "#{coursedesc,jdbcType=LONGVARCHAR})"
     })
     @Options(useGeneratedKeys=true,keyProperty="courseid")
     int insert(Course record);
@@ -65,14 +67,15 @@ public interface CourseMapper {
         @Result(column="CourseCredit", property="coursecredit", jdbcType=JdbcType.REAL),
         @Result(column="CourseHours", property="coursehours", jdbcType=JdbcType.SMALLINT),
         @Result(column="courseCreateTime", property="coursecreatetime", jdbcType=JdbcType.TIMESTAMP),
-        @Result(column="CourseStartTime", property="coursestarttime", jdbcType=JdbcType.DATE),
-        @Result(column="CourseEndTime", property="courseendtime", jdbcType=JdbcType.DATE),
+        @Result(column="CourseStartTime", property="coursestarttime", jdbcType=JdbcType.VARCHAR),
+        @Result(column="CourseEndTime", property="courseendtime", jdbcType=JdbcType.VARCHAR),
         @Result(column="CourseStartWeek", property="coursestartweek", jdbcType=JdbcType.INTEGER),
         @Result(column="CourseEndWeek", property="courseendweek", jdbcType=JdbcType.INTEGER),
         @Result(column="CourseWeek", property="courseweek", jdbcType=JdbcType.CHAR),
         @Result(column="CourseDayNum", property="coursedaynum", jdbcType=JdbcType.CHAR),
         @Result(column="CourseStatus", property="coursestatus", jdbcType=JdbcType.CHAR),
         @Result(column="CourseType", property="coursetype", jdbcType=JdbcType.CHAR),
+        @Result(column="AuditStatus", property="auditstatus", jdbcType=JdbcType.CHAR),
         @Result(column="CourseDesc", property="coursedesc", jdbcType=JdbcType.LONGVARCHAR)
     })
     List<Course> selectByExampleWithBLOBs(CourseExample example);
@@ -85,14 +88,15 @@ public interface CourseMapper {
         @Result(column="CourseCredit", property="coursecredit", jdbcType=JdbcType.REAL),
         @Result(column="CourseHours", property="coursehours", jdbcType=JdbcType.SMALLINT),
         @Result(column="courseCreateTime", property="coursecreatetime", jdbcType=JdbcType.TIMESTAMP),
-        @Result(column="CourseStartTime", property="coursestarttime", jdbcType=JdbcType.DATE),
-        @Result(column="CourseEndTime", property="courseendtime", jdbcType=JdbcType.DATE),
+        @Result(column="CourseStartTime", property="coursestarttime", jdbcType=JdbcType.VARCHAR),
+        @Result(column="CourseEndTime", property="courseendtime", jdbcType=JdbcType.VARCHAR),
         @Result(column="CourseStartWeek", property="coursestartweek", jdbcType=JdbcType.INTEGER),
         @Result(column="CourseEndWeek", property="courseendweek", jdbcType=JdbcType.INTEGER),
         @Result(column="CourseWeek", property="courseweek", jdbcType=JdbcType.CHAR),
         @Result(column="CourseDayNum", property="coursedaynum", jdbcType=JdbcType.CHAR),
         @Result(column="CourseStatus", property="coursestatus", jdbcType=JdbcType.CHAR),
-        @Result(column="CourseType", property="coursetype", jdbcType=JdbcType.CHAR)
+        @Result(column="CourseType", property="coursetype", jdbcType=JdbcType.CHAR),
+        @Result(column="AuditStatus", property="auditstatus", jdbcType=JdbcType.CHAR)
     })
     List<Course> selectByExample(CourseExample example);
 
@@ -100,7 +104,7 @@ public interface CourseMapper {
         "select",
         "CourseId, TeacherId, CourseName, CourseCredit, CourseHours, courseCreateTime, ",
         "CourseStartTime, CourseEndTime, CourseStartWeek, CourseEndWeek, CourseWeek, ",
-        "CourseDayNum, CourseStatus, CourseType, CourseDesc",
+        "CourseDayNum, CourseStatus, CourseType, AuditStatus, CourseDesc",
         "from course",
         "where CourseId = #{courseid,jdbcType=BIGINT}"
     })
@@ -111,14 +115,15 @@ public interface CourseMapper {
         @Result(column="CourseCredit", property="coursecredit", jdbcType=JdbcType.REAL),
         @Result(column="CourseHours", property="coursehours", jdbcType=JdbcType.SMALLINT),
         @Result(column="courseCreateTime", property="coursecreatetime", jdbcType=JdbcType.TIMESTAMP),
-        @Result(column="CourseStartTime", property="coursestarttime", jdbcType=JdbcType.DATE),
-        @Result(column="CourseEndTime", property="courseendtime", jdbcType=JdbcType.DATE),
+        @Result(column="CourseStartTime", property="coursestarttime", jdbcType=JdbcType.VARCHAR),
+        @Result(column="CourseEndTime", property="courseendtime", jdbcType=JdbcType.VARCHAR),
         @Result(column="CourseStartWeek", property="coursestartweek", jdbcType=JdbcType.INTEGER),
         @Result(column="CourseEndWeek", property="courseendweek", jdbcType=JdbcType.INTEGER),
         @Result(column="CourseWeek", property="courseweek", jdbcType=JdbcType.CHAR),
         @Result(column="CourseDayNum", property="coursedaynum", jdbcType=JdbcType.CHAR),
         @Result(column="CourseStatus", property="coursestatus", jdbcType=JdbcType.CHAR),
         @Result(column="CourseType", property="coursetype", jdbcType=JdbcType.CHAR),
+        @Result(column="AuditStatus", property="auditstatus", jdbcType=JdbcType.CHAR),
         @Result(column="CourseDesc", property="coursedesc", jdbcType=JdbcType.LONGVARCHAR)
     })
     Course selectByPrimaryKey(Long courseid);
@@ -142,14 +147,15 @@ public interface CourseMapper {
           "CourseCredit = #{coursecredit,jdbcType=REAL},",
           "CourseHours = #{coursehours,jdbcType=SMALLINT},",
           "courseCreateTime = #{coursecreatetime,jdbcType=TIMESTAMP},",
-          "CourseStartTime = #{coursestarttime,jdbcType=DATE},",
-          "CourseEndTime = #{courseendtime,jdbcType=DATE},",
+          "CourseStartTime = #{coursestarttime,jdbcType=VARCHAR},",
+          "CourseEndTime = #{courseendtime,jdbcType=VARCHAR},",
           "CourseStartWeek = #{coursestartweek,jdbcType=INTEGER},",
           "CourseEndWeek = #{courseendweek,jdbcType=INTEGER},",
           "CourseWeek = #{courseweek,jdbcType=CHAR},",
           "CourseDayNum = #{coursedaynum,jdbcType=CHAR},",
           "CourseStatus = #{coursestatus,jdbcType=CHAR},",
           "CourseType = #{coursetype,jdbcType=CHAR},",
+          "AuditStatus = #{auditstatus,jdbcType=CHAR},",
           "CourseDesc = #{coursedesc,jdbcType=LONGVARCHAR}",
         "where CourseId = #{courseid,jdbcType=BIGINT}"
     })
@@ -162,14 +168,15 @@ public interface CourseMapper {
           "CourseCredit = #{coursecredit,jdbcType=REAL},",
           "CourseHours = #{coursehours,jdbcType=SMALLINT},",
           "courseCreateTime = #{coursecreatetime,jdbcType=TIMESTAMP},",
-          "CourseStartTime = #{coursestarttime,jdbcType=DATE},",
-          "CourseEndTime = #{courseendtime,jdbcType=DATE},",
+          "CourseStartTime = #{coursestarttime,jdbcType=VARCHAR},",
+          "CourseEndTime = #{courseendtime,jdbcType=VARCHAR},",
           "CourseStartWeek = #{coursestartweek,jdbcType=INTEGER},",
           "CourseEndWeek = #{courseendweek,jdbcType=INTEGER},",
           "CourseWeek = #{courseweek,jdbcType=CHAR},",
           "CourseDayNum = #{coursedaynum,jdbcType=CHAR},",
           "CourseStatus = #{coursestatus,jdbcType=CHAR},",
-          "CourseType = #{coursetype,jdbcType=CHAR}",
+          "CourseType = #{coursetype,jdbcType=CHAR},",
+          "AuditStatus = #{auditstatus,jdbcType=CHAR}",
         "where CourseId = #{courseid,jdbcType=BIGINT}"
     })
     int updateByPrimaryKey(Course record);

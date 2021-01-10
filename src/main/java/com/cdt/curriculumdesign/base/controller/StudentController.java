@@ -51,7 +51,7 @@ public class StudentController {
     }
 
     @RequestMapping("/getCourseByCourseId")
-    public DataResult<DatatableInfo<Course>> getCourseByCourseId(DatatableInfo<Course> datatableInfo, Long courseId) {
+    public DataResult<Course> getCourseByCourseId(DatatableInfo<Course> datatableInfo, Long courseId) {
         if (courseId != null) {
             return this.studentService.getCourseByCourseId(datatableInfo, courseId);
         }

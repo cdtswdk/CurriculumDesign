@@ -96,7 +96,7 @@ public class StudentService {
     }
 
 
-    public DataResult<DatatableInfo<Course>> getCourseByCourseId(DatatableInfo<Course> datatableInfo, Long courseId) {
+    public DataResult<Course> getCourseByCourseId(DatatableInfo<Course> datatableInfo, Long courseId) {
 
         CourseExample courseExample = new CourseExample();
         CourseExample.Criteria criteria = courseExample.createCriteria();
@@ -105,6 +105,6 @@ public class StudentService {
         List<Course> courses = this.courseMapper.selectByExample(courseExample);
 
         datatableInfo.setData(courses);
-        return DataResult.success(datatableInfo);
+        return DataResult.success(courses.get(0));
     }
 }

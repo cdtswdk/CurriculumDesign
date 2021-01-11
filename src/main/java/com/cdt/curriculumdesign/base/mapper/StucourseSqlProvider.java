@@ -77,6 +77,18 @@ public class StucourseSqlProvider {
             sql.VALUES("CourseType", "#{coursetype,jdbcType=CHAR}");
         }
         
+        if (record.getAuditstatus() != null) {
+            sql.VALUES("AuditStatus", "#{auditstatus,jdbcType=CHAR}");
+        }
+        
+        if (record.getCoursedaynum() != null) {
+            sql.VALUES("CourseDayNum", "#{coursedaynum,jdbcType=CHAR}");
+        }
+        
+        if (record.getCourseweek() != null) {
+            sql.VALUES("CourseWeek", "#{courseweek,jdbcType=CHAR}");
+        }
+        
         return sql.toString();
     }
 
@@ -99,6 +111,9 @@ public class StucourseSqlProvider {
         sql.SELECT("CourseEndWeek");
         sql.SELECT("CourseStatus");
         sql.SELECT("CourseType");
+        sql.SELECT("AuditStatus");
+        sql.SELECT("CourseDayNum");
+        sql.SELECT("CourseWeek");
         sql.FROM("stucourse");
         applyWhere(sql, example, false);
         
@@ -178,6 +193,18 @@ public class StucourseSqlProvider {
             sql.SET("CourseType = #{record.coursetype,jdbcType=CHAR}");
         }
         
+        if (record.getAuditstatus() != null) {
+            sql.SET("AuditStatus = #{record.auditstatus,jdbcType=CHAR}");
+        }
+        
+        if (record.getCoursedaynum() != null) {
+            sql.SET("CourseDayNum = #{record.coursedaynum,jdbcType=CHAR}");
+        }
+        
+        if (record.getCourseweek() != null) {
+            sql.SET("CourseWeek = #{record.courseweek,jdbcType=CHAR}");
+        }
+        
         applyWhere(sql, example, true);
         return sql.toString();
     }
@@ -199,6 +226,9 @@ public class StucourseSqlProvider {
         sql.SET("CourseEndWeek = #{record.courseendweek,jdbcType=INTEGER}");
         sql.SET("CourseStatus = #{record.coursestatus,jdbcType=CHAR}");
         sql.SET("CourseType = #{record.coursetype,jdbcType=CHAR}");
+        sql.SET("AuditStatus = #{record.auditstatus,jdbcType=CHAR}");
+        sql.SET("CourseDayNum = #{record.coursedaynum,jdbcType=CHAR}");
+        sql.SET("CourseWeek = #{record.courseweek,jdbcType=CHAR}");
         
         StucourseExample example = (StucourseExample) parameter.get("example");
         applyWhere(sql, example, true);
@@ -255,6 +285,18 @@ public class StucourseSqlProvider {
         
         if (record.getCoursetype() != null) {
             sql.SET("CourseType = #{coursetype,jdbcType=CHAR}");
+        }
+        
+        if (record.getAuditstatus() != null) {
+            sql.SET("AuditStatus = #{auditstatus,jdbcType=CHAR}");
+        }
+        
+        if (record.getCoursedaynum() != null) {
+            sql.SET("CourseDayNum = #{coursedaynum,jdbcType=CHAR}");
+        }
+        
+        if (record.getCourseweek() != null) {
+            sql.SET("CourseWeek = #{courseweek,jdbcType=CHAR}");
         }
         
         sql.WHERE("stucourseId = #{stucourseid,jdbcType=BIGINT}");

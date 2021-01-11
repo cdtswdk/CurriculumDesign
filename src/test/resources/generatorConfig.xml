@@ -54,13 +54,13 @@
         <table tableName="manager">
             <generatedKey column="ManagerId" sqlStatement="JDBC"/>
         </table>-->
-        <table tableName="course">
+        <!--<table tableName="course">
             <generatedKey column="CourseId" sqlStatement="JDBC"/>
-        </table>
-        <!--<table tableName="stucourse">
+        </table>-->
+        <table tableName="stucourse">
             <generatedKey column="stucourseId" sqlStatement="JDBC"/>
         </table>
-        <table tableName="clscourse">
+        <!--<table tableName="clscourse">
             <generatedKey column="ClsCourseId" sqlStatement="JDBC"/>
         </table>-->
     </context>

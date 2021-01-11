@@ -26,12 +26,12 @@ public class Stucourse implements Serializable {
     /**
      * 课程开始时间
      */
-    private Date coursestarttime;
+    private String coursestarttime;
 
     /**
      * 课程结束时间
      */
-    private Date courseendtime;
+    private String courseendtime;
 
     /**
      * 课程开始周数
@@ -52,6 +52,21 @@ public class Stucourse implements Serializable {
      * 课程类型（0:选修课 1:必修课）
      */
     private String coursetype;
+
+    /**
+     * 审核状态（0:未审核 1:已审核)
+     */
+    private String auditstatus;
+
+    /**
+     * 课程在第几节
+     */
+    private String coursedaynum;
+
+    /**
+     * 课程在星期几
+     */
+    private String courseweek;
 
     private static final long serialVersionUID = 1L;
 
@@ -118,20 +133,20 @@ public class Stucourse implements Serializable {
         return this;
     }
 
-    public Date getCoursestarttime() {
+    public String getCoursestarttime() {
         return coursestarttime;
     }
 
-    public Stucourse setCoursestarttime(Date coursestarttime) {
+    public Stucourse setCoursestarttime(String coursestarttime) {
         this.coursestarttime = coursestarttime;
         return this;
     }
 
-    public Date getCourseendtime() {
+    public String getCourseendtime() {
         return courseendtime;
     }
 
-    public Stucourse setCourseendtime(Date courseendtime) {
+    public Stucourse setCourseendtime(String courseendtime) {
         this.courseendtime = courseendtime;
         return this;
     }
@@ -172,6 +187,33 @@ public class Stucourse implements Serializable {
         return this;
     }
 
+    public String getAuditstatus() {
+        return auditstatus;
+    }
+
+    public Stucourse setAuditstatus(String auditstatus) {
+        this.auditstatus = auditstatus;
+        return this;
+    }
+
+    public String getCoursedaynum() {
+        return coursedaynum;
+    }
+
+    public Stucourse setCoursedaynum(String coursedaynum) {
+        this.coursedaynum = coursedaynum;
+        return this;
+    }
+
+    public String getCourseweek() {
+        return courseweek;
+    }
+
+    public Stucourse setCourseweek(String courseweek) {
+        this.courseweek = courseweek;
+        return this;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -191,6 +233,9 @@ public class Stucourse implements Serializable {
         sb.append(", courseendweek=").append(courseendweek);
         sb.append(", coursestatus=").append(coursestatus);
         sb.append(", coursetype=").append(coursetype);
+        sb.append(", auditstatus=").append(auditstatus);
+        sb.append(", coursedaynum=").append(coursedaynum);
+        sb.append(", courseweek=").append(courseweek);
         sb.append("]");
         return sb.toString();
     }

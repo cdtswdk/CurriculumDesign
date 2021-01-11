@@ -57,4 +57,20 @@ public class StudentController {
         }
         return DataResult.serverError("查询不到信息!");
     }
+
+    @RequestMapping("/selectCourseByCourseId")
+    public DataResult<DatatableInfo<Course>> selectCourseByCourseId(DatatableInfo<Course> datatableInfo, Long courseId, Long stuId) {
+        if (courseId != null) {
+            return this.studentService.selectCourseByCourseId(datatableInfo, courseId, stuId);
+        }
+        return DataResult.serverError("选课失败!");
+    }
+
+    @RequestMapping("/dropCourseByCourseId")
+    public DataResult<DatatableInfo<Course>> dropCourseByCourseId(DatatableInfo<Course> datatableInfo, Long courseId, Long stuId) {
+        if (courseId != null && stuId != null) {
+            return this.studentService.dropCourseByCourseId(datatableInfo, courseId, stuId);
+        }
+        return DataResult.serverError("选课失败!");
+    }
 }

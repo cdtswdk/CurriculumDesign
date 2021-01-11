@@ -138,9 +138,13 @@ public class StudentService {
                 }
             }
         }
+
+        //查询该学生的名字
+        Student student = this.studentMapper.selectByPrimaryKey(stuId);
         //增加课程
         Stucourse stucourse = new Stucourse();
         stucourse.setStudentid(stuId);
+        stucourse.setStudentname(student.getStudentname());
         BeanUtils.copyProperties(course, stucourse);
         this.stucourseMapper.insertSelective(stucourse);
         return DataResult.success(datatableInfo, "选课成功！");

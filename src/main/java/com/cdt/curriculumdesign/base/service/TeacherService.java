@@ -75,14 +75,13 @@ public class TeacherService {
 
     public DatatableInfo<Stucourse> updateStuCourseGrade(DatatableInfo<Stucourse> datatableInfo, Stucourse stucourse) {
 
-        StucourseExample stucourseExample = new StucourseExample();
-        StucourseExample.Criteria criteria = stucourseExample.createCriteria();
-
         if (stucourse.getStucourseid() != null) {
             Stucourse stucourse1 = this.stucourseMapper.selectByPrimaryKey(stucourse.getStucourseid());
             //更新成绩
             stucourse1.setGrade(stucourse.getGrade());
             stucourse1.setGradepoint(stucourse.getGradepoint());
+            //已结课
+            stucourse1.setCoursestatus("1");
             this.stucourseMapper.updateByPrimaryKeySelective(stucourse1);
         }
         return datatableInfo;

@@ -131,8 +131,13 @@ public class ManagerService {
             course.setMajorid(manager.getManagermajorid());
             course.setMajorname(manager.getMajorname());
 
+            //查询教师名字
+            if(course.getTeacherid()!=null){
+                Teacher teacher = this.teacherMapper.selectByPrimaryKey(course.getTeacherid());
+                course.setTeachername(teacher.getTeachername());
+            }
 
-            int i = this.courseMapper.insert(course);
+            int i = this.courseMapper.insertSelective(course);
             datatableInfo.setData(Collections.singletonList(i));
             return DataResult.success(datatableInfo);
         }

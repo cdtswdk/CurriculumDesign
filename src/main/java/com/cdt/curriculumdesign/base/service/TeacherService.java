@@ -29,11 +29,25 @@ public class TeacherService {
     @Autowired
     private CourseMapper courseMapper;
 
-    public DatatableInfo<Course> listTeaCourseByStuId(DatatableInfo<Course> datatableInfo, Long teaId) {
+
+    public DatatableInfo<Teacher> getPersonInfo(DatatableInfo<Teacher> datatableInfo, Long teacherId) {
+        TeacherExample teacherExample = new TeacherExample();
+        TeacherExample.Criteria criteria = teacherExample.createCriteria();
+        criteria.andTeacheridEqualTo(teacherId);
+        List<Teacher> teachers = this.teacherMapper.selectByExample(teacherExample);
+        teacherExample.setOffset(datatableInfo.getOffset());
+        teacherExample.setLimit(datatableInfo.getPageSize());
+        datatableInfo.setData(teachers);
+        datatableInfo.setRecordsTotal((int) this.teacherMapper.countByExample(teacherExample));
+
+        return datatableInfo;
+    }
+
+    public DatatableInfo<Course> listTeaCourseByStuId(DatatableInfo<Course> datatableInfo, Long teacherId) {
         CourseExample example = new CourseExample();
         CourseExample.Criteria criteria = example.createCriteria();
-        if(teaId!=null){
-            criteria.andTeacheridEqualTo(teaId);
+        if (teacherId != null) {
+            criteria.andTeacheridEqualTo(teacherId);
         }
         example.setOffset(datatableInfo.getOffset());
         example.setLimit(datatableInfo.getPageSize());
@@ -42,40 +56,35 @@ public class TeacherService {
         return datatableInfo;
     }
 
-    public DatatableInfo<Clscourse> listStuClassByStuId(DatatableInfo<Clscourse> datatableInfo, Long stuId) {
-        StudentExample studentExample = new StudentExample();
-        StudentExample.Criteria studentExampleCriteria = studentExample.createCriteria();
-        studentExampleCriteria.andStudentidEqualTo(stuId);
-        List<Student> Students = this.studentMapper.selectByExample(studentExample);
-        if(CollectionUtils.isNotEmpty(Students)){
-            Student tbStudent = Students.get(0);
-            Long classId = tbStudent.getClassid();
-            ClscourseExample clscourseExample = new ClscourseExample();
-            ClscourseExample.Criteria criteria = clscourseExample.createCriteria();
-            clscourseExample.setOffset(datatableInfo.getOffset());
-            clscourseExample.setLimit(datatableInfo.getPageSize());
-            criteria.andClassidEqualTo(classId);
-            List<Clscourse> clscourses = this.clscourseMapper.selectByExample(clscourseExample);
+    public DatatableInfo<Stucourse> listSelCourseByCourseIdAndTeacherId(DatatableInfo<Stucourse> datatableInfo, Long courseId, Long teacherId) {
+        StucourseExample stucourseExample = new StucourseExample();
+        StucourseExample.Criteria criteria = stucourseExample.createCriteria();
 
-            datatableInfo.setData(clscourses);
-            datatableInfo.setRecordsTotal((int) this.clscourseMapper.countByExample(clscourseExample));
-            return datatableInfo;
-        }
-        return null;
+        criteria.andCourseidEqualTo(courseId).andTeacheridEqualTo(teacherId);
+
+        stucourseExample.setOffset(datatableInfo.getOffset());
+        stucourseExample.setLimit(datatableInfo.getPageSize());
+
+        List<Stucourse> stucourseList = this.stucourseMapper.selectByExample(stucourseExample);
+
+        datatableInfo.setData(stucourseList);
+        datatableInfo.setRecordsTotal((int) this.stucourseMapper.countByExample(stucourseExample));
+
+        return datatableInfo;
     }
 
-    public DatatableInfo<Stucourse> listStuGradeByStuId(DatatableInfo<Stucourse> datatableInfo, Long stuId) {
-        StucourseExample example = new StucourseExample();
-        StucourseExample.Criteria criteria = example.createCriteria();
-        if(stuId!=null){
-            criteria.andStudentidEqualTo(stuId);
+    public DatatableInfo<Stucourse> updateStuCourseGrade(DatatableInfo<Stucourse> datatableInfo, Stucourse stucourse) {
+
+        StucourseExample stucourseExample = new StucourseExample();
+        StucourseExample.Criteria criteria = stucourseExample.createCriteria();
+
+        if (stucourse.getStucourseid() != null) {
+            Stucourse stucourse1 = this.stucourseMapper.selectByPrimaryKey(stucourse.getStucourseid());
+            //更新成绩
+            stucourse1.setGrade(stucourse.getGrade());
+            stucourse1.setGradepoint(stucourse.getGradepoint());
+            this.stucourseMapper.updateByPrimaryKeySelective(stucourse1);
         }
-        //已结课
-        criteria.andCoursestatusEqualTo("1");
-        example.setOffset(datatableInfo.getOffset());
-        example.setLimit(datatableInfo.getPageSize());
-        datatableInfo.setData(this.stucourseMapper.selectByExample(example));
-        datatableInfo.setRecordsTotal((int) this.stucourseMapper.countByExample(example));
         return datatableInfo;
     }
 }

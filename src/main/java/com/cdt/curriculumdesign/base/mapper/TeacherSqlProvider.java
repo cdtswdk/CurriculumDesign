@@ -37,6 +37,14 @@ public class TeacherSqlProvider {
             sql.VALUES("MajorId", "#{majorid,jdbcType=BIGINT}");
         }
         
+        if (record.getDeptname() != null) {
+            sql.VALUES("DeptName", "#{deptname,jdbcType=VARCHAR}");
+        }
+        
+        if (record.getMajorname() != null) {
+            sql.VALUES("MajorName", "#{majorname,jdbcType=VARCHAR}");
+        }
+        
         if (record.getTeachername() != null) {
             sql.VALUES("TeacherName", "#{teachername,jdbcType=VARCHAR}");
         }
@@ -69,6 +77,8 @@ public class TeacherSqlProvider {
         }
         sql.SELECT("DeptId");
         sql.SELECT("MajorId");
+        sql.SELECT("DeptName");
+        sql.SELECT("MajorName");
         sql.SELECT("TeacherName");
         sql.SELECT("TeacherSex");
         sql.SELECT("TeacherBirthday");
@@ -113,6 +123,14 @@ public class TeacherSqlProvider {
             sql.SET("MajorId = #{record.majorid,jdbcType=BIGINT}");
         }
         
+        if (record.getDeptname() != null) {
+            sql.SET("DeptName = #{record.deptname,jdbcType=VARCHAR}");
+        }
+        
+        if (record.getMajorname() != null) {
+            sql.SET("MajorName = #{record.majorname,jdbcType=VARCHAR}");
+        }
+        
         if (record.getTeachername() != null) {
             sql.SET("TeacherName = #{record.teachername,jdbcType=VARCHAR}");
         }
@@ -144,6 +162,8 @@ public class TeacherSqlProvider {
         sql.SET("TeacherId = #{record.teacherid,jdbcType=BIGINT}");
         sql.SET("DeptId = #{record.deptid,jdbcType=BIGINT}");
         sql.SET("MajorId = #{record.majorid,jdbcType=BIGINT}");
+        sql.SET("DeptName = #{record.deptname,jdbcType=VARCHAR}");
+        sql.SET("MajorName = #{record.majorname,jdbcType=VARCHAR}");
         sql.SET("TeacherName = #{record.teachername,jdbcType=VARCHAR}");
         sql.SET("TeacherSex = #{record.teachersex,jdbcType=CHAR}");
         sql.SET("TeacherBirthday = #{record.teacherbirthday,jdbcType=DATE}");
@@ -165,6 +185,14 @@ public class TeacherSqlProvider {
         
         if (record.getMajorid() != null) {
             sql.SET("MajorId = #{majorid,jdbcType=BIGINT}");
+        }
+        
+        if (record.getDeptname() != null) {
+            sql.SET("DeptName = #{deptname,jdbcType=VARCHAR}");
+        }
+        
+        if (record.getMajorname() != null) {
+            sql.SET("MajorName = #{majorname,jdbcType=VARCHAR}");
         }
         
         if (record.getTeachername() != null) {

@@ -12,6 +12,10 @@ public class Teacher implements Serializable {
 
     private Long majorid;
 
+    private String deptname;
+
+    private String majorname;
+
     private String teachername;
 
     private String teachersex;
@@ -51,6 +55,24 @@ public class Teacher implements Serializable {
 
     public Teacher setMajorid(Long majorid) {
         this.majorid = majorid;
+        return this;
+    }
+
+    public String getDeptname() {
+        return deptname;
+    }
+
+    public Teacher setDeptname(String deptname) {
+        this.deptname = deptname;
+        return this;
+    }
+
+    public String getMajorname() {
+        return majorname;
+    }
+
+    public Teacher setMajorname(String majorname) {
+        this.majorname = majorname;
         return this;
     }
 
@@ -108,6 +130,8 @@ public class Teacher implements Serializable {
         sb.append(", teacherid=").append(teacherid);
         sb.append(", deptid=").append(deptid);
         sb.append(", majorid=").append(majorid);
+        sb.append(", deptname=").append(deptname);
+        sb.append(", majorname=").append(majorname);
         sb.append(", teachername=").append(teachername);
         sb.append(", teachersex=").append(teachersex);
         sb.append(", teacherbirthday=").append(teacherbirthday);

@@ -66,7 +66,7 @@ public class ManagerController {
     }
 
     @PostMapping("/addCourse")
-    public DataResult<DatatableInfo<Integer>> addCourse(DatatableInfo<Integer> datatableInfo,Course course){
-        return this.managerService.addCourse(datatableInfo,course);
+    public DataResult<DatatableInfo<Integer>> addCourse(DatatableInfo<Integer> datatableInfo, Course course, Long managerId) {
+        return this.managerService.addCourse(datatableInfo, course, managerId);
     }
 }

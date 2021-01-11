@@ -36,13 +36,15 @@ public interface StudentMapper {
 
     @Insert({
         "insert into student (DeptId, MajorId, ",
+        "DeptName, MajorName, ",
         "ClassId, StudentName, ",
         "StudentSex, StudentBirthday, ",
-        "StudentPassword)",
+        "StudentPassword, ClassName)",
         "values (#{deptid,jdbcType=BIGINT}, #{majorid,jdbcType=BIGINT}, ",
+        "#{deptname,jdbcType=VARCHAR}, #{majorname,jdbcType=VARCHAR}, ",
         "#{classid,jdbcType=BIGINT}, #{studentname,jdbcType=VARCHAR}, ",
         "#{studentsex,jdbcType=CHAR}, #{studentbirthday,jdbcType=DATE}, ",
-        "#{studentpassword,jdbcType=VARCHAR})"
+        "#{studentpassword,jdbcType=VARCHAR}, #{classname,jdbcType=VARCHAR})"
     })
     @Options(useGeneratedKeys=true,keyProperty="studentid")
     int insert(Student record);
@@ -56,18 +58,21 @@ public interface StudentMapper {
         @Result(column="StudentId", property="studentid", jdbcType=JdbcType.BIGINT, id=true),
         @Result(column="DeptId", property="deptid", jdbcType=JdbcType.BIGINT),
         @Result(column="MajorId", property="majorid", jdbcType=JdbcType.BIGINT),
+        @Result(column="DeptName", property="deptname", jdbcType=JdbcType.VARCHAR),
+        @Result(column="MajorName", property="majorname", jdbcType=JdbcType.VARCHAR),
         @Result(column="ClassId", property="classid", jdbcType=JdbcType.BIGINT),
         @Result(column="StudentName", property="studentname", jdbcType=JdbcType.VARCHAR),
         @Result(column="StudentSex", property="studentsex", jdbcType=JdbcType.CHAR),
         @Result(column="StudentBirthday", property="studentbirthday", jdbcType=JdbcType.DATE),
-        @Result(column="StudentPassword", property="studentpassword", jdbcType=JdbcType.VARCHAR)
+        @Result(column="StudentPassword", property="studentpassword", jdbcType=JdbcType.VARCHAR),
+        @Result(column="ClassName", property="classname", jdbcType=JdbcType.VARCHAR)
     })
     List<Student> selectByExample(StudentExample example);
 
     @Select({
         "select",
-        "StudentId, DeptId, MajorId, ClassId, StudentName, StudentSex, StudentBirthday, ",
-        "StudentPassword",
+        "StudentId, DeptId, MajorId, DeptName, MajorName, ClassId, StudentName, StudentSex, ",
+        "StudentBirthday, StudentPassword, ClassName",
         "from student",
         "where StudentId = #{studentid,jdbcType=BIGINT}"
     })
@@ -75,11 +80,14 @@ public interface StudentMapper {
         @Result(column="StudentId", property="studentid", jdbcType=JdbcType.BIGINT, id=true),
         @Result(column="DeptId", property="deptid", jdbcType=JdbcType.BIGINT),
         @Result(column="MajorId", property="majorid", jdbcType=JdbcType.BIGINT),
+        @Result(column="DeptName", property="deptname", jdbcType=JdbcType.VARCHAR),
+        @Result(column="MajorName", property="majorname", jdbcType=JdbcType.VARCHAR),
         @Result(column="ClassId", property="classid", jdbcType=JdbcType.BIGINT),
         @Result(column="StudentName", property="studentname", jdbcType=JdbcType.VARCHAR),
         @Result(column="StudentSex", property="studentsex", jdbcType=JdbcType.CHAR),
         @Result(column="StudentBirthday", property="studentbirthday", jdbcType=JdbcType.DATE),
-        @Result(column="StudentPassword", property="studentpassword", jdbcType=JdbcType.VARCHAR)
+        @Result(column="StudentPassword", property="studentpassword", jdbcType=JdbcType.VARCHAR),
+        @Result(column="ClassName", property="classname", jdbcType=JdbcType.VARCHAR)
     })
     Student selectByPrimaryKey(Long studentid);
 
@@ -96,11 +104,14 @@ public interface StudentMapper {
         "update student",
         "set DeptId = #{deptid,jdbcType=BIGINT},",
           "MajorId = #{majorid,jdbcType=BIGINT},",
+          "DeptName = #{deptname,jdbcType=VARCHAR},",
+          "MajorName = #{majorname,jdbcType=VARCHAR},",
           "ClassId = #{classid,jdbcType=BIGINT},",
           "StudentName = #{studentname,jdbcType=VARCHAR},",
           "StudentSex = #{studentsex,jdbcType=CHAR},",
           "StudentBirthday = #{studentbirthday,jdbcType=DATE},",
-          "StudentPassword = #{studentpassword,jdbcType=VARCHAR}",
+          "StudentPassword = #{studentpassword,jdbcType=VARCHAR},",
+          "ClassName = #{classname,jdbcType=VARCHAR}",
         "where StudentId = #{studentid,jdbcType=BIGINT}"
     })
     int updateByPrimaryKey(Student record);

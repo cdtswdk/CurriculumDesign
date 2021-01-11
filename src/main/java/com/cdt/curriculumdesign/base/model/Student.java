@@ -12,6 +12,10 @@ public class Student implements Serializable {
 
     private Long majorid;
 
+    private String deptname;
+
+    private String majorname;
+
     private Long classid;
 
     private String studentname;
@@ -21,6 +25,8 @@ public class Student implements Serializable {
     private Date studentbirthday;
 
     private String studentpassword;
+
+    private String classname;
 
     private static final long serialVersionUID = 1L;
 
@@ -48,6 +54,24 @@ public class Student implements Serializable {
 
     public Student setMajorid(Long majorid) {
         this.majorid = majorid;
+        return this;
+    }
+
+    public String getDeptname() {
+        return deptname;
+    }
+
+    public Student setDeptname(String deptname) {
+        this.deptname = deptname;
+        return this;
+    }
+
+    public String getMajorname() {
+        return majorname;
+    }
+
+    public Student setMajorname(String majorname) {
+        this.majorname = majorname;
         return this;
     }
 
@@ -96,6 +120,15 @@ public class Student implements Serializable {
         return this;
     }
 
+    public String getClassname() {
+        return classname;
+    }
+
+    public Student setClassname(String classname) {
+        this.classname = classname;
+        return this;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -105,11 +138,14 @@ public class Student implements Serializable {
         sb.append(", studentid=").append(studentid);
         sb.append(", deptid=").append(deptid);
         sb.append(", majorid=").append(majorid);
+        sb.append(", deptname=").append(deptname);
+        sb.append(", majorname=").append(majorname);
         sb.append(", classid=").append(classid);
         sb.append(", studentname=").append(studentname);
         sb.append(", studentsex=").append(studentsex);
         sb.append(", studentbirthday=").append(studentbirthday);
         sb.append(", studentpassword=").append(studentpassword);
+        sb.append(", classname=").append(classname);
         sb.append("]");
         return sb.toString();
     }

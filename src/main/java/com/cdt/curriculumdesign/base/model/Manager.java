@@ -12,13 +12,22 @@ public class Manager implements Serializable {
 
     private Long managermajorid;
 
+    private String deptname;
+
+    private String majorname;
+
     private String managername;
 
     private String managersex;
 
-    private Date managerbirthdy;
+    private Date managerbirthday;
 
     private String managerpassword;
+
+    /**
+     * 管理员介绍
+     */
+    private String managerdesc;
 
     private static final long serialVersionUID = 1L;
 
@@ -49,6 +58,24 @@ public class Manager implements Serializable {
         return this;
     }
 
+    public String getDeptname() {
+        return deptname;
+    }
+
+    public Manager setDeptname(String deptname) {
+        this.deptname = deptname;
+        return this;
+    }
+
+    public String getMajorname() {
+        return majorname;
+    }
+
+    public Manager setMajorname(String majorname) {
+        this.majorname = majorname;
+        return this;
+    }
+
     public String getManagername() {
         return managername;
     }
@@ -67,12 +94,12 @@ public class Manager implements Serializable {
         return this;
     }
 
-    public Date getManagerbirthdy() {
-        return managerbirthdy;
+    public Date getManagerbirthday() {
+        return managerbirthday;
     }
 
-    public Manager setManagerbirthdy(Date managerbirthdy) {
-        this.managerbirthdy = managerbirthdy;
+    public Manager setManagerbirthday(Date managerbirthday) {
+        this.managerbirthday = managerbirthday;
         return this;
     }
 
@@ -85,6 +112,15 @@ public class Manager implements Serializable {
         return this;
     }
 
+    public String getManagerdesc() {
+        return managerdesc;
+    }
+
+    public Manager setManagerdesc(String managerdesc) {
+        this.managerdesc = managerdesc;
+        return this;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -94,10 +130,13 @@ public class Manager implements Serializable {
         sb.append(", managerid=").append(managerid);
         sb.append(", managerdeptid=").append(managerdeptid);
         sb.append(", managermajorid=").append(managermajorid);
+        sb.append(", deptname=").append(deptname);
+        sb.append(", majorname=").append(majorname);
         sb.append(", managername=").append(managername);
         sb.append(", managersex=").append(managersex);
-        sb.append(", managerbirthdy=").append(managerbirthdy);
+        sb.append(", managerbirthday=").append(managerbirthday);
         sb.append(", managerpassword=").append(managerpassword);
+        sb.append(", managerdesc=").append(managerdesc);
         sb.append("]");
         return sb.toString();
     }

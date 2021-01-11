@@ -359,6 +359,146 @@ public class TeacherExample {
             return (Criteria) this;
         }
 
+        public Criteria andDeptnameIsNull() {
+            addCriterion("DeptName is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeptnameIsNotNull() {
+            addCriterion("DeptName is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeptnameEqualTo(String value) {
+            addCriterion("DeptName =", value, "deptname");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeptnameNotEqualTo(String value) {
+            addCriterion("DeptName <>", value, "deptname");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeptnameGreaterThan(String value) {
+            addCriterion("DeptName >", value, "deptname");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeptnameGreaterThanOrEqualTo(String value) {
+            addCriterion("DeptName >=", value, "deptname");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeptnameLessThan(String value) {
+            addCriterion("DeptName <", value, "deptname");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeptnameLessThanOrEqualTo(String value) {
+            addCriterion("DeptName <=", value, "deptname");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeptnameLike(String value) {
+            addCriterion("DeptName like", value, "deptname");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeptnameNotLike(String value) {
+            addCriterion("DeptName not like", value, "deptname");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeptnameIn(List<String> values) {
+            addCriterion("DeptName in", values, "deptname");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeptnameNotIn(List<String> values) {
+            addCriterion("DeptName not in", values, "deptname");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeptnameBetween(String value1, String value2) {
+            addCriterion("DeptName between", value1, value2, "deptname");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeptnameNotBetween(String value1, String value2) {
+            addCriterion("DeptName not between", value1, value2, "deptname");
+            return (Criteria) this;
+        }
+
+        public Criteria andMajornameIsNull() {
+            addCriterion("MajorName is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMajornameIsNotNull() {
+            addCriterion("MajorName is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMajornameEqualTo(String value) {
+            addCriterion("MajorName =", value, "majorname");
+            return (Criteria) this;
+        }
+
+        public Criteria andMajornameNotEqualTo(String value) {
+            addCriterion("MajorName <>", value, "majorname");
+            return (Criteria) this;
+        }
+
+        public Criteria andMajornameGreaterThan(String value) {
+            addCriterion("MajorName >", value, "majorname");
+            return (Criteria) this;
+        }
+
+        public Criteria andMajornameGreaterThanOrEqualTo(String value) {
+            addCriterion("MajorName >=", value, "majorname");
+            return (Criteria) this;
+        }
+
+        public Criteria andMajornameLessThan(String value) {
+            addCriterion("MajorName <", value, "majorname");
+            return (Criteria) this;
+        }
+
+        public Criteria andMajornameLessThanOrEqualTo(String value) {
+            addCriterion("MajorName <=", value, "majorname");
+            return (Criteria) this;
+        }
+
+        public Criteria andMajornameLike(String value) {
+            addCriterion("MajorName like", value, "majorname");
+            return (Criteria) this;
+        }
+
+        public Criteria andMajornameNotLike(String value) {
+            addCriterion("MajorName not like", value, "majorname");
+            return (Criteria) this;
+        }
+
+        public Criteria andMajornameIn(List<String> values) {
+            addCriterion("MajorName in", values, "majorname");
+            return (Criteria) this;
+        }
+
+        public Criteria andMajornameNotIn(List<String> values) {
+            addCriterion("MajorName not in", values, "majorname");
+            return (Criteria) this;
+        }
+
+        public Criteria andMajornameBetween(String value1, String value2) {
+            addCriterion("MajorName between", value1, value2, "majorname");
+            return (Criteria) this;
+        }
+
+        public Criteria andMajornameNotBetween(String value1, String value2) {
+            addCriterion("MajorName not between", value1, value2, "majorname");
+            return (Criteria) this;
+        }
+
         public Criteria andTeachernameIsNull() {
             addCriterion("TeacherName is null");
             return (Criteria) this;

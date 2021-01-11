@@ -36,11 +36,15 @@ public interface ManagerMapper {
 
     @Insert({
         "insert into manager (ManagerDeptId, ManagerMajorId, ",
+        "DeptName, MajorName, ",
         "ManagerName, ManagerSex, ",
-        "ManagerBirthdy, ManagerPassword)",
+        "ManagerBirthday, ManagerPassword, ",
+        "ManagerDesc)",
         "values (#{managerdeptid,jdbcType=BIGINT}, #{managermajorid,jdbcType=BIGINT}, ",
+        "#{deptname,jdbcType=VARCHAR}, #{majorname,jdbcType=VARCHAR}, ",
         "#{managername,jdbcType=VARCHAR}, #{managersex,jdbcType=CHAR}, ",
-        "#{managerbirthdy,jdbcType=DATE}, #{managerpassword,jdbcType=VARCHAR})"
+        "#{managerbirthday,jdbcType=DATE}, #{managerpassword,jdbcType=VARCHAR}, ",
+        "#{managerdesc,jdbcType=VARCHAR})"
     })
     @Options(useGeneratedKeys=true,keyProperty="managerid")
     int insert(Manager record);
@@ -54,17 +58,20 @@ public interface ManagerMapper {
         @Result(column="ManagerId", property="managerid", jdbcType=JdbcType.BIGINT, id=true),
         @Result(column="ManagerDeptId", property="managerdeptid", jdbcType=JdbcType.BIGINT),
         @Result(column="ManagerMajorId", property="managermajorid", jdbcType=JdbcType.BIGINT),
+        @Result(column="DeptName", property="deptname", jdbcType=JdbcType.VARCHAR),
+        @Result(column="MajorName", property="majorname", jdbcType=JdbcType.VARCHAR),
         @Result(column="ManagerName", property="managername", jdbcType=JdbcType.VARCHAR),
         @Result(column="ManagerSex", property="managersex", jdbcType=JdbcType.CHAR),
-        @Result(column="ManagerBirthdy", property="managerbirthdy", jdbcType=JdbcType.DATE),
-        @Result(column="ManagerPassword", property="managerpassword", jdbcType=JdbcType.VARCHAR)
+        @Result(column="ManagerBirthday", property="managerbirthday", jdbcType=JdbcType.DATE),
+        @Result(column="ManagerPassword", property="managerpassword", jdbcType=JdbcType.VARCHAR),
+        @Result(column="ManagerDesc", property="managerdesc", jdbcType=JdbcType.VARCHAR)
     })
     List<Manager> selectByExample(ManagerExample example);
 
     @Select({
         "select",
-        "ManagerId, ManagerDeptId, ManagerMajorId, ManagerName, ManagerSex, ManagerBirthdy, ",
-        "ManagerPassword",
+        "ManagerId, ManagerDeptId, ManagerMajorId, DeptName, MajorName, ManagerName, ",
+        "ManagerSex, ManagerBirthday, ManagerPassword, ManagerDesc",
         "from manager",
         "where ManagerId = #{managerid,jdbcType=BIGINT}"
     })
@@ -72,10 +79,13 @@ public interface ManagerMapper {
         @Result(column="ManagerId", property="managerid", jdbcType=JdbcType.BIGINT, id=true),
         @Result(column="ManagerDeptId", property="managerdeptid", jdbcType=JdbcType.BIGINT),
         @Result(column="ManagerMajorId", property="managermajorid", jdbcType=JdbcType.BIGINT),
+        @Result(column="DeptName", property="deptname", jdbcType=JdbcType.VARCHAR),
+        @Result(column="MajorName", property="majorname", jdbcType=JdbcType.VARCHAR),
         @Result(column="ManagerName", property="managername", jdbcType=JdbcType.VARCHAR),
         @Result(column="ManagerSex", property="managersex", jdbcType=JdbcType.CHAR),
-        @Result(column="ManagerBirthdy", property="managerbirthdy", jdbcType=JdbcType.DATE),
-        @Result(column="ManagerPassword", property="managerpassword", jdbcType=JdbcType.VARCHAR)
+        @Result(column="ManagerBirthday", property="managerbirthday", jdbcType=JdbcType.DATE),
+        @Result(column="ManagerPassword", property="managerpassword", jdbcType=JdbcType.VARCHAR),
+        @Result(column="ManagerDesc", property="managerdesc", jdbcType=JdbcType.VARCHAR)
     })
     Manager selectByPrimaryKey(Long managerid);
 
@@ -92,10 +102,13 @@ public interface ManagerMapper {
         "update manager",
         "set ManagerDeptId = #{managerdeptid,jdbcType=BIGINT},",
           "ManagerMajorId = #{managermajorid,jdbcType=BIGINT},",
+          "DeptName = #{deptname,jdbcType=VARCHAR},",
+          "MajorName = #{majorname,jdbcType=VARCHAR},",
           "ManagerName = #{managername,jdbcType=VARCHAR},",
           "ManagerSex = #{managersex,jdbcType=CHAR},",
-          "ManagerBirthdy = #{managerbirthdy,jdbcType=DATE},",
-          "ManagerPassword = #{managerpassword,jdbcType=VARCHAR}",
+          "ManagerBirthday = #{managerbirthday,jdbcType=DATE},",
+          "ManagerPassword = #{managerpassword,jdbcType=VARCHAR},",
+          "ManagerDesc = #{managerdesc,jdbcType=VARCHAR}",
         "where ManagerId = #{managerid,jdbcType=BIGINT}"
     })
     int updateByPrimaryKey(Manager record);

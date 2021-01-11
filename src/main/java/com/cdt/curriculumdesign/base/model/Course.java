@@ -10,15 +10,20 @@ public class Course implements Serializable {
 
     private Long teacherid;
 
+    private Long deptid;
+
+    private Long majorid;
+
+    private String deptname;
+
+    private String majorname;
+
     private String coursename;
 
     private Float coursecredit;
 
     private Short coursehours;
 
-    /**
-     * 课程创建时间
-     */
     private Date coursecreatetime;
 
     /**
@@ -66,6 +71,8 @@ public class Course implements Serializable {
      */
     private String auditstatus;
 
+    private String teachername;
+
     private String coursedesc;
 
     private static final long serialVersionUID = 1L;
@@ -85,6 +92,42 @@ public class Course implements Serializable {
 
     public Course setTeacherid(Long teacherid) {
         this.teacherid = teacherid;
+        return this;
+    }
+
+    public Long getDeptid() {
+        return deptid;
+    }
+
+    public Course setDeptid(Long deptid) {
+        this.deptid = deptid;
+        return this;
+    }
+
+    public Long getMajorid() {
+        return majorid;
+    }
+
+    public Course setMajorid(Long majorid) {
+        this.majorid = majorid;
+        return this;
+    }
+
+    public String getDeptname() {
+        return deptname;
+    }
+
+    public Course setDeptname(String deptname) {
+        this.deptname = deptname;
+        return this;
+    }
+
+    public String getMajorname() {
+        return majorname;
+    }
+
+    public Course setMajorname(String majorname) {
+        this.majorname = majorname;
         return this;
     }
 
@@ -205,6 +248,15 @@ public class Course implements Serializable {
         return this;
     }
 
+    public String getTeachername() {
+        return teachername;
+    }
+
+    public Course setTeachername(String teachername) {
+        this.teachername = teachername;
+        return this;
+    }
+
     public String getCoursedesc() {
         return coursedesc;
     }
@@ -222,6 +274,10 @@ public class Course implements Serializable {
         sb.append("Hash = ").append(hashCode());
         sb.append(", courseid=").append(courseid);
         sb.append(", teacherid=").append(teacherid);
+        sb.append(", deptid=").append(deptid);
+        sb.append(", majorid=").append(majorid);
+        sb.append(", deptname=").append(deptname);
+        sb.append(", majorname=").append(majorname);
         sb.append(", coursename=").append(coursename);
         sb.append(", coursecredit=").append(coursecredit);
         sb.append(", coursehours=").append(coursehours);
@@ -235,6 +291,7 @@ public class Course implements Serializable {
         sb.append(", coursestatus=").append(coursestatus);
         sb.append(", coursetype=").append(coursetype);
         sb.append(", auditstatus=").append(auditstatus);
+        sb.append(", teachername=").append(teachername);
         sb.append(", coursedesc=").append(coursedesc);
         sb.append("]");
         return sb.toString();

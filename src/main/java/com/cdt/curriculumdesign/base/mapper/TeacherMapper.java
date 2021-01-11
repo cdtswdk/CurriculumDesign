@@ -36,10 +36,12 @@ public interface TeacherMapper {
 
     @Insert({
         "insert into teacher (DeptId, MajorId, ",
+        "DeptName, MajorName, ",
         "TeacherName, TeacherSex, ",
         "TeacherBirthday, TeacherPassword, ",
         "TeacherDesc)",
         "values (#{deptid,jdbcType=BIGINT}, #{majorid,jdbcType=BIGINT}, ",
+        "#{deptname,jdbcType=VARCHAR}, #{majorname,jdbcType=VARCHAR}, ",
         "#{teachername,jdbcType=VARCHAR}, #{teachersex,jdbcType=CHAR}, ",
         "#{teacherbirthday,jdbcType=DATE}, #{teacherpassword,jdbcType=VARCHAR}, ",
         "#{teacherdesc,jdbcType=VARCHAR})"
@@ -56,6 +58,8 @@ public interface TeacherMapper {
         @Result(column="TeacherId", property="teacherid", jdbcType=JdbcType.BIGINT, id=true),
         @Result(column="DeptId", property="deptid", jdbcType=JdbcType.BIGINT),
         @Result(column="MajorId", property="majorid", jdbcType=JdbcType.BIGINT),
+        @Result(column="DeptName", property="deptname", jdbcType=JdbcType.VARCHAR),
+        @Result(column="MajorName", property="majorname", jdbcType=JdbcType.VARCHAR),
         @Result(column="TeacherName", property="teachername", jdbcType=JdbcType.VARCHAR),
         @Result(column="TeacherSex", property="teachersex", jdbcType=JdbcType.CHAR),
         @Result(column="TeacherBirthday", property="teacherbirthday", jdbcType=JdbcType.DATE),
@@ -66,8 +70,8 @@ public interface TeacherMapper {
 
     @Select({
         "select",
-        "TeacherId, DeptId, MajorId, TeacherName, TeacherSex, TeacherBirthday, TeacherPassword, ",
-        "TeacherDesc",
+        "TeacherId, DeptId, MajorId, DeptName, MajorName, TeacherName, TeacherSex, TeacherBirthday, ",
+        "TeacherPassword, TeacherDesc",
         "from teacher",
         "where TeacherId = #{teacherid,jdbcType=BIGINT}"
     })
@@ -75,6 +79,8 @@ public interface TeacherMapper {
         @Result(column="TeacherId", property="teacherid", jdbcType=JdbcType.BIGINT, id=true),
         @Result(column="DeptId", property="deptid", jdbcType=JdbcType.BIGINT),
         @Result(column="MajorId", property="majorid", jdbcType=JdbcType.BIGINT),
+        @Result(column="DeptName", property="deptname", jdbcType=JdbcType.VARCHAR),
+        @Result(column="MajorName", property="majorname", jdbcType=JdbcType.VARCHAR),
         @Result(column="TeacherName", property="teachername", jdbcType=JdbcType.VARCHAR),
         @Result(column="TeacherSex", property="teachersex", jdbcType=JdbcType.CHAR),
         @Result(column="TeacherBirthday", property="teacherbirthday", jdbcType=JdbcType.DATE),
@@ -96,6 +102,8 @@ public interface TeacherMapper {
         "update teacher",
         "set DeptId = #{deptid,jdbcType=BIGINT},",
           "MajorId = #{majorid,jdbcType=BIGINT},",
+          "DeptName = #{deptname,jdbcType=VARCHAR},",
+          "MajorName = #{majorname,jdbcType=VARCHAR},",
           "TeacherName = #{teachername,jdbcType=VARCHAR},",
           "TeacherSex = #{teachersex,jdbcType=CHAR},",
           "TeacherBirthday = #{teacherbirthday,jdbcType=DATE},",

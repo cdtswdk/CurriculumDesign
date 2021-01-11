@@ -1,90 +1,95 @@
 package com.cdt.curriculumdesign.base.mapper;
 
-import com.cdt.curriculumdesign.base.model.Manager;
-import com.cdt.curriculumdesign.base.model.ManagerExample.Criteria;
-import com.cdt.curriculumdesign.base.model.ManagerExample.Criterion;
-import com.cdt.curriculumdesign.base.model.ManagerExample;
+import com.cdt.curriculumdesign.base.model.Dept;
+import com.cdt.curriculumdesign.base.model.DeptExample.Criteria;
+import com.cdt.curriculumdesign.base.model.DeptExample.Criterion;
+import com.cdt.curriculumdesign.base.model.DeptExample;
 import java.util.List;
 import java.util.Map;
 import javax.annotation.Generated;
 import org.apache.ibatis.jdbc.SQL;
 
-@Generated("manager")
-public class ManagerSqlProvider {
-    public String countByExample(ManagerExample example) {
+@Generated("dept")
+public class DeptSqlProvider {
+    public String countByExample(DeptExample example) {
         SQL sql = new SQL();
-        sql.SELECT("count(*)").FROM("manager");
+        sql.SELECT("count(*)").FROM("dept");
         applyWhere(sql, example, false);
         return sql.toString();
     }
 
-    public String deleteByExample(ManagerExample example) {
+    public String deleteByExample(DeptExample example) {
         SQL sql = new SQL();
-        sql.DELETE_FROM("manager");
+        sql.DELETE_FROM("dept");
         applyWhere(sql, example, false);
         return sql.toString();
     }
 
-    public String insertSelective(Manager record) {
+    public String insertSelective(Dept record) {
         SQL sql = new SQL();
-        sql.INSERT_INTO("manager");
-        
-        if (record.getManagerdeptid() != null) {
-            sql.VALUES("ManagerDeptId", "#{managerdeptid,jdbcType=BIGINT}");
-        }
-        
-        if (record.getManagermajorid() != null) {
-            sql.VALUES("ManagerMajorId", "#{managermajorid,jdbcType=BIGINT}");
-        }
+        sql.INSERT_INTO("dept");
         
         if (record.getDeptname() != null) {
             sql.VALUES("DeptName", "#{deptname,jdbcType=VARCHAR}");
         }
         
-        if (record.getMajorname() != null) {
-            sql.VALUES("MajorName", "#{majorname,jdbcType=VARCHAR}");
+        if (record.getDeptchairman() != null) {
+            sql.VALUES("DeptChairman", "#{deptchairman,jdbcType=VARCHAR}");
         }
         
-        if (record.getManagername() != null) {
-            sql.VALUES("ManagerName", "#{managername,jdbcType=VARCHAR}");
+        if (record.getDepttel() != null) {
+            sql.VALUES("DeptTel", "#{depttel,jdbcType=VARCHAR}");
         }
         
-        if (record.getManagersex() != null) {
-            sql.VALUES("ManagerSex", "#{managersex,jdbcType=CHAR}");
-        }
-        
-        if (record.getManagerbirthday() != null) {
-            sql.VALUES("ManagerBirthday", "#{managerbirthday,jdbcType=DATE}");
-        }
-        
-        if (record.getManagerpassword() != null) {
-            sql.VALUES("ManagerPassword", "#{managerpassword,jdbcType=VARCHAR}");
-        }
-        
-        if (record.getManagerdesc() != null) {
-            sql.VALUES("ManagerDesc", "#{managerdesc,jdbcType=VARCHAR}");
+        if (record.getDeptdesc() != null) {
+            sql.VALUES("DeptDesc", "#{deptdesc,jdbcType=LONGVARCHAR}");
         }
         
         return sql.toString();
     }
 
-    public String selectByExample(ManagerExample example) {
+    public String selectByExampleWithBLOBs(DeptExample example) {
         SQL sql = new SQL();
         if (example != null && example.isDistinct()) {
-            sql.SELECT_DISTINCT("ManagerId");
+            sql.SELECT_DISTINCT("DeptId");
         } else {
-            sql.SELECT("ManagerId");
+            sql.SELECT("DeptId");
         }
-        sql.SELECT("ManagerDeptId");
-        sql.SELECT("ManagerMajorId");
         sql.SELECT("DeptName");
-        sql.SELECT("MajorName");
-        sql.SELECT("ManagerName");
-        sql.SELECT("ManagerSex");
-        sql.SELECT("ManagerBirthday");
-        sql.SELECT("ManagerPassword");
-        sql.SELECT("ManagerDesc");
-        sql.FROM("manager");
+        sql.SELECT("DeptChairman");
+        sql.SELECT("DeptTel");
+        sql.SELECT("DeptDesc");
+        sql.FROM("dept");
+        applyWhere(sql, example, false);
+        
+        if (example != null && example.getOrderByClause() != null) {
+            sql.ORDER_BY(example.getOrderByClause());
+        }
+        
+        if (example != null && example.getLimit() != null) {
+            sql.LIMIT(example.getLimit());
+        }
+        if (example != null && example.getOffset() != null) {
+            sql.OFFSET(example.getOffset());
+        }
+        if (example != null && example.getPageNum() != null && example.getPageSize() != null) {
+            sql.LIMIT(example.getPageSize());
+            sql.OFFSET((example.getPageNum() - 1) * example.getPageSize());
+        }
+        return sql.toString();
+    }
+
+    public String selectByExample(DeptExample example) {
+        SQL sql = new SQL();
+        if (example != null && example.isDistinct()) {
+            sql.SELECT_DISTINCT("DeptId");
+        } else {
+            sql.SELECT("DeptId");
+        }
+        sql.SELECT("DeptName");
+        sql.SELECT("DeptChairman");
+        sql.SELECT("DeptTel");
+        sql.FROM("dept");
         applyWhere(sql, example, false);
         
         if (example != null && example.getOrderByClause() != null) {
@@ -105,122 +110,91 @@ public class ManagerSqlProvider {
     }
 
     public String updateByExampleSelective(Map<String, Object> parameter) {
-        Manager record = (Manager) parameter.get("record");
-        ManagerExample example = (ManagerExample) parameter.get("example");
+        Dept record = (Dept) parameter.get("record");
+        DeptExample example = (DeptExample) parameter.get("example");
         
         SQL sql = new SQL();
-        sql.UPDATE("manager");
+        sql.UPDATE("dept");
         
-        if (record.getManagerid() != null) {
-            sql.SET("ManagerId = #{record.managerid,jdbcType=BIGINT}");
-        }
-        
-        if (record.getManagerdeptid() != null) {
-            sql.SET("ManagerDeptId = #{record.managerdeptid,jdbcType=BIGINT}");
-        }
-        
-        if (record.getManagermajorid() != null) {
-            sql.SET("ManagerMajorId = #{record.managermajorid,jdbcType=BIGINT}");
+        if (record.getDeptid() != null) {
+            sql.SET("DeptId = #{record.deptid,jdbcType=BIGINT}");
         }
         
         if (record.getDeptname() != null) {
             sql.SET("DeptName = #{record.deptname,jdbcType=VARCHAR}");
         }
         
-        if (record.getMajorname() != null) {
-            sql.SET("MajorName = #{record.majorname,jdbcType=VARCHAR}");
+        if (record.getDeptchairman() != null) {
+            sql.SET("DeptChairman = #{record.deptchairman,jdbcType=VARCHAR}");
         }
         
-        if (record.getManagername() != null) {
-            sql.SET("ManagerName = #{record.managername,jdbcType=VARCHAR}");
+        if (record.getDepttel() != null) {
+            sql.SET("DeptTel = #{record.depttel,jdbcType=VARCHAR}");
         }
         
-        if (record.getManagersex() != null) {
-            sql.SET("ManagerSex = #{record.managersex,jdbcType=CHAR}");
+        if (record.getDeptdesc() != null) {
+            sql.SET("DeptDesc = #{record.deptdesc,jdbcType=LONGVARCHAR}");
         }
         
-        if (record.getManagerbirthday() != null) {
-            sql.SET("ManagerBirthday = #{record.managerbirthday,jdbcType=DATE}");
-        }
+        applyWhere(sql, example, true);
+        return sql.toString();
+    }
+
+    public String updateByExampleWithBLOBs(Map<String, Object> parameter) {
+        SQL sql = new SQL();
+        sql.UPDATE("dept");
         
-        if (record.getManagerpassword() != null) {
-            sql.SET("ManagerPassword = #{record.managerpassword,jdbcType=VARCHAR}");
-        }
+        sql.SET("DeptId = #{record.deptid,jdbcType=BIGINT}");
+        sql.SET("DeptName = #{record.deptname,jdbcType=VARCHAR}");
+        sql.SET("DeptChairman = #{record.deptchairman,jdbcType=VARCHAR}");
+        sql.SET("DeptTel = #{record.depttel,jdbcType=VARCHAR}");
+        sql.SET("DeptDesc = #{record.deptdesc,jdbcType=LONGVARCHAR}");
         
-        if (record.getManagerdesc() != null) {
-            sql.SET("ManagerDesc = #{record.managerdesc,jdbcType=VARCHAR}");
-        }
-        
+        DeptExample example = (DeptExample) parameter.get("example");
         applyWhere(sql, example, true);
         return sql.toString();
     }
 
     public String updateByExample(Map<String, Object> parameter) {
         SQL sql = new SQL();
-        sql.UPDATE("manager");
+        sql.UPDATE("dept");
         
-        sql.SET("ManagerId = #{record.managerid,jdbcType=BIGINT}");
-        sql.SET("ManagerDeptId = #{record.managerdeptid,jdbcType=BIGINT}");
-        sql.SET("ManagerMajorId = #{record.managermajorid,jdbcType=BIGINT}");
+        sql.SET("DeptId = #{record.deptid,jdbcType=BIGINT}");
         sql.SET("DeptName = #{record.deptname,jdbcType=VARCHAR}");
-        sql.SET("MajorName = #{record.majorname,jdbcType=VARCHAR}");
-        sql.SET("ManagerName = #{record.managername,jdbcType=VARCHAR}");
-        sql.SET("ManagerSex = #{record.managersex,jdbcType=CHAR}");
-        sql.SET("ManagerBirthday = #{record.managerbirthday,jdbcType=DATE}");
-        sql.SET("ManagerPassword = #{record.managerpassword,jdbcType=VARCHAR}");
-        sql.SET("ManagerDesc = #{record.managerdesc,jdbcType=VARCHAR}");
+        sql.SET("DeptChairman = #{record.deptchairman,jdbcType=VARCHAR}");
+        sql.SET("DeptTel = #{record.depttel,jdbcType=VARCHAR}");
         
-        ManagerExample example = (ManagerExample) parameter.get("example");
+        DeptExample example = (DeptExample) parameter.get("example");
         applyWhere(sql, example, true);
         return sql.toString();
     }
 
-    public String updateByPrimaryKeySelective(Manager record) {
+    public String updateByPrimaryKeySelective(Dept record) {
         SQL sql = new SQL();
-        sql.UPDATE("manager");
-        
-        if (record.getManagerdeptid() != null) {
-            sql.SET("ManagerDeptId = #{managerdeptid,jdbcType=BIGINT}");
-        }
-        
-        if (record.getManagermajorid() != null) {
-            sql.SET("ManagerMajorId = #{managermajorid,jdbcType=BIGINT}");
-        }
+        sql.UPDATE("dept");
         
         if (record.getDeptname() != null) {
             sql.SET("DeptName = #{deptname,jdbcType=VARCHAR}");
         }
         
-        if (record.getMajorname() != null) {
-            sql.SET("MajorName = #{majorname,jdbcType=VARCHAR}");
+        if (record.getDeptchairman() != null) {
+            sql.SET("DeptChairman = #{deptchairman,jdbcType=VARCHAR}");
         }
         
-        if (record.getManagername() != null) {
-            sql.SET("ManagerName = #{managername,jdbcType=VARCHAR}");
+        if (record.getDepttel() != null) {
+            sql.SET("DeptTel = #{depttel,jdbcType=VARCHAR}");
         }
         
-        if (record.getManagersex() != null) {
-            sql.SET("ManagerSex = #{managersex,jdbcType=CHAR}");
+        if (record.getDeptdesc() != null) {
+            sql.SET("DeptDesc = #{deptdesc,jdbcType=LONGVARCHAR}");
         }
         
-        if (record.getManagerbirthday() != null) {
-            sql.SET("ManagerBirthday = #{managerbirthday,jdbcType=DATE}");
-        }
-        
-        if (record.getManagerpassword() != null) {
-            sql.SET("ManagerPassword = #{managerpassword,jdbcType=VARCHAR}");
-        }
-        
-        if (record.getManagerdesc() != null) {
-            sql.SET("ManagerDesc = #{managerdesc,jdbcType=VARCHAR}");
-        }
-        
-        sql.WHERE("ManagerId = #{managerid,jdbcType=BIGINT}");
+        sql.WHERE("DeptId = #{deptid,jdbcType=BIGINT}");
         
         return sql.toString();
     }
 
-    protected void applyWhere(SQL sql, ManagerExample example, boolean includeExamplePhrase) {
+    protected void applyWhere(SQL sql, DeptExample example, boolean includeExamplePhrase) {
         if (example == null) {
             return;
         }

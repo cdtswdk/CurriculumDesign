@@ -1,7 +1,6 @@
 package com.cdt.curriculumdesign.base.model;
 
 import java.io.Serializable;
-import java.util.Date;
 import javax.annotation.Generated;
 
 @Generated("stucourse")
@@ -13,6 +12,16 @@ public class Stucourse implements Serializable {
     private Long courseid;
 
     private Long teacherid;
+
+    private String teachername;
+
+    private Long deptid;
+
+    private Long majorid;
+
+    private String deptname;
+
+    private String majorname;
 
     private String coursename;
 
@@ -44,9 +53,19 @@ public class Stucourse implements Serializable {
     private Integer courseendweek;
 
     /**
+     * 课程在星期几
+     */
+    private String courseweek;
+
+    /**
      * 课程状态（0:未结课 1:已结课）只有状态为结课的课程才有成绩和绩点
      */
     private String coursestatus;
+
+    /**
+     * 课程在第几节
+     */
+    private String coursedaynum;
 
     /**
      * 课程类型（0:选修课 1:必修课）
@@ -58,15 +77,7 @@ public class Stucourse implements Serializable {
      */
     private String auditstatus;
 
-    /**
-     * 课程在第几节
-     */
-    private String coursedaynum;
-
-    /**
-     * 课程在星期几
-     */
-    private String courseweek;
+    private String studentname;
 
     private static final long serialVersionUID = 1L;
 
@@ -103,6 +114,51 @@ public class Stucourse implements Serializable {
 
     public Stucourse setTeacherid(Long teacherid) {
         this.teacherid = teacherid;
+        return this;
+    }
+
+    public String getTeachername() {
+        return teachername;
+    }
+
+    public Stucourse setTeachername(String teachername) {
+        this.teachername = teachername;
+        return this;
+    }
+
+    public Long getDeptid() {
+        return deptid;
+    }
+
+    public Stucourse setDeptid(Long deptid) {
+        this.deptid = deptid;
+        return this;
+    }
+
+    public Long getMajorid() {
+        return majorid;
+    }
+
+    public Stucourse setMajorid(Long majorid) {
+        this.majorid = majorid;
+        return this;
+    }
+
+    public String getDeptname() {
+        return deptname;
+    }
+
+    public Stucourse setDeptname(String deptname) {
+        this.deptname = deptname;
+        return this;
+    }
+
+    public String getMajorname() {
+        return majorname;
+    }
+
+    public Stucourse setMajorname(String majorname) {
+        this.majorname = majorname;
         return this;
     }
 
@@ -169,12 +225,30 @@ public class Stucourse implements Serializable {
         return this;
     }
 
+    public String getCourseweek() {
+        return courseweek;
+    }
+
+    public Stucourse setCourseweek(String courseweek) {
+        this.courseweek = courseweek;
+        return this;
+    }
+
     public String getCoursestatus() {
         return coursestatus;
     }
 
     public Stucourse setCoursestatus(String coursestatus) {
         this.coursestatus = coursestatus;
+        return this;
+    }
+
+    public String getCoursedaynum() {
+        return coursedaynum;
+    }
+
+    public Stucourse setCoursedaynum(String coursedaynum) {
+        this.coursedaynum = coursedaynum;
         return this;
     }
 
@@ -196,21 +270,12 @@ public class Stucourse implements Serializable {
         return this;
     }
 
-    public String getCoursedaynum() {
-        return coursedaynum;
+    public String getStudentname() {
+        return studentname;
     }
 
-    public Stucourse setCoursedaynum(String coursedaynum) {
-        this.coursedaynum = coursedaynum;
-        return this;
-    }
-
-    public String getCourseweek() {
-        return courseweek;
-    }
-
-    public Stucourse setCourseweek(String courseweek) {
-        this.courseweek = courseweek;
+    public Stucourse setStudentname(String studentname) {
+        this.studentname = studentname;
         return this;
     }
 
@@ -224,6 +289,11 @@ public class Stucourse implements Serializable {
         sb.append(", studentid=").append(studentid);
         sb.append(", courseid=").append(courseid);
         sb.append(", teacherid=").append(teacherid);
+        sb.append(", teachername=").append(teachername);
+        sb.append(", deptid=").append(deptid);
+        sb.append(", majorid=").append(majorid);
+        sb.append(", deptname=").append(deptname);
+        sb.append(", majorname=").append(majorname);
         sb.append(", coursename=").append(coursename);
         sb.append(", grade=").append(grade);
         sb.append(", gradepoint=").append(gradepoint);
@@ -231,11 +301,12 @@ public class Stucourse implements Serializable {
         sb.append(", courseendtime=").append(courseendtime);
         sb.append(", coursestartweek=").append(coursestartweek);
         sb.append(", courseendweek=").append(courseendweek);
+        sb.append(", courseweek=").append(courseweek);
         sb.append(", coursestatus=").append(coursestatus);
+        sb.append(", coursedaynum=").append(coursedaynum);
         sb.append(", coursetype=").append(coursetype);
         sb.append(", auditstatus=").append(auditstatus);
-        sb.append(", coursedaynum=").append(coursedaynum);
-        sb.append(", courseweek=").append(courseweek);
+        sb.append(", studentname=").append(studentname);
         sb.append("]");
         return sb.toString();
     }

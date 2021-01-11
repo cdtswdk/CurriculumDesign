@@ -33,56 +33,6 @@ public class ManagerService {
     @Autowired
     private CourseMapper courseMapper;
 
-    public DatatableInfo<Course> listTeaCourseByStuId(DatatableInfo<Course> datatableInfo, Long teaId) {
-        CourseExample example = new CourseExample();
-        CourseExample.Criteria criteria = example.createCriteria();
-        if (teaId != null) {
-            criteria.andTeacheridEqualTo(teaId);
-        }
-        example.setOffset(datatableInfo.getOffset());
-        example.setLimit(datatableInfo.getPageSize());
-        datatableInfo.setData(this.courseMapper.selectByExample(example));
-        datatableInfo.setRecordsTotal((int) this.courseMapper.countByExample(example));
-        return datatableInfo;
-    }
-
-    public DatatableInfo<Clscourse> listStuClassByStuId(DatatableInfo<Clscourse> datatableInfo, Long stuId) {
-        StudentExample studentExample = new StudentExample();
-        StudentExample.Criteria studentExampleCriteria = studentExample.createCriteria();
-        studentExampleCriteria.andStudentidEqualTo(stuId);
-        List<Student> Students = this.studentMapper.selectByExample(studentExample);
-        if (CollectionUtils.isNotEmpty(Students)) {
-            Student tbStudent = Students.get(0);
-            Long classId = tbStudent.getClassid();
-            ClscourseExample clscourseExample = new ClscourseExample();
-            ClscourseExample.Criteria criteria = clscourseExample.createCriteria();
-            clscourseExample.setOffset(datatableInfo.getOffset());
-            clscourseExample.setLimit(datatableInfo.getPageSize());
-            criteria.andClassidEqualTo(classId);
-            List<Clscourse> clscourses = this.clscourseMapper.selectByExample(clscourseExample);
-
-            datatableInfo.setData(clscourses);
-            datatableInfo.setRecordsTotal((int) this.clscourseMapper.countByExample(clscourseExample));
-            return datatableInfo;
-        }
-        return null;
-    }
-
-    public DatatableInfo<Stucourse> listStuGradeByStuId(DatatableInfo<Stucourse> datatableInfo, Long stuId) {
-        StucourseExample example = new StucourseExample();
-        StucourseExample.Criteria criteria = example.createCriteria();
-        if (stuId != null) {
-            criteria.andStudentidEqualTo(stuId);
-        }
-        //已结课
-        criteria.andCoursestatusEqualTo("1");
-        example.setOffset(datatableInfo.getOffset());
-        example.setLimit(datatableInfo.getPageSize());
-        datatableInfo.setData(this.stucourseMapper.selectByExample(example));
-        datatableInfo.setRecordsTotal((int) this.stucourseMapper.countByExample(example));
-        return datatableInfo;
-    }
-
     public DatatableInfo<Manager> getPersonInfo(DatatableInfo<Manager> datatableInfo, Long managerId) {
         ManagerExample managerExample = new ManagerExample();
         ManagerExample.Criteria criteria = managerExample.createCriteria();
@@ -90,7 +40,7 @@ public class ManagerService {
         List<Manager> managers = this.managerMapper.selectByExample(managerExample);
         managerExample.setOffset(datatableInfo.getOffset());
         managerExample.setLimit(datatableInfo.getPageSize());
-        datatableInfo.setData(this.managerMapper.selectByExample(managerExample));
+        datatableInfo.setData(managers);
         datatableInfo.setRecordsTotal((int) this.managerMapper.countByExample(managerExample));
 
         return datatableInfo;
@@ -137,7 +87,7 @@ public class ManagerService {
         if (managerdeptid != null) {
             CourseExample courseExample = new CourseExample();
             CourseExample.Criteria criteria = courseExample.createCriteria();
-            //criteria.andDeptidEqualTo(managerdeptid);
+            criteria.andDeptidEqualTo(managerdeptid);
             courseExample.setOffset(datatableInfo.getOffset());
             courseExample.setLimit(datatableInfo.getPageSize());
 
@@ -170,9 +120,18 @@ public class ManagerService {
         return datatableInfo;
     }
 
-    public DataResult<DatatableInfo<Integer>> addCourse(DatatableInfo<Integer> datatableInfo, Course course) {
-        if (course != null) {
+    public DataResult<DatatableInfo<Integer>> addCourse(DatatableInfo<Integer> datatableInfo, Course course,Long managerId) {
+        if (course != null && managerId!=null) {
+
+            Manager manager = this.managerMapper.selectByPrimaryKey(managerId);
+
             course.setCoursecreatetime(new Date());
+            course.setDeptid(manager.getManagerdeptid());
+            course.setDeptname(manager.getDeptname());
+            course.setMajorid(manager.getManagermajorid());
+            course.setMajorname(manager.getMajorname());
+
+
             int i = this.courseMapper.insert(course);
             datatableInfo.setData(Collections.singletonList(i));
             return DataResult.success(datatableInfo);

@@ -45,13 +45,22 @@
         <!--<table tableName="loginuser">
             <generatedKey column="id" sqlStatement="JDBC"/>
         </table>-->
-        <!--<table tableName="student">
-            <generatedKey column="StudentId" sqlStatement="JDBC"/>
+        <!--<table tableName="dept">
+            <generatedKey column="DeptId" sqlStatement="JDBC"/>
+        </table>
+        <table tableName="major">
+            <generatedKey column="MajorId" sqlStatement="JDBC"/>
         </table>
         <table tableName="teacher">
             <generatedKey column="TeacherId" sqlStatement="JDBC"/>
         </table>
-        <table tableName="manager">
+        <table tableName="tb_class">
+            <generatedKey column="ClassId" sqlStatement="JDBC"/>
+        </table>-->
+        <!--<table tableName="student">
+            <generatedKey column="StudentId" sqlStatement="JDBC"/>
+        </table>-->
+        <!--<table tableName="manager">
             <generatedKey column="ManagerId" sqlStatement="JDBC"/>
         </table>-->
         <!--<table tableName="course">
@@ -60,7 +69,8 @@
         <table tableName="stucourse">
             <generatedKey column="stucourseId" sqlStatement="JDBC"/>
         </table>
-        <!--<table tableName="clscourse">
+        <!--
+        <table tableName="clscourse">
             <generatedKey column="ClsCourseId" sqlStatement="JDBC"/>
         </table>-->
     </context>

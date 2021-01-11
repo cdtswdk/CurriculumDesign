@@ -1,7 +1,6 @@
 package com.cdt.curriculumdesign.base.model;
 
 import java.io.Serializable;
-import java.util.Date;
 import javax.annotation.Generated;
 
 @Generated("clscourse")
@@ -14,17 +13,27 @@ public class Clscourse implements Serializable {
 
     private Long teacherid;
 
+    private String teachername;
+
+    private Long deptid;
+
+    private Long majorid;
+
+    private String deptname;
+
+    private String majorname;
+
     private String coursename;
 
     /**
      * 课程开始时间
      */
-    private Date coursestarttime;
+    private String coursestarttime;
 
     /**
      * 课程结束时间
      */
-    private Date courseendtime;
+    private String courseendtime;
 
     /**
      * 课程开始周数
@@ -55,6 +64,11 @@ public class Clscourse implements Serializable {
      * 课程类型（0:选修课 1:必修课）
      */
     private String coursetype;
+
+    /**
+     * 审核状态（0:未审核 1:已审核)
+     */
+    private String auditstatus;
 
     private static final long serialVersionUID = 1L;
 
@@ -94,6 +108,51 @@ public class Clscourse implements Serializable {
         return this;
     }
 
+    public String getTeachername() {
+        return teachername;
+    }
+
+    public Clscourse setTeachername(String teachername) {
+        this.teachername = teachername;
+        return this;
+    }
+
+    public Long getDeptid() {
+        return deptid;
+    }
+
+    public Clscourse setDeptid(Long deptid) {
+        this.deptid = deptid;
+        return this;
+    }
+
+    public Long getMajorid() {
+        return majorid;
+    }
+
+    public Clscourse setMajorid(Long majorid) {
+        this.majorid = majorid;
+        return this;
+    }
+
+    public String getDeptname() {
+        return deptname;
+    }
+
+    public Clscourse setDeptname(String deptname) {
+        this.deptname = deptname;
+        return this;
+    }
+
+    public String getMajorname() {
+        return majorname;
+    }
+
+    public Clscourse setMajorname(String majorname) {
+        this.majorname = majorname;
+        return this;
+    }
+
     public String getCoursename() {
         return coursename;
     }
@@ -103,20 +162,20 @@ public class Clscourse implements Serializable {
         return this;
     }
 
-    public Date getCoursestarttime() {
+    public String getCoursestarttime() {
         return coursestarttime;
     }
 
-    public Clscourse setCoursestarttime(Date coursestarttime) {
+    public Clscourse setCoursestarttime(String coursestarttime) {
         this.coursestarttime = coursestarttime;
         return this;
     }
 
-    public Date getCourseendtime() {
+    public String getCourseendtime() {
         return courseendtime;
     }
 
-    public Clscourse setCourseendtime(Date courseendtime) {
+    public Clscourse setCourseendtime(String courseendtime) {
         this.courseendtime = courseendtime;
         return this;
     }
@@ -175,6 +234,15 @@ public class Clscourse implements Serializable {
         return this;
     }
 
+    public String getAuditstatus() {
+        return auditstatus;
+    }
+
+    public Clscourse setAuditstatus(String auditstatus) {
+        this.auditstatus = auditstatus;
+        return this;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -185,6 +253,11 @@ public class Clscourse implements Serializable {
         sb.append(", courseid=").append(courseid);
         sb.append(", classid=").append(classid);
         sb.append(", teacherid=").append(teacherid);
+        sb.append(", teachername=").append(teachername);
+        sb.append(", deptid=").append(deptid);
+        sb.append(", majorid=").append(majorid);
+        sb.append(", deptname=").append(deptname);
+        sb.append(", majorname=").append(majorname);
         sb.append(", coursename=").append(coursename);
         sb.append(", coursestarttime=").append(coursestarttime);
         sb.append(", courseendtime=").append(courseendtime);
@@ -194,6 +267,7 @@ public class Clscourse implements Serializable {
         sb.append(", coursedaynum=").append(coursedaynum);
         sb.append(", coursestatus=").append(coursestatus);
         sb.append(", coursetype=").append(coursetype);
+        sb.append(", auditstatus=").append(auditstatus);
         sb.append("]");
         return sb.toString();
     }

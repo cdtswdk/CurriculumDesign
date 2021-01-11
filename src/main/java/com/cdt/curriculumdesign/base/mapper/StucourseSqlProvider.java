@@ -41,6 +41,26 @@ public class StucourseSqlProvider {
             sql.VALUES("TeacherId", "#{teacherid,jdbcType=BIGINT}");
         }
         
+        if (record.getTeachername() != null) {
+            sql.VALUES("TeacherName", "#{teachername,jdbcType=VARCHAR}");
+        }
+        
+        if (record.getDeptid() != null) {
+            sql.VALUES("DeptId", "#{deptid,jdbcType=BIGINT}");
+        }
+        
+        if (record.getMajorid() != null) {
+            sql.VALUES("MajorId", "#{majorid,jdbcType=BIGINT}");
+        }
+        
+        if (record.getDeptname() != null) {
+            sql.VALUES("DeptName", "#{deptname,jdbcType=VARCHAR}");
+        }
+        
+        if (record.getMajorname() != null) {
+            sql.VALUES("MajorName", "#{majorname,jdbcType=VARCHAR}");
+        }
+        
         if (record.getCoursename() != null) {
             sql.VALUES("CourseName", "#{coursename,jdbcType=VARCHAR}");
         }
@@ -54,11 +74,11 @@ public class StucourseSqlProvider {
         }
         
         if (record.getCoursestarttime() != null) {
-            sql.VALUES("CourseStartTime", "#{coursestarttime,jdbcType=DATE}");
+            sql.VALUES("CourseStartTime", "#{coursestarttime,jdbcType=VARCHAR}");
         }
         
         if (record.getCourseendtime() != null) {
-            sql.VALUES("CourseEndTime", "#{courseendtime,jdbcType=DATE}");
+            sql.VALUES("CourseEndTime", "#{courseendtime,jdbcType=VARCHAR}");
         }
         
         if (record.getCoursestartweek() != null) {
@@ -69,8 +89,16 @@ public class StucourseSqlProvider {
             sql.VALUES("CourseEndWeek", "#{courseendweek,jdbcType=INTEGER}");
         }
         
+        if (record.getCourseweek() != null) {
+            sql.VALUES("CourseWeek", "#{courseweek,jdbcType=CHAR}");
+        }
+        
         if (record.getCoursestatus() != null) {
             sql.VALUES("CourseStatus", "#{coursestatus,jdbcType=CHAR}");
+        }
+        
+        if (record.getCoursedaynum() != null) {
+            sql.VALUES("CourseDayNum", "#{coursedaynum,jdbcType=CHAR}");
         }
         
         if (record.getCoursetype() != null) {
@@ -81,12 +109,8 @@ public class StucourseSqlProvider {
             sql.VALUES("AuditStatus", "#{auditstatus,jdbcType=CHAR}");
         }
         
-        if (record.getCoursedaynum() != null) {
-            sql.VALUES("CourseDayNum", "#{coursedaynum,jdbcType=CHAR}");
-        }
-        
-        if (record.getCourseweek() != null) {
-            sql.VALUES("CourseWeek", "#{courseweek,jdbcType=CHAR}");
+        if (record.getStudentname() != null) {
+            sql.VALUES("StudentName", "#{studentname,jdbcType=VARCHAR}");
         }
         
         return sql.toString();
@@ -102,6 +126,11 @@ public class StucourseSqlProvider {
         sql.SELECT("StudentId");
         sql.SELECT("CourseId");
         sql.SELECT("TeacherId");
+        sql.SELECT("TeacherName");
+        sql.SELECT("DeptId");
+        sql.SELECT("MajorId");
+        sql.SELECT("DeptName");
+        sql.SELECT("MajorName");
         sql.SELECT("CourseName");
         sql.SELECT("Grade");
         sql.SELECT("GradePoint");
@@ -109,11 +138,12 @@ public class StucourseSqlProvider {
         sql.SELECT("CourseEndTime");
         sql.SELECT("CourseStartWeek");
         sql.SELECT("CourseEndWeek");
+        sql.SELECT("CourseWeek");
         sql.SELECT("CourseStatus");
+        sql.SELECT("CourseDayNum");
         sql.SELECT("CourseType");
         sql.SELECT("AuditStatus");
-        sql.SELECT("CourseDayNum");
-        sql.SELECT("CourseWeek");
+        sql.SELECT("StudentName");
         sql.FROM("stucourse");
         applyWhere(sql, example, false);
         
@@ -157,6 +187,26 @@ public class StucourseSqlProvider {
             sql.SET("TeacherId = #{record.teacherid,jdbcType=BIGINT}");
         }
         
+        if (record.getTeachername() != null) {
+            sql.SET("TeacherName = #{record.teachername,jdbcType=VARCHAR}");
+        }
+        
+        if (record.getDeptid() != null) {
+            sql.SET("DeptId = #{record.deptid,jdbcType=BIGINT}");
+        }
+        
+        if (record.getMajorid() != null) {
+            sql.SET("MajorId = #{record.majorid,jdbcType=BIGINT}");
+        }
+        
+        if (record.getDeptname() != null) {
+            sql.SET("DeptName = #{record.deptname,jdbcType=VARCHAR}");
+        }
+        
+        if (record.getMajorname() != null) {
+            sql.SET("MajorName = #{record.majorname,jdbcType=VARCHAR}");
+        }
+        
         if (record.getCoursename() != null) {
             sql.SET("CourseName = #{record.coursename,jdbcType=VARCHAR}");
         }
@@ -170,11 +220,11 @@ public class StucourseSqlProvider {
         }
         
         if (record.getCoursestarttime() != null) {
-            sql.SET("CourseStartTime = #{record.coursestarttime,jdbcType=DATE}");
+            sql.SET("CourseStartTime = #{record.coursestarttime,jdbcType=VARCHAR}");
         }
         
         if (record.getCourseendtime() != null) {
-            sql.SET("CourseEndTime = #{record.courseendtime,jdbcType=DATE}");
+            sql.SET("CourseEndTime = #{record.courseendtime,jdbcType=VARCHAR}");
         }
         
         if (record.getCoursestartweek() != null) {
@@ -185,8 +235,16 @@ public class StucourseSqlProvider {
             sql.SET("CourseEndWeek = #{record.courseendweek,jdbcType=INTEGER}");
         }
         
+        if (record.getCourseweek() != null) {
+            sql.SET("CourseWeek = #{record.courseweek,jdbcType=CHAR}");
+        }
+        
         if (record.getCoursestatus() != null) {
             sql.SET("CourseStatus = #{record.coursestatus,jdbcType=CHAR}");
+        }
+        
+        if (record.getCoursedaynum() != null) {
+            sql.SET("CourseDayNum = #{record.coursedaynum,jdbcType=CHAR}");
         }
         
         if (record.getCoursetype() != null) {
@@ -197,12 +255,8 @@ public class StucourseSqlProvider {
             sql.SET("AuditStatus = #{record.auditstatus,jdbcType=CHAR}");
         }
         
-        if (record.getCoursedaynum() != null) {
-            sql.SET("CourseDayNum = #{record.coursedaynum,jdbcType=CHAR}");
-        }
-        
-        if (record.getCourseweek() != null) {
-            sql.SET("CourseWeek = #{record.courseweek,jdbcType=CHAR}");
+        if (record.getStudentname() != null) {
+            sql.SET("StudentName = #{record.studentname,jdbcType=VARCHAR}");
         }
         
         applyWhere(sql, example, true);
@@ -217,18 +271,24 @@ public class StucourseSqlProvider {
         sql.SET("StudentId = #{record.studentid,jdbcType=BIGINT}");
         sql.SET("CourseId = #{record.courseid,jdbcType=BIGINT}");
         sql.SET("TeacherId = #{record.teacherid,jdbcType=BIGINT}");
+        sql.SET("TeacherName = #{record.teachername,jdbcType=VARCHAR}");
+        sql.SET("DeptId = #{record.deptid,jdbcType=BIGINT}");
+        sql.SET("MajorId = #{record.majorid,jdbcType=BIGINT}");
+        sql.SET("DeptName = #{record.deptname,jdbcType=VARCHAR}");
+        sql.SET("MajorName = #{record.majorname,jdbcType=VARCHAR}");
         sql.SET("CourseName = #{record.coursename,jdbcType=VARCHAR}");
         sql.SET("Grade = #{record.grade,jdbcType=INTEGER}");
         sql.SET("GradePoint = #{record.gradepoint,jdbcType=REAL}");
-        sql.SET("CourseStartTime = #{record.coursestarttime,jdbcType=DATE}");
-        sql.SET("CourseEndTime = #{record.courseendtime,jdbcType=DATE}");
+        sql.SET("CourseStartTime = #{record.coursestarttime,jdbcType=VARCHAR}");
+        sql.SET("CourseEndTime = #{record.courseendtime,jdbcType=VARCHAR}");
         sql.SET("CourseStartWeek = #{record.coursestartweek,jdbcType=INTEGER}");
         sql.SET("CourseEndWeek = #{record.courseendweek,jdbcType=INTEGER}");
+        sql.SET("CourseWeek = #{record.courseweek,jdbcType=CHAR}");
         sql.SET("CourseStatus = #{record.coursestatus,jdbcType=CHAR}");
+        sql.SET("CourseDayNum = #{record.coursedaynum,jdbcType=CHAR}");
         sql.SET("CourseType = #{record.coursetype,jdbcType=CHAR}");
         sql.SET("AuditStatus = #{record.auditstatus,jdbcType=CHAR}");
-        sql.SET("CourseDayNum = #{record.coursedaynum,jdbcType=CHAR}");
-        sql.SET("CourseWeek = #{record.courseweek,jdbcType=CHAR}");
+        sql.SET("StudentName = #{record.studentname,jdbcType=VARCHAR}");
         
         StucourseExample example = (StucourseExample) parameter.get("example");
         applyWhere(sql, example, true);
@@ -251,6 +311,26 @@ public class StucourseSqlProvider {
             sql.SET("TeacherId = #{teacherid,jdbcType=BIGINT}");
         }
         
+        if (record.getTeachername() != null) {
+            sql.SET("TeacherName = #{teachername,jdbcType=VARCHAR}");
+        }
+        
+        if (record.getDeptid() != null) {
+            sql.SET("DeptId = #{deptid,jdbcType=BIGINT}");
+        }
+        
+        if (record.getMajorid() != null) {
+            sql.SET("MajorId = #{majorid,jdbcType=BIGINT}");
+        }
+        
+        if (record.getDeptname() != null) {
+            sql.SET("DeptName = #{deptname,jdbcType=VARCHAR}");
+        }
+        
+        if (record.getMajorname() != null) {
+            sql.SET("MajorName = #{majorname,jdbcType=VARCHAR}");
+        }
+        
         if (record.getCoursename() != null) {
             sql.SET("CourseName = #{coursename,jdbcType=VARCHAR}");
         }
@@ -264,11 +344,11 @@ public class StucourseSqlProvider {
         }
         
         if (record.getCoursestarttime() != null) {
-            sql.SET("CourseStartTime = #{coursestarttime,jdbcType=DATE}");
+            sql.SET("CourseStartTime = #{coursestarttime,jdbcType=VARCHAR}");
         }
         
         if (record.getCourseendtime() != null) {
-            sql.SET("CourseEndTime = #{courseendtime,jdbcType=DATE}");
+            sql.SET("CourseEndTime = #{courseendtime,jdbcType=VARCHAR}");
         }
         
         if (record.getCoursestartweek() != null) {
@@ -279,8 +359,16 @@ public class StucourseSqlProvider {
             sql.SET("CourseEndWeek = #{courseendweek,jdbcType=INTEGER}");
         }
         
+        if (record.getCourseweek() != null) {
+            sql.SET("CourseWeek = #{courseweek,jdbcType=CHAR}");
+        }
+        
         if (record.getCoursestatus() != null) {
             sql.SET("CourseStatus = #{coursestatus,jdbcType=CHAR}");
+        }
+        
+        if (record.getCoursedaynum() != null) {
+            sql.SET("CourseDayNum = #{coursedaynum,jdbcType=CHAR}");
         }
         
         if (record.getCoursetype() != null) {
@@ -291,12 +379,8 @@ public class StucourseSqlProvider {
             sql.SET("AuditStatus = #{auditstatus,jdbcType=CHAR}");
         }
         
-        if (record.getCoursedaynum() != null) {
-            sql.SET("CourseDayNum = #{coursedaynum,jdbcType=CHAR}");
-        }
-        
-        if (record.getCourseweek() != null) {
-            sql.SET("CourseWeek = #{courseweek,jdbcType=CHAR}");
+        if (record.getStudentname() != null) {
+            sql.SET("StudentName = #{studentname,jdbcType=VARCHAR}");
         }
         
         sql.WHERE("stucourseId = #{stucourseid,jdbcType=BIGINT}");

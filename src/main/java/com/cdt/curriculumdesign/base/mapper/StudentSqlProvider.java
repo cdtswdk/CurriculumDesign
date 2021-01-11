@@ -37,6 +37,14 @@ public class StudentSqlProvider {
             sql.VALUES("MajorId", "#{majorid,jdbcType=BIGINT}");
         }
         
+        if (record.getDeptname() != null) {
+            sql.VALUES("DeptName", "#{deptname,jdbcType=VARCHAR}");
+        }
+        
+        if (record.getMajorname() != null) {
+            sql.VALUES("MajorName", "#{majorname,jdbcType=VARCHAR}");
+        }
+        
         if (record.getClassid() != null) {
             sql.VALUES("ClassId", "#{classid,jdbcType=BIGINT}");
         }
@@ -57,6 +65,10 @@ public class StudentSqlProvider {
             sql.VALUES("StudentPassword", "#{studentpassword,jdbcType=VARCHAR}");
         }
         
+        if (record.getClassname() != null) {
+            sql.VALUES("ClassName", "#{classname,jdbcType=VARCHAR}");
+        }
+        
         return sql.toString();
     }
 
@@ -69,11 +81,14 @@ public class StudentSqlProvider {
         }
         sql.SELECT("DeptId");
         sql.SELECT("MajorId");
+        sql.SELECT("DeptName");
+        sql.SELECT("MajorName");
         sql.SELECT("ClassId");
         sql.SELECT("StudentName");
         sql.SELECT("StudentSex");
         sql.SELECT("StudentBirthday");
         sql.SELECT("StudentPassword");
+        sql.SELECT("ClassName");
         sql.FROM("student");
         applyWhere(sql, example, false);
         
@@ -113,6 +128,14 @@ public class StudentSqlProvider {
             sql.SET("MajorId = #{record.majorid,jdbcType=BIGINT}");
         }
         
+        if (record.getDeptname() != null) {
+            sql.SET("DeptName = #{record.deptname,jdbcType=VARCHAR}");
+        }
+        
+        if (record.getMajorname() != null) {
+            sql.SET("MajorName = #{record.majorname,jdbcType=VARCHAR}");
+        }
+        
         if (record.getClassid() != null) {
             sql.SET("ClassId = #{record.classid,jdbcType=BIGINT}");
         }
@@ -133,6 +156,10 @@ public class StudentSqlProvider {
             sql.SET("StudentPassword = #{record.studentpassword,jdbcType=VARCHAR}");
         }
         
+        if (record.getClassname() != null) {
+            sql.SET("ClassName = #{record.classname,jdbcType=VARCHAR}");
+        }
+        
         applyWhere(sql, example, true);
         return sql.toString();
     }
@@ -144,11 +171,14 @@ public class StudentSqlProvider {
         sql.SET("StudentId = #{record.studentid,jdbcType=BIGINT}");
         sql.SET("DeptId = #{record.deptid,jdbcType=BIGINT}");
         sql.SET("MajorId = #{record.majorid,jdbcType=BIGINT}");
+        sql.SET("DeptName = #{record.deptname,jdbcType=VARCHAR}");
+        sql.SET("MajorName = #{record.majorname,jdbcType=VARCHAR}");
         sql.SET("ClassId = #{record.classid,jdbcType=BIGINT}");
         sql.SET("StudentName = #{record.studentname,jdbcType=VARCHAR}");
         sql.SET("StudentSex = #{record.studentsex,jdbcType=CHAR}");
         sql.SET("StudentBirthday = #{record.studentbirthday,jdbcType=DATE}");
         sql.SET("StudentPassword = #{record.studentpassword,jdbcType=VARCHAR}");
+        sql.SET("ClassName = #{record.classname,jdbcType=VARCHAR}");
         
         StudentExample example = (StudentExample) parameter.get("example");
         applyWhere(sql, example, true);
@@ -165,6 +195,14 @@ public class StudentSqlProvider {
         
         if (record.getMajorid() != null) {
             sql.SET("MajorId = #{majorid,jdbcType=BIGINT}");
+        }
+        
+        if (record.getDeptname() != null) {
+            sql.SET("DeptName = #{deptname,jdbcType=VARCHAR}");
+        }
+        
+        if (record.getMajorname() != null) {
+            sql.SET("MajorName = #{majorname,jdbcType=VARCHAR}");
         }
         
         if (record.getClassid() != null) {
@@ -185,6 +223,10 @@ public class StudentSqlProvider {
         
         if (record.getStudentpassword() != null) {
             sql.SET("StudentPassword = #{studentpassword,jdbcType=VARCHAR}");
+        }
+        
+        if (record.getClassname() != null) {
+            sql.SET("ClassName = #{classname,jdbcType=VARCHAR}");
         }
         
         sql.WHERE("StudentId = #{studentid,jdbcType=BIGINT}");

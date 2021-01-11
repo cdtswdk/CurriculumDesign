@@ -359,6 +359,146 @@ public class ManagerExample {
             return (Criteria) this;
         }
 
+        public Criteria andDeptnameIsNull() {
+            addCriterion("DeptName is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeptnameIsNotNull() {
+            addCriterion("DeptName is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeptnameEqualTo(String value) {
+            addCriterion("DeptName =", value, "deptname");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeptnameNotEqualTo(String value) {
+            addCriterion("DeptName <>", value, "deptname");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeptnameGreaterThan(String value) {
+            addCriterion("DeptName >", value, "deptname");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeptnameGreaterThanOrEqualTo(String value) {
+            addCriterion("DeptName >=", value, "deptname");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeptnameLessThan(String value) {
+            addCriterion("DeptName <", value, "deptname");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeptnameLessThanOrEqualTo(String value) {
+            addCriterion("DeptName <=", value, "deptname");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeptnameLike(String value) {
+            addCriterion("DeptName like", value, "deptname");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeptnameNotLike(String value) {
+            addCriterion("DeptName not like", value, "deptname");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeptnameIn(List<String> values) {
+            addCriterion("DeptName in", values, "deptname");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeptnameNotIn(List<String> values) {
+            addCriterion("DeptName not in", values, "deptname");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeptnameBetween(String value1, String value2) {
+            addCriterion("DeptName between", value1, value2, "deptname");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeptnameNotBetween(String value1, String value2) {
+            addCriterion("DeptName not between", value1, value2, "deptname");
+            return (Criteria) this;
+        }
+
+        public Criteria andMajornameIsNull() {
+            addCriterion("MajorName is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMajornameIsNotNull() {
+            addCriterion("MajorName is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMajornameEqualTo(String value) {
+            addCriterion("MajorName =", value, "majorname");
+            return (Criteria) this;
+        }
+
+        public Criteria andMajornameNotEqualTo(String value) {
+            addCriterion("MajorName <>", value, "majorname");
+            return (Criteria) this;
+        }
+
+        public Criteria andMajornameGreaterThan(String value) {
+            addCriterion("MajorName >", value, "majorname");
+            return (Criteria) this;
+        }
+
+        public Criteria andMajornameGreaterThanOrEqualTo(String value) {
+            addCriterion("MajorName >=", value, "majorname");
+            return (Criteria) this;
+        }
+
+        public Criteria andMajornameLessThan(String value) {
+            addCriterion("MajorName <", value, "majorname");
+            return (Criteria) this;
+        }
+
+        public Criteria andMajornameLessThanOrEqualTo(String value) {
+            addCriterion("MajorName <=", value, "majorname");
+            return (Criteria) this;
+        }
+
+        public Criteria andMajornameLike(String value) {
+            addCriterion("MajorName like", value, "majorname");
+            return (Criteria) this;
+        }
+
+        public Criteria andMajornameNotLike(String value) {
+            addCriterion("MajorName not like", value, "majorname");
+            return (Criteria) this;
+        }
+
+        public Criteria andMajornameIn(List<String> values) {
+            addCriterion("MajorName in", values, "majorname");
+            return (Criteria) this;
+        }
+
+        public Criteria andMajornameNotIn(List<String> values) {
+            addCriterion("MajorName not in", values, "majorname");
+            return (Criteria) this;
+        }
+
+        public Criteria andMajornameBetween(String value1, String value2) {
+            addCriterion("MajorName between", value1, value2, "majorname");
+            return (Criteria) this;
+        }
+
+        public Criteria andMajornameNotBetween(String value1, String value2) {
+            addCriterion("MajorName not between", value1, value2, "majorname");
+            return (Criteria) this;
+        }
+
         public Criteria andManagernameIsNull() {
             addCriterion("ManagerName is null");
             return (Criteria) this;
@@ -499,63 +639,63 @@ public class ManagerExample {
             return (Criteria) this;
         }
 
-        public Criteria andManagerbirthdyIsNull() {
-            addCriterion("ManagerBirthdy is null");
+        public Criteria andManagerbirthdayIsNull() {
+            addCriterion("ManagerBirthday is null");
             return (Criteria) this;
         }
 
-        public Criteria andManagerbirthdyIsNotNull() {
-            addCriterion("ManagerBirthdy is not null");
+        public Criteria andManagerbirthdayIsNotNull() {
+            addCriterion("ManagerBirthday is not null");
             return (Criteria) this;
         }
 
-        public Criteria andManagerbirthdyEqualTo(Date value) {
-            addCriterionForJDBCDate("ManagerBirthdy =", value, "managerbirthdy");
+        public Criteria andManagerbirthdayEqualTo(Date value) {
+            addCriterionForJDBCDate("ManagerBirthday =", value, "managerbirthday");
             return (Criteria) this;
         }
 
-        public Criteria andManagerbirthdyNotEqualTo(Date value) {
-            addCriterionForJDBCDate("ManagerBirthdy <>", value, "managerbirthdy");
+        public Criteria andManagerbirthdayNotEqualTo(Date value) {
+            addCriterionForJDBCDate("ManagerBirthday <>", value, "managerbirthday");
             return (Criteria) this;
         }
 
-        public Criteria andManagerbirthdyGreaterThan(Date value) {
-            addCriterionForJDBCDate("ManagerBirthdy >", value, "managerbirthdy");
+        public Criteria andManagerbirthdayGreaterThan(Date value) {
+            addCriterionForJDBCDate("ManagerBirthday >", value, "managerbirthday");
             return (Criteria) this;
         }
 
-        public Criteria andManagerbirthdyGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("ManagerBirthdy >=", value, "managerbirthdy");
+        public Criteria andManagerbirthdayGreaterThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("ManagerBirthday >=", value, "managerbirthday");
             return (Criteria) this;
         }
 
-        public Criteria andManagerbirthdyLessThan(Date value) {
-            addCriterionForJDBCDate("ManagerBirthdy <", value, "managerbirthdy");
+        public Criteria andManagerbirthdayLessThan(Date value) {
+            addCriterionForJDBCDate("ManagerBirthday <", value, "managerbirthday");
             return (Criteria) this;
         }
 
-        public Criteria andManagerbirthdyLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("ManagerBirthdy <=", value, "managerbirthdy");
+        public Criteria andManagerbirthdayLessThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("ManagerBirthday <=", value, "managerbirthday");
             return (Criteria) this;
         }
 
-        public Criteria andManagerbirthdyIn(List<Date> values) {
-            addCriterionForJDBCDate("ManagerBirthdy in", values, "managerbirthdy");
+        public Criteria andManagerbirthdayIn(List<Date> values) {
+            addCriterionForJDBCDate("ManagerBirthday in", values, "managerbirthday");
             return (Criteria) this;
         }
 
-        public Criteria andManagerbirthdyNotIn(List<Date> values) {
-            addCriterionForJDBCDate("ManagerBirthdy not in", values, "managerbirthdy");
+        public Criteria andManagerbirthdayNotIn(List<Date> values) {
+            addCriterionForJDBCDate("ManagerBirthday not in", values, "managerbirthday");
             return (Criteria) this;
         }
 
-        public Criteria andManagerbirthdyBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("ManagerBirthdy between", value1, value2, "managerbirthdy");
+        public Criteria andManagerbirthdayBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("ManagerBirthday between", value1, value2, "managerbirthday");
             return (Criteria) this;
         }
 
-        public Criteria andManagerbirthdyNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("ManagerBirthdy not between", value1, value2, "managerbirthdy");
+        public Criteria andManagerbirthdayNotBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("ManagerBirthday not between", value1, value2, "managerbirthday");
             return (Criteria) this;
         }
 
@@ -626,6 +766,76 @@ public class ManagerExample {
 
         public Criteria andManagerpasswordNotBetween(String value1, String value2) {
             addCriterion("ManagerPassword not between", value1, value2, "managerpassword");
+            return (Criteria) this;
+        }
+
+        public Criteria andManagerdescIsNull() {
+            addCriterion("ManagerDesc is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andManagerdescIsNotNull() {
+            addCriterion("ManagerDesc is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andManagerdescEqualTo(String value) {
+            addCriterion("ManagerDesc =", value, "managerdesc");
+            return (Criteria) this;
+        }
+
+        public Criteria andManagerdescNotEqualTo(String value) {
+            addCriterion("ManagerDesc <>", value, "managerdesc");
+            return (Criteria) this;
+        }
+
+        public Criteria andManagerdescGreaterThan(String value) {
+            addCriterion("ManagerDesc >", value, "managerdesc");
+            return (Criteria) this;
+        }
+
+        public Criteria andManagerdescGreaterThanOrEqualTo(String value) {
+            addCriterion("ManagerDesc >=", value, "managerdesc");
+            return (Criteria) this;
+        }
+
+        public Criteria andManagerdescLessThan(String value) {
+            addCriterion("ManagerDesc <", value, "managerdesc");
+            return (Criteria) this;
+        }
+
+        public Criteria andManagerdescLessThanOrEqualTo(String value) {
+            addCriterion("ManagerDesc <=", value, "managerdesc");
+            return (Criteria) this;
+        }
+
+        public Criteria andManagerdescLike(String value) {
+            addCriterion("ManagerDesc like", value, "managerdesc");
+            return (Criteria) this;
+        }
+
+        public Criteria andManagerdescNotLike(String value) {
+            addCriterion("ManagerDesc not like", value, "managerdesc");
+            return (Criteria) this;
+        }
+
+        public Criteria andManagerdescIn(List<String> values) {
+            addCriterion("ManagerDesc in", values, "managerdesc");
+            return (Criteria) this;
+        }
+
+        public Criteria andManagerdescNotIn(List<String> values) {
+            addCriterion("ManagerDesc not in", values, "managerdesc");
+            return (Criteria) this;
+        }
+
+        public Criteria andManagerdescBetween(String value1, String value2) {
+            addCriterion("ManagerDesc between", value1, value2, "managerdesc");
+            return (Criteria) this;
+        }
+
+        public Criteria andManagerdescNotBetween(String value1, String value2) {
+            addCriterion("ManagerDesc not between", value1, value2, "managerdesc");
             return (Criteria) this;
         }
     }

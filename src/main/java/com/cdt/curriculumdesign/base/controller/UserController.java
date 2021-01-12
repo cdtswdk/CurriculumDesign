@@ -1,6 +1,7 @@
 package com.cdt.curriculumdesign.base.controller;
 
 import com.cdt.curriculumdesign.base.common.DataResult;
+import com.cdt.curriculumdesign.base.common.DatatableInfo;
 import com.cdt.curriculumdesign.base.model.*;
 import com.cdt.curriculumdesign.base.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,22 +46,40 @@ public class UserController {
                     student.setStudentid(login.getUsername());
                     student.setStudentpassword(login.getPassword());
                     Student student1 = this.userService.checkStuLogin(student);
-                    Loginuser user = new Loginuser(student1.getStudentid(), student1.getStudentpassword(), userType.toString());
-                    return DataResult.success(user, "success");
+                    if(student1 != null){
+                        if(student1.getStudentid()!=null){
+                            Loginuser user = new Loginuser(student1.getStudentid(), student1.getStudentpassword(), userType.toString());
+                            return DataResult.success(user, "success");
+                        }
+                    }else {
+                        return DataResult.notfound("账号或密码错误！");
+                    }
                 } else if (userType == 2) {
                     Teacher teacher = new Teacher();
                     teacher.setTeacherid(login.getUsername());
                     teacher.setTeacherpassword(login.getPassword());
                     Teacher teacher1 = this.userService.checkTeaLogin(teacher);
-                    Loginuser user = new Loginuser(teacher1.getTeacherid(), teacher1.getTeacherpassword(), userType.toString());
-                    return DataResult.success(user, "success");
+                    if(teacher1!=null){
+                        if(teacher1.getTeacherid()!=null){
+                            Loginuser user = new Loginuser(teacher1.getTeacherid(), teacher1.getTeacherpassword(), userType.toString());
+                            return DataResult.success(user, "success");
+                        }
+                    }else {
+                        return DataResult.notfound("账号或密码错误！");
+                    }
                 } else if (userType == 3) {
                     Manager manager = new Manager();
                     manager.setManagerid(login.getUsername());
                     manager.setManagerpassword(login.getPassword());
                     Manager manager1 = this.userService.checkManLogin(manager);
-                    Loginuser user = new Loginuser(manager1.getManagerid(), manager1.getManagerpassword(), userType.toString());
-                    return DataResult.success(user, "success");
+                    if(manager1!=null){
+                        if(manager1.getManagerid()!=null){
+                            Loginuser user = new Loginuser(manager1.getManagerid(), manager1.getManagerpassword(), userType.toString());
+                            return DataResult.success(user, "success");
+                        }
+                    }else {
+                        return DataResult.notfound("账号或密码错误！");
+                    }
                 } else {
                     return DataResult.notfound("fail:userType无法匹配");
                 }

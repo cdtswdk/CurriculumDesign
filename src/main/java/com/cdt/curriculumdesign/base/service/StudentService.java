@@ -159,7 +159,7 @@ public class StudentService {
         if (CollectionUtils.isNotEmpty(stucourseList)) {
             Stucourse stucourse = stucourseList.get(0);
             if ("1".equals(stucourse.getCoursetype())) {
-                return DataResult.serverError("该课程为必修课，无法推选！");
+                return DataResult.serverError("该课程为必修课，无法退选！");
             } else {
                 this.stucourseMapper.deleteByExample(stucourseExample);
                 return DataResult.success(datatableInfo, "退课成功！");
